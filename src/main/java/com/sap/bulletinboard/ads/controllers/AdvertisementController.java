@@ -5,10 +5,10 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Collection;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
@@ -31,6 +31,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sap.bulletinboard.ads.models.Advertisement;
+import com.sap.bulletinboard.ads.models.AdvertisementRepository;
 
 /*
  * Use a path which does not end with a slash! Otherwise the controller is not reachable when not using the trailing
@@ -42,21 +43,23 @@ import com.sap.bulletinboard.ads.models.Advertisement;
 @Validated
 public class AdvertisementController {
     public static final String PATH = "/api/v1/ads";
-    private static int ID = 0;
 
-    private static final Map<Long, Advertisement> ads = new HashMap<>();
+    private AdvertisementRepository adRepository;
+
+    @Inject
+    public AdvertisementController(AdvertisementRepository repository) {
+        this.adRepository = repository;
+    }
 
     @GetMapping
     public AdvertisementList advertisements() {
-        return new AdvertisementList(ads.values());
+        return new AdvertisementList((Collection<Advertisement>) adRepository.findAll());
     }
 
     @GetMapping("/{id}")
     public Advertisement advertisementById(@PathVariable("id") @Min(0) Long id) {
-        if (!ads.containsKey(id)) {
-            throw new NotFoundException(id + " not found");
-        }
-        return ads.get(id);
+        throwIfNonexisting(id);
+        return adRepository.findOne(id);
     }
 
     /**
@@ -67,38 +70,47 @@ public class AdvertisementController {
     public ResponseEntity<Advertisement> add(@Valid @RequestBody Advertisement advertisement,
             UriComponentsBuilder uriComponentsBuilder) throws URISyntaxException {
 
-        long id = ID++;
-        ads.put(id, advertisement);
+        Advertisement savedAdvertisement = adRepository.save(advertisement);
 
-        UriComponents uriComponents = uriComponentsBuilder.path(PATH + "/{id}").buildAndExpand(id);
+        UriComponents uriComponents = uriComponentsBuilder.path(PATH + "/{id}")
+                .buildAndExpand(savedAdvertisement.getId());
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(new URI(uriComponents.getPath()));
-        return new ResponseEntity<>(advertisement, headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedAdvertisement, headers, HttpStatus.CREATED);
     }
 
     @DeleteMapping
     @ResponseStatus(NO_CONTENT)
     public void deleteAll() {
-        ads.clear();
+        adRepository.deleteAll();
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void deleteById(@PathVariable("id") Long id) {
         throwIfNonexisting(id);
-        ads.remove(id);
+        adRepository.delete(id);
     }
 
     @PutMapping("/{id}")
     public Advertisement update(@PathVariable("id") long id, @RequestBody Advertisement updatedAd) {
+        throwIfInconsistent(id, updatedAd.getId());
         throwIfNonexisting(id);
-        ads.put(id, updatedAd);
-        return updatedAd;
+        return adRepository.save(updatedAd);
     }
 
     private void throwIfNonexisting(long id) {
-        if (!ads.containsKey(id)) {
+        if (!adRepository.exists(id)) {
             throw new NotFoundException(id + " not found");
+        }
+    }
+
+    private void throwIfInconsistent(Long expected, Long actual) {
+        if (!expected.equals(actual)) {
+            String message = String.format(
+                    "bad request, inconsistent IDs between request and object: request id = %d, object id = %d",
+                    expected, actual);
+            throw new BadRequestException(message);
         }
     }
 
