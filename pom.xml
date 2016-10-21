@@ -175,6 +175,13 @@
 			</exclusions>
 		</dependency>
 
+		<!-- Security -->
+		<dependency>
+			<groupId>com.sap.xs2.security</groupId>
+			<artifactId>java-container-security</artifactId>
+			<version>0.26.4</version>
+		</dependency>
+
 		<!-- Testing -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
