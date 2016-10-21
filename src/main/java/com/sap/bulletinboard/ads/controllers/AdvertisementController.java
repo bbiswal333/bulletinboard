@@ -39,6 +39,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sap.bulletinboard.ads.models.Advertisement;
 import com.sap.bulletinboard.ads.models.AdvertisementRepository;
+import com.sap.bulletinboard.ads.services.UserServiceClient;
 import com.sap.hcp.cf.logging.common.customfields.CustomField;
 
 /*
@@ -60,10 +61,12 @@ public class AdvertisementController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private AdvertisementRepository adRepository;
+    private UserServiceClient userServiceClient;
 
     @Inject
-    public AdvertisementController(AdvertisementRepository repository) {
+    public AdvertisementController(AdvertisementRepository repository, UserServiceClient userServiceClient) {
         this.adRepository = repository;
+        this.userServiceClient = userServiceClient;
     }
 
     @GetMapping
@@ -103,14 +106,20 @@ public class AdvertisementController {
             UriComponentsBuilder uriComponentsBuilder) throws URISyntaxException {
         throwIfIdNotNull(advertisement.getId());
 
-        AdvertisementDto savedAdvertisement = new AdvertisementDto(adRepository.save(advertisement.toEntity()));
-        logger.info(TECHNICAL, "created ad with version {}", savedAdvertisement.metadata.version);
-        
-        UriComponents uriComponents = uriComponentsBuilder.path(PATH + "/{id}")
-                .buildAndExpand(savedAdvertisement.getId());
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(new URI(uriComponents.getPath()));
-        return new ResponseEntity<>(savedAdvertisement, headers, HttpStatus.CREATED);
+        if (userServiceClient.isPremiumUser("42")) {
+
+            AdvertisementDto savedAdvertisement = new AdvertisementDto(adRepository.save(advertisement.toEntity()));
+            logger.trace(TECHNICAL, "created ad with version {}", savedAdvertisement.metadata.version);
+            UriComponents uriComponents = uriComponentsBuilder.path(PATH + "/{id}")
+                    .buildAndExpand(savedAdvertisement.getId());
+            HttpHeaders headers = new HttpHeaders();
+            headers.setLocation(new URI(uriComponents.getPath()));
+            return new ResponseEntity<>(savedAdvertisement, headers, HttpStatus.CREATED);
+        } else {
+            String message = "You need to be a premium user to create an advertisement";
+            logger.warn(message);
+            throw new NotAuthorizedException(message);
+        }
     }
 
     @DeleteMapping
