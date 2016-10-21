@@ -42,6 +42,7 @@ import com.sap.bulletinboard.ads.models.AdvertisementRepository;
 import com.sap.bulletinboard.ads.services.StatisticsServiceClient;
 import com.sap.bulletinboard.ads.services.UserServiceClient;
 import com.sap.hcp.cf.logging.common.customfields.CustomField;
+import com.sap.xs2.security.container.UserInfoException;
 
 /*
  * Use a path which does not end with a slash! Otherwise the controller is not reachable when not using the trailing
@@ -88,7 +89,7 @@ public class AdvertisementController {
     }
 
     @GetMapping("/{id}")
-    public AdvertisementDto advertisementById(@PathVariable("id") @Min(0) Long id) {
+    public AdvertisementDto advertisementById(@PathVariable("id") @Min(0) Long id) throws UserInfoException {
         MDC.put("endpoint", "GET: " + PATH + "/" + id);
 
         logger.info("demonstration of custom fields, not part of message",
