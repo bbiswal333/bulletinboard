@@ -15,6 +15,7 @@ applications:
       JAVA_OPTS: -Djava.security.egd=file:///dev/./urandom
       # When using sap_java_buildpack in combination with war packaging
       SET_LOGGING_LEVEL: '{com.sap.bulletinboard.ads.controllers.AdvertisementController: INFO}'
+      USER_ROUTE: 'https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com'
   services:
   - postgres-bulletinboard-ads
   - applogs-bulletinboard
