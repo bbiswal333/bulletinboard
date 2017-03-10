@@ -6,12 +6,13 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collection;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +44,10 @@ import com.sap.bulletinboard.ads.models.AdvertisementRepository;
 @Validated
 public class AdvertisementController {
     public static final String PATH = "/api/v1/ads";
+    public static final String PATH_PAGES = PATH + "/pages/";
+    public static final int FIRST_PAGE_ID = 0;
+    // allows server side optimization e.g. via caching
+    public static final int DEFAULT_PAGE_SIZE = 20;
 
     private AdvertisementRepository adRepository;
 
@@ -52,8 +57,17 @@ public class AdvertisementController {
     }
 
     @GetMapping
-    public AdvertisementList advertisements() {
-        return new AdvertisementList((Collection<Advertisement>) adRepository.findAll());
+    public ResponseEntity<AdvertisementList> advertisements() {
+        return advertisementsForPage(FIRST_PAGE_ID);
+    }
+
+    @GetMapping("/pages/{pageId}") // not "public"
+    public ResponseEntity<AdvertisementList> advertisementsForPage(@PathVariable("pageId") int pageId) {
+
+        Page<Advertisement> page = adRepository.findAll(new PageRequest(pageId, DEFAULT_PAGE_SIZE));
+
+        return new ResponseEntity<AdvertisementList>(new AdvertisementList(page.getContent()),
+                buildLinkHeader(pageId, page), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -70,7 +84,7 @@ public class AdvertisementController {
     public ResponseEntity<Advertisement> add(@Valid @RequestBody Advertisement advertisement,
             UriComponentsBuilder uriComponentsBuilder) throws URISyntaxException {
         throwIfIdNotNull(advertisement.getId());
-        
+
         Advertisement savedAdvertisement = adRepository.save(advertisement);
 
         UriComponents uriComponents = uriComponentsBuilder.path(PATH + "/{id}")
@@ -98,6 +112,24 @@ public class AdvertisementController {
         throwIfInconsistent(id, updatedAd.getId());
         throwIfNonexisting(id);
         return adRepository.save(updatedAd);
+    }
+
+    private static HttpHeaders buildLinkHeader(int pageId, Page<Advertisement> page) {
+        HttpHeaders headers = new HttpHeaders();
+        String link = "";
+
+        if (page.hasPrevious()) {
+            link += "<" + PATH_PAGES + (pageId - 1) + ">; rel=\"previous\"";
+            if (!page.isLast())
+                link += ", ";
+        }
+        if (page.hasNext()) {
+            link += "<" + PATH_PAGES + (pageId + 1) + ">; rel=\"next\"";
+        }
+        if (!link.trim().isEmpty()) {
+            headers.add(HttpHeaders.LINK, "Link: " + link);
+        }
+        return headers;
     }
 
     private static void throwIfIdNotNull(final Long id) {
