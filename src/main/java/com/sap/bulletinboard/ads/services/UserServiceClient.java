@@ -5,10 +5,10 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
+import com.netflix.hystrix.exception.HystrixRuntimeException;
 
 @Component // defines a Spring Bean with name "userServiceClient"
 public class UserServiceClient {
@@ -28,17 +28,14 @@ public class UserServiceClient {
 
     public boolean isPremiumUser(String id) throws RuntimeException {
         String url = userServiceRoute + "/" + PATH + "/" + id;
-        logger.info("sending request {}", url);
-        
-        ResponseEntity<User> responseEntity = restTemplate.getForEntity(url, User.class);
-
-        HttpStatus statusCode = responseEntity.getStatusCode();
-        if (!statusCode.is2xxSuccessful()) {
-            logger.warn("received HTTP status code: {}", statusCode);
-            throw new IllegalStateException("Unsuccessful outgoing request");
+        boolean isPremiumUser = false;
+        try {
+            User user = new GetUserCommand(url, restTemplate).execute();
+            isPremiumUser = user.premiumUser;
+        } catch (HystrixRuntimeException ex) {
+            logger.warn("[HystrixFailure:" + ex.getFailureType().toString() + "] " + ex.getMessage());
         }
-        logger.info("received response, status code: {}", statusCode);
-        return responseEntity.getBody().premiumUser;
+        return isPremiumUser;
     }
 
     public static class User {
