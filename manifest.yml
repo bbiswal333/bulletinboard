@@ -13,5 +13,8 @@ applications:
       # Use the non-blocking /dev/urandom instead of the default to generate random numbers.
       # When using Java community buildpack, increase startup times, especially when using Spring Boot.
       JAVA_OPTS: -Djava.security.egd=file:///dev/./urandom
+      # When using sap_java_buildpack in combination with war packaging
+      SET_LOGGING_LEVEL: '{com.sap.bulletinboard.ads.controllers.AdvertisementController: INFO}'
   services:
   - postgres-bulletinboard-ads
+  - applogs-bulletinboard
