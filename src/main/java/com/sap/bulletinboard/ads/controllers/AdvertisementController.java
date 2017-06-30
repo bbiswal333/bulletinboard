@@ -4,8 +4,9 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -47,7 +48,7 @@ public class AdvertisementController {
     public static final String PATH_PAGES = PATH + "/pages/";
     public static final int FIRST_PAGE_ID = 0;
     // allows server side optimization e.g. via caching
-    public static final int DEFAULT_PAGE_SIZE = 20; 
+    public static final int DEFAULT_PAGE_SIZE = 20;
 
     private AdvertisementRepository adRepository;
 
@@ -57,23 +58,23 @@ public class AdvertisementController {
     }
 
     @GetMapping
-    public ResponseEntity<AdvertisementList> advertisements() {
+    public ResponseEntity<AdvertisementListDto> advertisements() {
         return advertisementsForPage(FIRST_PAGE_ID);
     }
 
     @GetMapping("/pages/{pageId}") // not "public"
-    public ResponseEntity<AdvertisementList> advertisementsForPage(@PathVariable("pageId") int pageId) {
+    public ResponseEntity<AdvertisementListDto> advertisementsForPage(@PathVariable("pageId") int pageId) {
 
         Page<Advertisement> page = adRepository.findAll(new PageRequest(pageId, DEFAULT_PAGE_SIZE));
 
-        return new ResponseEntity<AdvertisementList>(new AdvertisementList(page.getContent()),
+        return new ResponseEntity<AdvertisementListDto>(new AdvertisementListDto(page.getContent()),
                 buildLinkHeader(pageId, page), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public Advertisement advertisementById(@PathVariable("id") @Min(0) Long id) {
+    public AdvertisementDto advertisementById(@PathVariable("id") @Min(0) Long id) {
         throwIfNonexisting(id);
-        return adRepository.findOne(id);
+        return new AdvertisementDto(adRepository.findOne(id));
     }
 
     /**
@@ -81,10 +82,10 @@ public class AdvertisementController {
      *              content type.
      */
     @PostMapping
-    public ResponseEntity<Advertisement> add(@Valid @RequestBody Advertisement advertisement,
+    public ResponseEntity<AdvertisementDto> add(@Valid @RequestBody AdvertisementDto advertisement,
             UriComponentsBuilder uriComponentsBuilder) throws URISyntaxException {
 
-        Advertisement savedAdvertisement = adRepository.save(advertisement);
+        AdvertisementDto savedAdvertisement = new AdvertisementDto(adRepository.save(advertisement.toEntity()));
 
         UriComponents uriComponents = uriComponentsBuilder.path(PATH + "/{id}")
                 .buildAndExpand(savedAdvertisement.getId());
@@ -107,10 +108,12 @@ public class AdvertisementController {
     }
 
     @PutMapping("/{id}")
-    public Advertisement update(@PathVariable("id") long id, @RequestBody Advertisement updatedAd) {
+    public AdvertisementDto update(@PathVariable("id") long id, @RequestBody AdvertisementDto updatedAd) {
         throwIfInconsistent(id, updatedAd.getId());
         throwIfNonexisting(id);
-        return adRepository.save(updatedAd);
+        adRepository.save(updatedAd.toEntity());
+        return new AdvertisementDto(adRepository.findOne(id)); // Note that EntityManager.merge might not update all
+                                                               // fields such as createdAt
     }
 
     private static HttpHeaders buildLinkHeader(int pageId, Page<Advertisement> page) {
@@ -146,12 +149,13 @@ public class AdvertisementController {
         }
     }
 
-    public static class AdvertisementList {
+    public static class AdvertisementListDto {
         @JsonProperty("value")
-        public List<Advertisement> advertisements = new ArrayList<>();
+        public List<AdvertisementDto> advertisements;
 
-        public AdvertisementList(Iterable<Advertisement> ads) {
-            ads.forEach(advertisements::add);
+        public AdvertisementListDto(Iterable<Advertisement> ads) {
+            this.advertisements = StreamSupport.stream(ads.spliterator(), false).map(AdvertisementDto::new)
+                    .collect(Collectors.toList());
         }
     }
 }
