@@ -4,7 +4,7 @@ Join this free online course, [Cloud-Native Development with SAP Cloud Platform]
 
 In this new advanced course, you’ll learn how to develop microservice-based cloud-native applications with [SAP Cloud Platform](https://cloudplatform.sap.com/) through hands-on exercises. You’ll be working primarily with the [Cloud Foundry](https://cloudplatform.sap.com/capabilities/runtimes-containers/cloud-foundry.html) environment within SAP Cloud Platform and many of its open-source services to develop step-by-step a Java-based application that is made for the cloud.
 
-# <img src="https://github.wdf.sap.corp/cloud-native-dev/java-persistence/blob/master/_internal/images/281495_SpiralboundNotebook_R_blue.png" height="80" alt="Course Information"/> Course Information
+# <img src="./Z_ReuseImages/images/281495_SpiralboundNotebook_R_blue.png" height="80" alt="Course Information"/> Course Information
 
 <img src="/Z_ReuseImages/images/openSAP_CP5_Course_Outline.png" height="250" alt="Course Outline"/>
 
@@ -38,7 +38,7 @@ You can [register for your own free trail account for SAP Cloud Platform](https:
 
 For this course a preconfigured virtual machine image is provided and its use is recommended if you want to follow along with the hands-on exercises. The setup is provided and explained in Week 0: System Preparation.
 
-# <img src="https://github.wdf.sap.corp/cloud-native-dev/java-persistence/blob/master/_internal/images/281498_SwissArmyKnife_R_blue.png" height="80" alt="Exercise"/> Exercises
+# <img src="./Z_ReuseImages/images/281498_SwissArmyKnife_R_blue.png" height="80" alt="Exercise"/> Exercises
 
 ## Week 0: System Preparation
 
@@ -103,7 +103,7 @@ For this course a preconfigured virtual machine image is provided and its use is
 
 **No Exercises**
 
-# <img src="https://github.wdf.sap.corp/cloud-native-dev/java-persistence/blob/master/_internal/images/281518_OpenBook_R_blue.png" height="80" alt="Further Resources"/> Further Resources<sub><b>[to-do]</b></sub>
+# <img src="./Z_ReuseImages/images/281518_OpenBook_R_blue.png" height="80" alt="Further Resources"/> Further Resources<sub><b>[to-do]</b></sub>
 
 * [Troubleshooting VM image installation](/VMImage/VMImage_GettingStarted.md#troubleshooting)
 * [Troubleshooting Eclipse and Cloud Foundry guide](/Knowledge/TroubleShooting.md)
