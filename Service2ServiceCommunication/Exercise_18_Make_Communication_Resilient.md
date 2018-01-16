@@ -1,4 +1,4 @@
-Exercise 18: Make the Communication more Resilient (Robust)
+Exercise 18: Make the Communication More Resilient (Robust)
 ===========================================================
 
 ## Learning Goal
@@ -14,7 +14,7 @@ As the `UserServiceClient` in the test is provided just as a mocked implementati
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-17-Integrate-Hystrix`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-17-Integrate-Hystrix).<sub><b>[to-do]</b></sub>
 
 ## Step 1: Implement Tests
-- In order to make outgoing request call substitutable by the test, we first need to prepare the `GetUserCommand` class: in the `run` method extract the code that does the request (`ResponseEntity<User> responseEntity = restTemplate.getForEntity(url, User.class);`) into a **protected method `sendRequest`** using **Eclipse refactoring tools**. With that we can easily provoke long running and failing requests within the test.
+- In order to make outgoing request call substitutable by the test, we first need to prepare the `GetUserCommand` class: Use **Eclipse refactoring tools** to extract the code that does the request (`ResponseEntity<User> responseEntity = restTemplate.getForEntity(url, User.class);`) from the `run` method, into a **protected method `sendRequest`**. With that we can easily provoke long running and failing requests within the test.
 
 - As part of the `src/test/java` source folder create a new class `GetUserCommandTest` in the package `com.sap.bulletinboard.ads.services` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/exercise-18-Make-Communication-Resilient/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java).
 <sub><b>[to-do]</b></sub>
@@ -46,7 +46,7 @@ public GetUserCommand(/*...*/) {
 ```
 
 ### Alternative 1: Programmatic Configuration
-You can define a command specific property programmatically. In your GetUserCommand constructor you need to pass a Setter in a manner similar to this:
+You can define a command specific property programmatically. In your `GetUserCommand` constructor you need to pass a Setter in a manner similar to this:
 ```java
 public GetUserCommand(/*...*/) {
    super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("User"))
@@ -55,7 +55,7 @@ public GetUserCommand(/*...*/) {
    // ...
 }
 ```
-With that Hystrix should not run into a timeout i.e. does not return an unauthorized fallback User. Don't forget to test this code change by creating some advertisments via `Postman` or by executing your tests.
+With that Hystrix should not run into a timeout i.e. does not return an unauthorized fallback User. Don't forget to test this code change by creating some advertisements via `Postman` or by executing your tests.
 
 ### Alternative 2: Dynamic Configuration
 You can define a command specific property dynamically, that gets loaded during runtime. Create a file named `config.properties` in the package `src/main/resources` with the following content:
@@ -65,11 +65,11 @@ You can define a command specific property dynamically, that gets loaded during 
  hystrix.command.User.getById.execution.isolation.thread.timeoutInMilliseconds=2000
 ```
 
-Note that Hystrix identifies our particular command via the `HystrixCommandKey`, which is `User.getById` in our case. The property value overrules the one defined in the code ("Alternative 1").
+**Note:** Hystrix identifies our particular command via the `HystrixCommandKey`, which is `User.getById` in our case. The property value overrules the one defined in the code ("Alternative 1").
 You can also define default properties for all (other) commands by specifying `default` instead of `User.getById`: `hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=2000`
 
-## [Optional] Step 4: Hystrix Exceptions discussed
-There are mainly two Exceptions exposed by a `HystrixCommand`:
+## [Optional] Step 4: Hystrix Exceptions Discussed
+There are mainly two exceptions exposed by a `HystrixCommand`:
 
 1. `HystrixRuntimeException` that is thrown when a `HystrixCommand` fails. In case you raise an exception within your `run` method this gets wrapped in a `HystrixRuntimeException` with failure type `FailureType.COMMAND_EXCEPTION` and your exception as cause. Note that the `HystrixRuntimeException`, raised by the `run` method is not exposed by the `execute` method when the fallback succeeded.
 
@@ -89,7 +89,7 @@ The easiest way to make the Hystrix fallback configurable is to add a function p
   - `this::dummyUser` - to reference a function of name `dummyUser`
   - `User::new` or `() -> { return new User(); }` - to return a new `User` object when called.
 
-An Lambda example can be found in the branch `solution-18-2-Make-Fallback-Configurable-using-Lambda` [GetUserCommand](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-2-Make-Fallback-Configurable-using-Lambda/src/main/java/com/sap/bulletinboard/ads/services/GetUserCommand.java) 
+A Lambda example can be found in the branch `solution-18-2-Make-Fallback-Configurable-using-Lambda` [GetUserCommand](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-2-Make-Fallback-Configurable-using-Lambda/src/main/java/com/sap/bulletinboard/ads/services/GetUserCommand.java) 
 <sub><b>[to-do]</b></sub> ([GetUserCommandTest](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-2-Make-Fallback-Configurable-using-Lambda/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java)). 
 <sub><b>[to-do]</b></sub>
 
