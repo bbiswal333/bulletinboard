@@ -25,7 +25,7 @@ Add the following dependencies to your `pom.xml` using the XML view of Eclipse:
 
 Note: After you've changed the Maven settings, don't forget to update your Eclipse project (`ALT-F5`)! 
 
-## Step 2: Create Hystrix Command
+## Step 2: Create Hystrix command
 Create a `GetUserCommand` class in the `com.sap.bulletinboards.ads.services` package and provide the following implementation:
 ```java
 public class GetUserCommand extends HystrixCommand<User> {
