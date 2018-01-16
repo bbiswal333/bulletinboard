@@ -3,11 +3,11 @@
 
 ## Learning Goal
 
-Asynchronous communication by publish-subscribe / messaging systems is a very important element of high performance and resilient cloud applications. Instead of calling a client service and waiting for a response, you just send a message and can immediately continue. There are different levels of loose coupling. In the extreme case the send of an event does not know or care how many other services (if any) subscribed to their event. You can read a little more about messaging [here](../Service2ServiceCommunication/MessageQueue.md).  
+Asynchronous communication by publish-subscribe / messaging systems is a very important element of high performance and resilient cloud applications. Instead of calling a client service and waiting for a response, you just send a message and can immediately continue. There are different levels of loose coupling. In the extreme case the send <sub><b>[to-do]</b></sub> (or is "sender" meant here?) of an event does not know or care how many other services (if any) subscribed to their event. You can read a little more about messaging [here](../Service2ServiceCommunication/MessageQueue.md).  
 
 The goal of this exercise is that you learn how to send a message to inform other services about a specific event. Specifically, the task is to send an AMQP message to the RabbitMQ Message Queue Service (part of the standard CF backing services) whenever your Advertisement Service receives a request for a specific advertisement. This event (AMQP message) will then be picked up by a statistics service that counts how many times an advertisement was viewed. 
 
-Note that in this exercise we will only send messages. Receiving and processing is handled in the next excercise.
+**Note:** In this exercise we will only send messages. Receiving and processing is handled in the next excercise.
 
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-19-Transfer-CorrelationID`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-19-Transfer-CorrelationID).<sub><b>[to-do]</b></sub>
@@ -29,7 +29,7 @@ Add the `spring-rabbit` dependency to your `pom.xml`:
     </exclusions>
 </dependency>
 ```
-- Note: After you've changed the Maven settings, don't forget to update your Eclipse project (`Alt+F5`)!
+**Note:** After you've changed the Maven settings, don't forget to update your Eclipse project (`Alt+F5`)!
 
 ## Step 2: Add `CloudRabbitConfig`
 
@@ -38,7 +38,7 @@ Create a new class `CloudRabbitConfig` in package `com.sap.bulletinboard.ads.con
 ## Step 3: Implement `StatisticsServiceClient`
 
 - Create a new class `StatisticsServiceClient` in package `com.sap.bulletinboard.ads.services` and annotate it with `@Component`.
-- **Note:** the classes we will be using in the following are from `org.springframework.amqp.core`, so when you're fixing the import errors pick classes from this package.
+**Note:** the classes we will be using in the following are from `org.springframework.amqp.core`, so when you're fixing the import errors pick classes from this package.
 - In the constructor of `StatisticsServiceClient` you expect that the `AmqpAdmin`, as well as the `RabbitTemplate` gets injected. Here you declare the queue with name "statistics.adIsShown":
 
 ```java
@@ -60,7 +60,7 @@ See [MessageQueue.md](MessageQueue.md) for more details.
 
 **Other implementation hints:** 
   - Emit a log message whenever a message is sent.
-  - Think about providing the correlation-ID as part of the message ([messageProperties.setCorrelationId()](http://docs.spring.io/spring-amqp/api/org/springframework/amqp/core/MessageProperties.html) via a [MessagePostProcessor](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/jms/core/MessagePostProcessor.html)). Retrieve the Correlation ID using `LogContext.getCorrelationId()`.
+  - Think about providing the `Correlation-ID` as part of the message ([messageProperties.setCorrelationId()](http://docs.spring.io/spring-amqp/api/org/springframework/amqp/core/MessageProperties.html) via a [MessagePostProcessor](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/jms/core/MessagePostProcessor.html)). Retrieve the `Correlation-ID` using `LogContext.getCorrelationId()`.
 
 ## Step 4: Use `StatisticsServiceClient` in `AdvertisementController`
 
