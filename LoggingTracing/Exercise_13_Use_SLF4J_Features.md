@@ -10,9 +10,9 @@ The task here is to enrich the logs written in the `AdvertisementController` cla
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-12-Setup-Logger`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-12-Setup-Logger).<sub><b>[to-do]</b></sub>
 
 ## Step 1: Add Endpoint Information to the Thread Context
-To demonstrate how the MDC (Mapped Diagnostic Context) can be used, we now add information about the called endpoint to each log message. Instead of adding this information to all three log statements, we store it into the MDC once.
+To demonstrate how the MDC can be used, we now add information about the called endpoint to each log message. Instead of adding this information to all three log statements, we store it into the MDC once.
 
-For this, use `MDC.put` to store endpoint information (i.e. "api/v1.0/ads/XXX" where XXX is the requested id) using the key `endpoint` for example.
+For this, use `MDC.put` to store endpoint information (i.e. "api/v1.0/ads/XXX" where XXX is the requested ID using the key `endpoint` for example.
 
 Make sure that the `endpoint` information is included in all messages that are shown in the console. It should be the same output for all messages corresponding to the same request. 
 
@@ -22,7 +22,8 @@ Make sure that the `endpoint` information is included in all messages that are s
 _Markers_ can be used to attach categories (or tags) to log messages, which then can be used to filter the log messages in Kibana.
 For example, one can attach markers for all SQL related log messages, and then during analysis only show messages with or without such _Markers_.
 
-You can also use _Markers_ to disable logging of certain messages directly on application level. By making use of a so-called _Filter_ you can filter out messages of a dedicated _Markers_ **even if their log level is higher** than the configured threshold. Note that using this approach the corresponding log messages are never printed to STDOUT and, thus, cannot be proccessed in Kibana.
+You can also use _Markers_ to disable logging of certain messages directly on application level. By making use of a so-called _Filter_ you can filter out messages of dedicated _Markers_ **even if their log level is higher** than the configured threshold. 
+**Note:** Using this approach the corresponding log messages are never printed to STDOUT and, thus, cannot be proccessed in Kibana.
 
 In this exercise we extend our application to use the _Markers_ TECHNICAL for technical log messages.
 
