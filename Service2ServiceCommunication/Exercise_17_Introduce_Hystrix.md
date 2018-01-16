@@ -2,7 +2,7 @@ Exercise 17: Introduce Hystrix
 ==============================
 
 ## Learning Goal
-After this exercise you will know how to use Hystrix as wrapper for the call to the existing User Service within your Advertisement microservice. With Hystrix it is possible to mitigate overload and error situations when using external services. Hystrix can throttle the client if the called service is not healthy. 
+After this exercise you will know how to use Hystrix as wrapper for the call to the existing User service within your Advertisement microservice. With Hystrix it is possible to mitigate overload and error situations when using external services. Hystrix can throttle the client if the called service is not healthy. 
 
 The task of this exercise is to wrap our User service call with the **Hystrix command pattern**.
 
@@ -54,12 +54,12 @@ public class GetUserCommand extends HystrixCommand<User> {
 }
 ```
 
-- Now let's move the implementation of sending and handling the User GET request from the `UserServiceClient.isPremiumUser` into the `GetUserCommand.run` method.   
-In the `UserServiceClient.isPremiumUser` method remains the execution of the Hystrix command:
+Now let's move the implementation of sending and handling the User GET request from the `UserServiceClient.isPremiumUser` into the `GetUserCommand.run` method.   
+The execution of the Hystrix command remains in the `UserServiceClient.isPremiumUser` method.
 ```
 User user = new GetUserCommand(url, restTemplate).execute();
 ```
-Note: As the execute method potentially raises an `HystrixRuntimeException`, this would be the right place to handle and log it.
+**Note:** As the execute method potentially raises an `HystrixRuntimeException`, this would be the right place to handle and log it.
 
 ## Step 3: Test the Ads-Microservice locally	
 
