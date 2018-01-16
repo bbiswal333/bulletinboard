@@ -1,5 +1,7 @@
 # openSAP course: [Cloud-Native Development with SAP Cloud Platform](https://open.sap.com/courses/cp5)
 
+## Description
+
 Join this free online course, [Cloud-Native Development with SAP Cloud Platform](https://open.sap.com/courses/cp5), to learn and experience how microservice-based cloud native development with SAP Cloud Platform works. This is an advanced course aimed primarily at developers and application and technology consultants, teaching hands-on the important concepts of developing innovative cloud applications.
 
 In this new advanced course, you’ll learn how to develop microservice-based cloud-native applications with [SAP Cloud Platform](https://cloudplatform.sap.com/) through hands-on exercises. You’ll be working primarily with the [Cloud Foundry](https://cloudplatform.sap.com/capabilities/runtimes-containers/cloud-foundry.html) environment within SAP Cloud Platform and many of its open-source services to develop step-by-step a Java-based application that is made for the cloud.
@@ -115,3 +117,12 @@ For this course a preconfigured virtual machine image is provided and its use is
 * [FAQ - Frequently Asked Questions regarding the Eclipse IDE](/Knowledge/EclipseIdeTips.md)
 * [JSON Conversion](/Knowledge/JSONConversion.md)
 * [The Way towards Spring Boot](/Knowledge/TheWayTowardsSpringBoot.md)
+
+## Support
+
+Please use GitHub issues for any bugs to be reported.
+
+## License
+
+Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the [LICENSE](./LICENSE) file.
