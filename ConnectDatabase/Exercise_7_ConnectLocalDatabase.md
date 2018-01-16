@@ -1,4 +1,4 @@
-Exercise 7: Connect to Local Database within Eclipse IDE
+Exercise 7: Connect to Local Database Within Eclipse IDE
 ========================================================
 
 ## Learning Goal
