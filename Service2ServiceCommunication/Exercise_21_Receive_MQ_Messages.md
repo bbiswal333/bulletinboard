@@ -42,7 +42,7 @@ Deploy your microservice and check if a messages similar to `got statistics: Sta
 - [Spring AMQP](http://projects.spring.io/spring-amqp/)
 
 ## Further reading
-- [MessageQueue.md](MessageQueue.md)
+- [MessageQueue.md](MessageQueue.md) <sub><b>[to-do]</b></sub>
 
 ***
 <dl>
