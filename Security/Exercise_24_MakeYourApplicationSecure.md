@@ -175,7 +175,6 @@ Before deploying your application to Cloud Foundry you need to bind your applica
 
 ## Further Reading
 - [Spring Security Reference](http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#abstractsecuritywebapplicationinitializer)
-- [Method Security Example](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-boot/commit/c3150c398ba7e18f703dd06e8c5943a261445293)<sub><b>[to-do]</b></sub>
 - [Expression-Based Access Control](https://docs.spring.io/spring-security/site/docs/3.0.x/reference/el-access.html)
 
 
