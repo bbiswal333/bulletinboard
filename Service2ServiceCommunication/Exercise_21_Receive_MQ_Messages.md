@@ -3,7 +3,7 @@
 
 ## Learning Goal
 
-The task of this exercise is to consume AMQP messages from the RabbitMQ Message Queue that are sent out by the Statistics Service periodically.
+The task of this exercise is to consume Advanced Message Queueing Protocol (AMQP) messages from the RabbitMQ message queue that are sent out by the Statistics service periodically.
 
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-20-Use-Message-Queues`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-20-Use-Message-Queues).<sub><b>[to-do]</b></sub>
@@ -12,8 +12,8 @@ Ensure that the `bulletinboard-statistics` application is deployed in your CF sp
 
 ## Step 1: Define a Message Listener
 
-The Statistics Service periodically sends out messages containing its statistics for the advertisement with ID="1".
-In this step you want to implement and register a listener for the corresponding queue to receive messages from the Statistics Service.
+The Statistics service periodically sends out messages containing its statistics for the advertisement with ID="1".
+In this step you want to implement and register a listener for the corresponding queue to receive messages from the Statistics service.
 
 Create a `StatisticsListener` class that implements the `MessageListener` interface and annotate the class with `@Component` and `@Profile("cloud")`.
 - In the constructor, declare a queue with name "statistics.periodicalStatistics" similar like in the [`StatisticsServiceClient` constructor](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-20-Use-Message-Queues/src/main/java/com/sap/bulletinboard/ads/services/StatisticsServiceClient.java).<sub><b>[to-do]</b></sub> In addition to an instance of `AmqpAdmin` also inject an instance of `org.springframework.amqp.rabbit.connection.ConnectionFactory`. Then create an instance of `SimpleMessageListenerContainer` and register the `StatisticsListener`:
@@ -34,7 +34,7 @@ logger.info("got statistics: {}", new String(message.getBody(), Charset.forName(
 ```
 
 ## Step 3: Deploy and Test
-Deploy your microservice and check if a messages similar to `got statistics: Statistics [id=1, viewCount=<ViewCount>]` are logged. The Statistics Service sends out messages every five seconds.
+Deploy your microservice and check if a messages similar to `got statistics: Statistics [id=1, viewCount=<ViewCount>]` are logged. The Statistics service sends out messages every five seconds.
 
 ## Used frameworks and tools
 - [RabbitMQ](https://www.rabbitmq.com/)
