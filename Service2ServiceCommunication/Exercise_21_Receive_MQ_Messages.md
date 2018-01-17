@@ -24,7 +24,7 @@ Create a `StatisticsListener` class that implements the `MessageListener` interf
   listenerContainer.setMessageListener(this);
   listenerContainer.start();
 ```
-Note: This ensures that the `onMessage` method is invoked whenever a message is delivered to the specified queue.
+**Note:** This ensures that the `onMessage` method is invoked whenever a message is delivered to the specified queue.
 
 ## Step 2: Log received messages
 Implement the `onMessage(message message)` method, that the received message gets logged:
