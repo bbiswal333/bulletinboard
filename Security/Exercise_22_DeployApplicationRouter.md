@@ -44,8 +44,6 @@ npm --version
     }
 }
 ```
-#### Notes
-> Note: you can get the current NPM package version of the `@sap/approuter` module available on `npm.sap.com` from [here](https://npm.dmzwdf.sap.corp/nexus/#browse/search=group%3Dsap%20AND%20name.raw%3Dapprouter) (group name maps to `@sap`).
 
 ## [Optional] Step 2: Build approuter once (locally)
 Like we are doing it for our bulletinboard-ads Java application, we also recommend to build the approuter Node application once (locally or later triggered as part of the Continuous Delivery build) before deploying it to Cloud Foundry. Therefore we use the NPM Packager Manager to download the packages (`node_modules`) as specified in the `package.json`.
