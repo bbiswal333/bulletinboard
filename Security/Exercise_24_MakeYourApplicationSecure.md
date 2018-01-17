@@ -5,7 +5,7 @@ In the previous exercise you learned how you can protect your application with t
 
 After this exercise you will know how to secure your application and introduce (domain specific) authorization checks.
 
-Your task is to secure your application with the SAP Container Security Library and the Spring Security framework, so that the application blocks all incoming requests if the user is not authenticated or has no authorization for the needed scope "$XSAPPNAME.Display".
+Your task is to secure your application with the SAP Java Container Security library and the Spring Security framework, so that the application blocks all incoming requests if the user is not authenticated or has no authorization for the needed scope "$XSAPPNAME.Display".
 
 Note: There is currently no easy way to make a subset of apps 'unreachable' via http(s) from the outside, e.g. by network segregation. But even if we had that capability, it would still be necessary to have authorization checks in the 'backend' for all sensitive operations.
 
@@ -17,7 +17,7 @@ Continue with your solution of the last exercise. If this does not work, you can
 
 Add the following dependencies to your `pom.xml` using the XML view of Eclipse:
 
-It suffices to add the direct dependency on the SAP Container Security Library, because the library itself depends on the Spring Security libraries and the indirect dependency on the Spring Security framework will be resolved automatically.
+It suffices to add the direct dependency on the SAP Java Container Security library, because the library itself depends on the Spring Security libraries and the indirect dependency on the Spring Security framework will be resolved automatically.
 
 - Add the `java-container-security` dependency, **in case you haven't done already as part of Exercise 22**:
 ```
@@ -30,7 +30,7 @@ It suffices to add the direct dependency on the SAP Container Security Library, 
 ```
 - Note: After you've changed the Maven settings, don't forget to update your Eclipse project (`Alt+F5`)!
 
-- Note: You can get the current version of the sap container security library from [nexus](http://nexusrel.wdf.sap.corp:8081/nexus/#nexus-search;quick~java-container-security)<sub><b>[to-do]</b></sub> (group: com.sap.xs2.security).
+- Note: You can get the current version of the SAP Java Container Security library from [SAP Service Marketplae](https://launchpad.support.sap.com/#/softwarecenter/template/products/%20_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=73555000100200004333&V=MAINT&TA=ACTUAL&PAGE=SEARCH/XS%20JAVA%201) (the filename currently is XS_JAVA_8-70001362.ZIP althrough version/filename may change in the future).
 
 
 ## Step 2: Configure Spring Security
