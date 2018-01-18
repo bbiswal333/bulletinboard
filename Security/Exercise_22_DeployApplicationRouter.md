@@ -7,7 +7,7 @@ The approuter has these main functions:
 * Handles authentication for all apps of the application 
 * Serves static resources
 * Performs route mapping (URL mapping)
-* In case of multi tenancy it derives the tenant information from the url and provides it to the XSUAA to redirect the authentication request to the tenant specific Identity Provider.
+* In case of multi tenancy it derives the tenant information from the url and provides it to the XSUAA to redirect the authentication request to the tenant specific identity provider.
 
 
 <img src="/Security/images/app-router-diagram.png" width="400">
@@ -95,16 +95,16 @@ Now create in the `src/main/approuter` directory a file named `xs-app.json` with
   }]
 }
 ```
-If you like to provide a "welcome file" then you need also to add an `index.html` file, that must be created within the `src/main/approuter/resources` directory. Note also that the "ads-destination" destination is already specified as system environment variable in the `manifest.yml`.
+If you like to provide a "welcome file" then you need also to add an `index.html` file, that must be created within the `src/main/approuter/resources` directory. Be aware that the "ads-destination" destination is already specified as system environment variable in the `manifest.yml`.
 
 > **Note**: The `ads-destination` used in this file is a logical destination that is mapped to the `ads-destination` defined in the `manifest.yml`. This is because the 'real URL' is defined at deploy time (it may even be a 'random route') and the `xs-app.json` is concerned only with the endpoints relative to the app URL. 
 
 ## Step 5: Deploy approuter and application to Cloud Foundry
 
-In this step we create a XSUAA service instances that is able to serve requests from multiple customers, so called tenants. 
+In this step we create an XSUAA service instance that is able to serve requests from multiple customers, so called tenants. 
 
 - Create an XSUAA service instance with name `uaa-bulletinboard` and replace `xsappname` placeholder accordingly.  
-**Note** that the following statement works on **Linux/Mac only** (get other examples with `cf cs -h`).
+**Note**: The following statement works on **Linux/Mac only** (get other examples with `cf cs -h`).
 ```
 $   cf create-service xsuaa application uaa-bulletinboard -c '{"xsappname":"bulletinboard-<Your d/c/i-User>"}'
 ```
@@ -129,7 +129,7 @@ $   cf map-route approuter cfapps.sap.hana.ondemand.com -n d012345trial-approute
 - The UAA service broker generates this information when the approuter is bound to the UAA service. 
 - The JSON array following the string `"XSUAA":` contains the client credentials for the UAA service. This establishes a trusted relationship between the approuter and the UAA service.
 - The value of `"xsappname":` represents the name of the business application. 
-The name should be unique per space, because the UAA service instance with `application` plan is visible on Cloud Foundry organization level.
+The name should be unique per space, because the UAA service instance with `application` plan is visible on Cloud Foundry org level.
 - The value of `"clientid":` is the value of `xsappname` with the additional prefix `sb-`. The client is in this context the business application, including the approuter. 
 - The client credentials string also contains the URL of the UAA service. The approuter uses this information to redirect unauthenticated calls to the UAA service.
 - The value of `"identityzone"` (e.g. d012345trial) matches the value of `subdomain` of the subaccount and represents the name of the **tenant**.
@@ -138,7 +138,7 @@ The name should be unique per space, because the UAA service instance with `appl
 Observe how the authentication works:
 - Get the url of the approuter via `cf apps`. 
 - Then enter the approuter URL e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com` in the browser. This should redirect you to the XS-UAA Logon Screen. Please note that **d012345trial** is a placeholder for the **tenant id** which has a 1-1 relationship to the **Identity Zone `d012345trial`** which is configured for CF Org `D012345trial_trial` and is under our control. Note furthermore that you've configured your approuter on how to derive the tenant from the URL according to the `TENANT_HOST_PATTERN` that you've provided as part of the `manifest.yml`.
-- You will be redirected to SAP User ID Service (https://accounts.sap.com), login with your SAP email address and domain password.
+- You will be redirected to SAP User ID Service (https://accounts.sap.com), login with your SAP email address and domain password. <sub><b>[to-do]</b></sub>
 - After successful login to you will get redirected to the welcome page if you've defined one. 
 
 Observe the route / path mappings:
@@ -148,7 +148,7 @@ Observe the route / path mappings:
 So, what have you achieved right now? You have made your application accessible via the application router, that authenticates the user before they get redirected to the application.
 
 **BUT your application is still not secure!**
-- Any user can access any service endpoint with an invalid or even no security token, without any permissions. That needs to be prevented and we will do this in the next Exercise.
+- Any user can access any service endpoint with an invalid or even without security token, without any permissions. That needs to be prevented and we will do this in the next exercise.
 
 
 ## [Optional] Step 7: Decode the JWT Token
@@ -200,7 +200,7 @@ $ cf push
 
 - Application Router can be configured to initiate a central logout after a specified time of inactivity (no requests have been sent to the application router). Assign the time of inactivity in minutes to the environment variable `SESSION_TIMEOUT` in your `manifest.yml` file. Ensure that the timeout configuration for Application Router and XSUAA are identical for all routes with authentication type `xsuaa`
 
-- Each instance of Application Router holds it´s own mappings of JWT-Tokens to jSessionIDs. The mappings are not shared across multiple instances of Application Router nor are the mappings persisted in a common persistency. Application Router uses Cloud Foundry session stickiness (VCAP_ID) to ensure that requests belonging to the same session are routed via the same Application Router instance - this means that the user will need to re-authenticate if an Application Router instance of a particular session goes down and is recovered by a new Application Router instance.
+- Each instance of Application Router holds it´s own mappings of JWT-Tokens to jSessionIDs. The mappings are neither shared across multiple instances of Application Router nor are the mappings persisted in a common persistency. Application Router uses Cloud Foundry session stickiness (VCAP_ID) to ensure that requests belonging to the same session are routed via the same Application Router instance - this means that the user will need to re-authenticate if an Application Router instance of a particular session goes down and is recovered by a new Application Router instance.
 
 ## Further reading
 - [Detail Notes](../Security/Readme.md)
