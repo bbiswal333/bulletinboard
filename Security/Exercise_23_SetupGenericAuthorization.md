@@ -13,7 +13,7 @@ Continue with your solution of the last exercise. If this does not work, you can
 
 Before we can enable generic authorization checks we need to define so-called **"application scopes"** in order to define functional authorizations such as "Display", "Update" and "Delete".
 
-And we also have to define **"role templates"** that specify which role has what scopes. Later, users are assigned to roles and thereby get the specified scopes as authorization keys. 
+And we also have to define **"role templates"** that specify role and its scopes. Later, users are assigned to roles and thereby get the specified scopes as authorization keys. 
 
 ##### Create the security descriptor file `xs-security.json`
 
@@ -55,8 +55,8 @@ To declare the **Role Templates**, create the security descriptor file `xs-secur
 ```
 
 Notes: 
-* The value of `xsappname` must be unique within the whole Cloud Foundry Org. Therefore, don't forget to **use your d/c/i-user in the xsappname** to refer to your unique instance!
-* The `shared tenant-mode` leads the XSUAA service instance to trust other tenants that are different to the one that corresponds to the cf org such as `d012345trial`.
+* The value of `xsappname` must be unique within the whole Cloud Foundry org. Therefore, don't forget to **use your d/c/i-user in the xsappname** to refer to your unique instance! <sub><b>[to-do]</b></sub>
+* The `shared tenant-mode` leads the XSUAA service instance to trust other tenants that are different to the one that corresponds to the Cloud Foundry org such as `d012345trial`.
 * We have now defined a generic scope for starting the application. Typically, every authorization model of an application contains application/domain specific scopes ([see next exercise](Exercise_24_MakeYourApplicationSecure.md)).
 
 ## Step 2: Configure start conditions for routes / endpoints
@@ -79,9 +79,9 @@ In order to define the **Start Condition** we need to configure our route(s) wit
 }
 ```
 
-## Step 3: Deploy the (updated) application security descriptor to XSA UAA
+## Step 3: Deploy the (updated) application security descriptor to XSUAA
 
-With the following command you can update the existing XS UAA service instance, which needs to know the authorization model of your application (`bulletinboard-d012345`).
+With the following command you can update the existing XSUAA service instance, which needs to know the authorization model of your application (`bulletinboard-d012345`).
 ```bash
 # Ensure that you are in the project root e.g. ~/git/cc-bulletinboard-ads
 $    cf update-service uaa-bulletinboard -c security/xs-security.json
