@@ -63,7 +63,7 @@ For this course a preconfigured virtual machine image is provided and its use is
 - [Exercise 3: Create Advertisement Endpoints](/CreateMicroservice/Exercise_3_CreateAdsEndpoints.md)
 - [Exercise 4: Create Automated Component Tests](/CreateMicroservice/Exercise_4_CreateServiceTests.md)
 - [Exercise 4.2: [Optional] Implement Update/Delete Test-driven](/CreateMicroservice/Exercise_4_Part2_CreateAdditionalAdsEndpoints.md)
-- [Exercise 5: [Optional] Validation and Exceptions](/CreateMicroservice/Exercise_5_ValidationAndExceptions.md)
+- [Exercise 5: [Optional] Introduce Validations and Exception Handler](/CreateMicroservice/Exercise_5_ValidationAndExceptions.md)
 - [Exercise 6: Deploy Advertisement on Cloud Foundry](/CloudFoundryBasics/Exercise_6_DeployAdsOnCloudFoundry.md)
 
 ## Week 3: Persistence
