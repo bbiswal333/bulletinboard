@@ -58,7 +58,7 @@ servletContext.addFilter(AbstractSecurityWebApplicationInitializer.DEFAULT_FILTE
 The `DelegatingFilterProxy` intercepts the requests and adds a `ServletFilter` chain between the web container and your web application, so that the Spring Security framework can filter out unauthenticated and unauthorized requests.
 
 ### Note on how to enable security checks on method level
-Now we have enabled security centrally on the web level as defined in `WebSecurityConfig`. Beside of that you have the option to do the authorization checks on method level using [Method Security](http://docs.spring.io/autorepo/docs/spring-security/current/reference/htmlsingle/#jc-method). In this [(spring boot) example](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-boot/commit/c3150c398ba7e18f703dd06e8c5943a261445293)<sub><b>[to-do]</b></sub> we implement our own expressions by making use of the new [expression-based access control](http://docs.spring.io/spring-security/site/docs/current/reference/html/el-access.html).
+You have enabled security centrally on the web level as defined in `WebSecurityConfig`. Besides that you have the option to do the authorization checks on method level using [Method Security](http://docs.spring.io/autorepo/docs/spring-security/current/reference/htmlsingle/#jc-method). In this [(spring boot) example](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-boot/commit/c3150c398ba7e18f703dd06e8c5943a261445293)<sub><b>[to-do]</b></sub> we implement our own expressions by making use of the new [expression-based access control](http://docs.spring.io/spring-security/site/docs/current/reference/html/el-access.html).
 
 ## Step 3: Setup Security for Component Tests
 
@@ -81,7 +81,7 @@ public void setUp() throws Exception {
 - Create folder `cc-bulletinboard-ads/src/test/resources` and copy the files [privateKey.txt](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/resources/privateKey.txt)<sub><b>[to-do]</b></sub>, [publicKey.txt](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/resources/publicKey.txt)<sub><b>[to-do]</b></sub> into the new folder.
 
 - Copy the implementation of the `TestSecurityConfig` class from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/java/com/sap/bulletinboard/ads/config/TestSecurityConfig.java)<sub><b>[to-do]</b></sub> into the **test package** named `com.sap.bulletinboard.ads.config`.  
-In productive environments, SAPOfflineTokenServicesCloud reads the public key value from the environment variable `VCAP_SERVICES`. For unit tests, you explicitly set the public key of your test key pair with the `JwtGenerator`. The JwtGenerator takes the public key from the `publicKey.txt` file.
+In productive environments, `SAPOfflineTokenServicesCloud` reads the public key value from the environment variable `VCAP_SERVICES`. For unit tests, you explicitly set the public key of your test key pair with the `JwtGenerator`. The `JwtGenerator` takes the public key from the `publicKey.txt` file.
 
 - Copy the implementation of the `JwtGenerator` class from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/java/com/sap/bulletinboard/ads/testutils/JwtGenerator.java)<sub><b>[to-do]</b></sub> into a new test package named `com.sap.bulletinboard.ads.testutils`.
 
@@ -119,7 +119,7 @@ Now you can run the JUnit tests as described [in Exercise 4](../CreateMicroservi
 In this step you prepare the local run environment and test your application manually using `Postman` to discover that your application is now secure.
 
 ### Prepare `VCAP_SERVICES`
-Based on the `VCAP_SERVICES` environment variable the `spring-security` module instantiates the SecurityContext.
+Based on the `VCAP_SERVICES` environment variable the `spring-security` module instantiates the `SecurityContext`.
 
 - In Eclipse, open the Tomcat server settings (by double-clicking on the server) and then open the launch configuration. In the Environment tab edit the `VCAP_SERVICES` variable and replace the value with the following:
 ```javascript
@@ -164,7 +164,7 @@ Before deploying your application to Cloud Foundry you need to bind your applica
 ### Call Deployed Service
 - Call your service endpoints e.g. `https://bulletinboard-ads-d012345.cfapps.sap.hana.ondemand.com` manually using the `Postman` Chrome plugin. You should get for any endpoint (except for `\health`) an `401` ("unauthorized") status code. 
 - On Cloud Foundry it is not possible to provide a valid JWT token which is accepted by the XSUAA. Therefore if you like to provoke a `403` ("forbidden", "insufficient_scope") status code **you need to call your application via the `approuter`** e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com/ads/api/v1/ads` in order to authenticate yourself and to create a JWT Token with no scopes. **BUT** you probably will get as response the login screen in HTML. That's why you need to
-  - enable within `Postman` the `Interceptor`.  You might need to install another [`Postman Interceptor` Chrome Plugin](https://chrome.google.com/webstore/detail/postman-interceptor/aicmkgpgakddgnaphhhpliifpcfhicfo), which will help you to send requests which use browser cookies through the `Postman` app. 
+  - enable the `Interceptor` within `Postman`. You might need to install another [`Postman Interceptor` Chrome Plugin](https://chrome.google.com/webstore/detail/postman-interceptor/aicmkgpgakddgnaphhhpliifpcfhicfo), which will help you to send requests using browser cookies through the `Postman` app. 
   - logon via `Chrome` Browser first and then
   - back in `Postman` resend the request e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com/ads/api/v1/ads` and
   - make sure that you now get a `403` status code.
