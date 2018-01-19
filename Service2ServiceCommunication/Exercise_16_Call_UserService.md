@@ -10,14 +10,14 @@ Technically we are going to use [`RestTemplate`](http://docs.spring.io/spring-fr
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-13-Use-SLF4J-Features`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-13-Use-SLF4J-Features).<sub><b>[to-do]</b></sub>
 
-## Step 1: Test User service using a REST client<sub><b>[to-do]</b></sub>
+## Step 1: Test User Service Using a REST Client<sub><b>[to-do]</b></sub>
 Before we start with the implementation we want to get familiar with the User service. 
 
 You can test the following REST service endpoints manually in the browser using the `Postman` Chrome plugin:
 - `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users` - returns all available users with their IDs.
 - `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users/{ID}` - returns the information for a user where {ID} is a placeholder for a user id, e.g. "42".
 
-## Step 2: Add Maven dependency
+## Step 2: Add Maven Dependency
 Add the dependency to the Apache http client to your `pom.xml` using the XML view of Eclipse:
 ```
 <!-- Apache HTTP Client (closeable, configurable) -->
@@ -35,7 +35,7 @@ Add the dependency to the Apache http client to your `pom.xml` using the XML vie
 ```
 - Note: After you've changed the Maven settings, don't forget to update your Eclipse project (`Alt+F5`)!
 
-## Step 3: Create a User service client
+## Step 3: Create a User Service Client
 The User service client hides the call to the RESTful User Webservice, provides JSON parsing and error handling.
 
 Create a new class `UserServiceClient` in package `com.sap.bulletinboard.ads.services` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-16-Call-User-Service/src/main/java/com/sap/bulletinboard/ads/services/UserServiceClient.java).<sub><b>[to-do]</b></sub> Explanation: This class should offer the information whether a given user (`String id`) is a premium User or not. It makes use of the `RestTemplate` that gets injected via the constructor and needs to be defined as well. The route/URI to the User service is retrieved from an environment variable using the `@Value("${USER_ROUTE}")` annotation. The path is set to the endpoint `api/v1.0/users/{id}`. 
@@ -52,7 +52,7 @@ Create a new class `RestTemplateConfig` in package `com.sap.bulletinboard.ads.co
 
 The `isPremiumUser` check should be executed before a new `Advertisement` is created. So the next step is to introduce the check at the right place in the `AdvertisementController` class. Hint: Please hard-code the User `id` for now (use `"42"` as this user is a premium user) as we do not have a way to specify the information about the current user in the incoming request, yet.
 
-## Step 5: Test the advertisement microservice locally
+## Step 5: Test the Advertisement Microservice Locally
 
 In this step we want to test the creation of an advertisement via Postman, which should call the User service. 
 
@@ -72,11 +72,11 @@ Before you (re-)start your Tomcat webserver within Eclipse, you need to adapt th
 <sup>Note: In case you are getting a **null-pointer-exception** because `USER_ROUTE==null`, you probably created the `UserServiceClient` with `new` instead of `@Inject`. The latter is necessary since annotations in a class are not interpreted when you create the instance yourself with `new`.</sup>
 
 
-### Alternatively: Run on command line
+### Alternatively: Run on Command Line
 As described in [Exercise 1](../CreateMicroservice/Exercise_1_GettingStarted.md) you can also deploy the service on an embedded Tomcat using Maven.
 
 
-## Step 6: Fix tests
+## Step 6: Fix Tests
 As we do not want our JUnit tests (`AdvertisementControllerTest`) to call third-party services, we need to introduce mocks for the `UserServiceClient` and as well for the `PropertySourcesPlaceholderConfigurer` to specify the `USER_ROUTE` variable. Similar to stub objects, mocks are object instances that just mock the original behavior and can be configured to behave in a certain way. 
 
 Create a new @Configuration annotated class `TestAppContextConfig` in **test package** `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-16-Call-User-Service/src/test/java/com/sap/bulletinboard/ads/config/TestAppContextConfig.java).<sub><b>[to-do]</b></sub>
@@ -119,13 +119,13 @@ env:
     USER_ROUTE: 'https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com'
 ```
 
-## Used frameworks and tools
+## Used Frameworks and Tools
 - [Postman REST Client (Chrome Plugin)](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
 - [Mockito - Mocking Framework](http://mockito.org/)
 - [JDoc Spring RestTemplate](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html)
 - [Apache Rest Client](http://hc.apache.org/httpcomponents-client-ga/)
 
-## Further reading
+## Further Reading
 - [JSON Conversion using JacksonJsonProvider](../Knowledge/JSONConversion.md)
 - [Spring RestTemplate](https://spring.io/blog/2009/03/27/rest-in-spring-3-resttemplate)
 - [Mockito User Guide](https://docs.google.com/document/d/15mJ2Qrldx-J14ubTEnBj7nYN2FB8ap7xOn8GRAi24_A)
