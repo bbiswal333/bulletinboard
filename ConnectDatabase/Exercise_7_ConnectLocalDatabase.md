@@ -8,7 +8,7 @@ Furthermore, you will get to know the `VCAP_SERVICES` environment variable and u
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-6-Deploy-Ads-On-CF`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-6-Deploy-Ads-On-CF).<sub><b>[to-do]</b></sub>
 
-## Step 1: Connect to local database in Eclipse
+## Step 1: Connect to Local Database in Eclipse
 We want to manage the connection to the PostgreSQL database within Eclipse using the [`DBeaver` eclipse plugin](https://marketplace.eclipse.org/content/dbeaver).
 
 Open the `DBeaver` perspective (under `Window` -> `Perspective` -> `Open Perspective`).
