@@ -54,7 +54,7 @@ Now extend the `src/main/resources/logback.xml` configuration file by adding a _
 ```
 Restart your application, create a new advertisement and notice that the INFO log message is not shown in the Console anymore as it gets filtered by `TurboFilter` whose `OnMatch` option is set to `DENY`. As consequence you are unable to see the messages matching the filter in Kibana.
 
-## [Optional] Step 3: Add custom fields
+## [Optional] Step 3: Add Custom Fields
 Sometimes it is helpful to include information in addition to the log message.
 Instead of just extending the log message itself, we want structured information as part of the JSON output.
 Structured information like `{ [...], "custom_fields":{"key":"value"}, [...] }` can easily be parsed and processed in Kibana and other tools.
@@ -69,11 +69,11 @@ logger.info("demonstration of custom fields, part of message: {}", CustomField.c
 
 Make sure that the JSON log output then contains `{ [...], "custom_fields":{"example-key":"example-value"}, [...] }`.
 
-## Used frameworks and tools
+## Used Frameworks and Tools
 - [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org/)
 - [Logging Library](https://github.com/SAP/cf-java-logging-support) 
 
-## Further reading
+## Further Reading
 - [Mapped Diagnostic Context](http://logback.qos.ch/manual/mdc.html)
 
 
