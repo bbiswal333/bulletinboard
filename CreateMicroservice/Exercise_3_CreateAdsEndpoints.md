@@ -70,8 +70,8 @@ headers.setLocation(new URI(uriComponents.getPath()));
 ## Step 2: Run Microservice Locally
 As described here: [Exercise 1: Getting Started](../CreateMicroservice/Exercise_1_GettingStarted.md)
 
-## Step 3: Test using REST Client
-Test the REST Service `http://localhost:8080/api/v1/ads` manually in the browser using the `Postman` chrome plugin. 
+## Step 3: Test Using REST Client
+Test the REST service `http://localhost:8080/api/v1/ads` manually in the browser using the `Postman` Chrome plugin. 
 
 ![Post Request using Postman](images/RestClient_PostRequest.png)
 
@@ -89,7 +89,7 @@ Ensure that the advertisement you created before is returned.
 Before you deploy your application again to the Tomcat server, a `clean...` of your Tomcat server might be required.
 - Also, feel free to have a look at our [solution](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-3-Create-Ads-Endpoints).<sub><b>[to-do]</b></sub>
 
-## [Optional] Step 4: Return Not Found status
+## [Optional] Step 4: Return Not Found Status
 - In case the advertisement for a specific ID is requested (`/ads/{id}`) but no advertisement for this ID is found, the service method should return the HTTP status code 404 (Not Found). To do this, simply raise a `com.sap.bulletinboard.ads.controllers.NotFoundException`.
 - Also test the correct behavior with the REST client.
 
