@@ -12,7 +12,7 @@ The goal of this exercise is that you learn how to send a message to inform othe
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-19-Transfer-CorrelationID`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-19-Transfer-CorrelationID).<sub><b>[to-do]</b></sub>
 
-## Step 1: Add Maven dependency
+## Step 1: Add Maven Dependency
 Add the `spring-rabbit` dependency to your `pom.xml`:
 ```xml
 <!-- AMQP / RabbitMQ messaging -->
@@ -66,7 +66,7 @@ See [MessageQueue.md](MessageQueue.md) for more details.
 
 Inject the `StatisticsServiceClient` into your `AdvertisementController` class as part of the constructor and notify the Statistics Service whenever an individual advertisement is requested.
 
-## Step 5: Test locally
+## Step 5: Test Locally
 The virtual machine also provides a RabbitMQ service that you can use for local testing. 
 
 #### Prepare `VCAP_SERVICES`
@@ -91,7 +91,7 @@ $ mvn tomcat7:run
 - Then, in the browser, visit the **RabbitMQ Admin UI** at [http://localhost:15672/](http://localhost:15672/) (login with guest:guest).
 Observe the information shown in the `Totals` view, and find out how many messages your application has sent.
 
-## Step 6: Fix tests
+## Step 6: Fix Tests
 In the current state the tests fail, as the `statisticsServiceClient` bean can't be created, because the beans like the AMQPTemplate to be injected are undefined.
 In previous exercises when we needed to connect to a (PostgreSQL) database, we used an embedded database (H2) in the tests.
 In the case of RabbitMQ a similar approach is not easily possible.
@@ -102,7 +102,7 @@ As part of the `src/test/java` source folder create a new class `MockRabbitConfi
 
 After that the tests should run again.
 
-## Step 7: Create and bind CF RabbitMQ Service
+## Step 7: Create and Bind CF RabbitMQ Service
 A Message Queue is provided as backing service. There must be a RabbitMQ service instance on Cloud Foundry the application can connect to:
 
 #### Creating the service
@@ -143,13 +143,13 @@ Adapt your configuration so that the `amqpTemplate.send` method is wrapped in a 
 
 Have a look at our sample [branch exercise 20](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-20-Use-Message-Queues)<sub><b>[to-do]</b></sub>
 
-## Used frameworks and tools
+## Used Frameworks and Tools
 - [RabbitMQ](https://www.rabbitmq.com/)
 - [AMQP - Advanced Message Queuing Protocol](https://www.amqp.org/)
 - [Spring AMQP](http://projects.spring.io/spring-amqp/)
 - [JSDoc AMQP Template](http://docs.spring.io/spring-amqp/docs/current/api/org/springframework/amqp/core/AmqpTemplate.html)
 
-## Further reading
+## Further Reading
 - [MessageQueue.md](MessageQueue.md)
 
 ***
