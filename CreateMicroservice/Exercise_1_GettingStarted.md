@@ -18,10 +18,10 @@ If you did not import the `cc-bulletinboard-ads` project previously, follow thes
     - Use `Next` and `Finish` to go through the following dialogs (the default settings should be OK).
 - **Then update the Maven Settings: `ALT+F5`, `OK`**
 
-## Step 1: Get to know the Code
+## Step 1: Get to Know the Code
 Take some time to familiarize yourself with the given `bulletinboard-ads` microservice. Concentrate on the `src/main/java` source folder and there in particular the following classes are now of interest: `AppInitializer`, the `WebAppContextConfig` and `DefaultController`.
 
-## Step 2: Run the microservice in Eclipse
+## Step 2: Run the Microservice in Eclipse
 
 In order to run/debug the microservice within your Eclipse IDE you need to deploy the application on your Tomcat server instance. 
 
@@ -52,7 +52,7 @@ INFO: Server startup in 6912 ms
 - Start the `Web Browser` and ensure that the following url `http://localhost:8080/` returns `OK`
 - You can terminate the web server in the Eclipse `Console` view (red square button), or stop the Tomcat server explicitly in the `Servers` view.
 
-## [Optional] Step 3: Run the microservice on the command line 
+## [Optional] Step 3: Run the Microservice on the Command Line 
 Ensure that you are in the project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc.
 
 Linux:
@@ -75,7 +75,7 @@ With the Tomcat Maven Plugin the maven build (including the tests) is triggered 
   - Note: If you need to use another port, you can change the default Tomcat port in the `pom.xml` at the setting `maven.tomcat.port`.
 - You can terminate the web server in the command window with `CTRL+C`.
 
-## Step 4: Gain application insight with the Actuator
+## Step 4: Gain Application Insight With the Spring Boot Actuator
 Ensure that **in your productive code** you:
 - Use a version of `spring-boot-actuator` >= 1.5.4.RELEASE (and not 1.2.5.RELEASE as in this tutorial).
 - Test your productive application that all the Spring Boot Actuator endpoints behave as expected (enabled / disabled or secured in the way you expect them to be).
@@ -95,7 +95,7 @@ Note that the Actuator plugin is designed for Spring Boot applications, and ther
 
 The next steps explains how to enable the Actuator.
 
-#### Add Maven dependency
+#### Add Maven Dependency
 Add the `spring-boot-actuator` dependency to your `pom.xml` using the XML view of Eclipse:
 ```
 <!-- Actuator for adding management endpoints -->
@@ -118,7 +118,7 @@ Add the `spring-boot-actuator` dependency to your `pom.xml` using the XML view o
 Note: After you've changed the Maven settings, don't forget to update your Eclipse project (`ALT-F5`)! 
 
 #### Enable Auto-configuration 
-To enable the Spring Boot Actuator plugin you need to pretend to be a Spring Boot application by enabling [Auto-configuration](http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-auto-configuration.html).
+To enable the Spring Boot Actuator plugin you need to pretend to be a Spring Boot application by enabling [auto-configuration](http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-auto-configuration.html).
 
 Create a `SpringBootActuatorConfig` class in the `com.sap.bulletinboard.ads.config` package and provide the following annotations:
 ```Java
