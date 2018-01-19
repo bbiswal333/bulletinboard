@@ -19,7 +19,7 @@ Note: You can get the exact names of the available services and its plans in the
 
 Furthermore note, the created backing service is only *available* within the current targeted space and can be bound only to the applications within the same space.
 
-## Step 2: Update manifest.yml
+## Step 2: Update `manifest.yml`
 Add the name of your postgres service (as defined in the previous step) to your `manifest.yml`. This will bind your application to the service.
 
 Make sure you specify the service entry in context of your application configuration, i.e. place it with the correct indentation.
