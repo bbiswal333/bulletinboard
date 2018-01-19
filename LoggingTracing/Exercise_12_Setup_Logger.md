@@ -15,7 +15,7 @@ The Java logging library we are using
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-11-Develop-Custom-Queries`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-11-Develop-Custom-Queries).<sub><b>[to-do]</b></sub>
 
-## Step 1: Initialize the logger
+## Step 1: Initialize the Logger
 In order to initialize features provided by the SAP library [Logging Support for Cloud Foundry](https://github.com/SAP/cf-java-logging-support) you need to add a servlet filter within the `onStartup` method of the `AppInitializer` class (import from `com.sap.hcp.cf.logging.servlet.filter`):
 
 ```java
@@ -25,7 +25,7 @@ servletContext.addFilter("RequestLoggingFilter", RequestLoggingFilter.class).add
 
 A servlet filter intercepts the requests and, among other things, initializes the SLF4J Mapped Diagnostic Context (MDC), which will be introduced in the [next exercise](/LoggingTracing/Exercise_13_Use_SLF4J_Features.md).
 
-## Step 2: Instantiate Logger in your `AdvertisementController` 
+## Step 2: Instantiate Logger in Your `AdvertisementController` 
 The [SLF4J API](http://www.slf4j.org) provides a simple interface that can be used to access logger objects.
 In the context of a class you would retrieve a SLF4J logger instance by passing the name of the class or, better, the corresponding class object. 
 
@@ -35,7 +35,7 @@ Logger logger = LoggerFactory.getLogger(getClass());
 
 We recommend to provide the class object as shown above, so that the logger name is correct even if you copy-paste the code into another class.
 
-## Step 3: Log GET request
+## Step 3: Log GET Request
 Whenever a GET request for a single advertisement is sent, a message including the ID of the requested advertisement should be logged with log level INFO.
 
 Note: For **performance** reasons you should avoid string concatenation, especially for debug/trace messages.
@@ -43,7 +43,7 @@ As an example, `logger.info("logging in " + user)` should be avoided in favor of
 
 Ensure that the console output shows a message when a GET request is sent via `Postman`.
 
-## Step 4: Change log format
+## Step 4: Change Log Format
 
 Open the `src/main/resources/logback.xml` file in order to view the current settings for the logback configuration. Find the line `<appender-ref ref="${APPENDER:-STDOUT}" />`. This configures the logging framework to use the appender which is given in the `$APPENDER` environment variable and, if this is not set, defaults to `STDOUT`.
 
@@ -70,10 +70,10 @@ Whenever a GET request for a single advertisement returns the found `Advertiseme
 
 Note: As long as `Advertisement` does not override the `toString` method, only `Advertisement@hashcode` will be displayed in the log. In order to generate the `toString` method go to the `Advertisement` class and in the context menu select `Source` - `Generate toString()...`.
 
-## Step 6: Log Not-Found exception
+## Step 6: Log Not-Found Exception
 Whenever a GET request for a single advertisement is sent for a non-existing ID, this should be logged with the log level WARN. Ensure that the console output shows the call stack of the `NotFoundException` when the invalid GET request is sent.
 
-## Step 7: Use TRACE level
+## Step 7: Use TRACE Level
 The INFO messages you added in the previous steps do not contain a lot of information. Thus, change the log level of the messages from INFO to TRACE.
 
 The current configuration of the project sets the log level for `com.sap.bulletinboard` messages to INFO, meaning TRACE messages are not part of the output. To see the TRACE messages, you have two options:
@@ -86,11 +86,11 @@ Ensure that the console output shows the TRACE messages when a GET request is se
 
 
 
-## Used frameworks and tools
+## Used Frameworks and Tools
 - [Simple Logging Facade for Java (SLF4J)](http://www.slf4j.org/)
 - [Logging Library](https://github.com/SAP/cf-java-logging-support) 
 
-## Further reading
+## Further Reading
 - [Logging Performance](http://www.slf4j.org/faq.html#logging_performance)
 - [Log Levels](http://www.slf4j.org/api/org/apache/log4j/Level.html)
  
