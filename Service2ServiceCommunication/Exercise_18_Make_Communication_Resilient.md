@@ -79,7 +79,7 @@ You can make use of the `HystrixBadRequestException` for all outgoing requests t
 <sub><b>[to-do]</b></sub> ([test case `responseHystrixBadRequest`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-Make-Communication-Resilient/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java)). 
 <sub><b>[to-do]</b></sub>
 
-## [Optional] Step 5: Make Fallback configurable by its Caller
+## [Optional] Step 5: Make Fallback Configurable by its Caller
 When the same Hystrix command has different callers or is called in different contexts, the caller might wish to define a fallback that fits into its context. For providing a Java callback function we make use of lambda expressions (Java 8), which can be easily overwritten by the caller (in our case the `AdvertisementController`).
 
 The easiest way to make the Hystrix fallback configurable is to add a function parameter which returns the specified dummy User object.
