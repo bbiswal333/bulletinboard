@@ -13,11 +13,11 @@ Continue with your solution of the last exercise. If this does not work, you can
 
 Before we can enable generic authorization checks we need to define so-called **"application scopes"** in order to define functional authorizations such as "Display", "Update" and "Delete".
 
-And we also have to define **"role templates"** that specify role and its scopes. Later, users are assigned to roles and thereby get the specified scopes as authorization keys. 
+And we also have to define **"role templates"** that specify roles and its scopes. Later, users are assigned to roles and thereby get the specified scopes as authorization keys. 
 
 ##### Create the security descriptor file `xs-security.json`
 
-To declare the **Role Templates**, create the security descriptor file `xs-security.json` either in the root folder or in a `security` sub-folder. Include the following authorization model of your application:
+To declare the **Role Templates**, create the security descriptor file `xs-security.json` either in the root folder or in a `security` subfolder. Include the following authorization model of your application:
 
 ```json
 {
