@@ -31,7 +31,7 @@ Analogous to this [description](http://docs.spring.io/spring-data/jpa/docs/curre
 - Let your `AdvertisementRepository` interface extend the custom one in addition to the `CrudRepository`. This combines the CRUD and custom functionalities.
 - Create a class with name `AdvertisementRepositoryImpl` that implements the `AdvertisementRepositoryCustom` interface, the `findByTitle` method by, for now, just returning `null`.
 
-## Step 2: Implement Query using JPQL
+## Step 2: Implement Query Using JPQL
 
 We now extend the implementation by using JPQL to return the corresponding advertisements.
 
@@ -52,7 +52,7 @@ Run your test to ensure it is passing.
 
 **Note**: In order to protect your application against SQL injection you should always make use of `prepared statements` and / or variable binding (aka `parameterized queries`). With JPA or Hibernate you should use `Named Parameter` that are prefixed with a colon (`:`). Named parameters in a query are bound to an argument by the `javax.persistence.Query.setParameter(String name, Object value)` method, any dangerous character should be automatically escaped by the JDBC driver.
 
-## Step 3: Implement query using Criteria Builder
+## Step 3: Implement Query Using Criteria Builder
 
 Instead of directly writing a query, you can use the Criteria Builder to construct a query using typesafe API.
 
@@ -74,7 +74,7 @@ Run your test again to ensure the test is still running.
 
 **Note:** It is advisable to replace the string literal `"title"` by a field reference using a JPA Static Metamodel (see links below).
 
-## Step 4: Remove implementation
+## Step 4: Remove Implementation
 The name `findByTitle`, together with the field name `title` in the `Advertisement` entity definition, is enough for Spring Data to figure out what this should mean. In other words, you do not even need to implement this method to make it work. You can try this out by just removing your `AdvertisementRepositoryCustomImpl` class. You may also move the `findByTitle` definition into the repository interface, and remove the `AdvertisementRepositoryCustom` interface. You can find more details at [Spring Data Query Creation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation).
 
 ## Further Reading
