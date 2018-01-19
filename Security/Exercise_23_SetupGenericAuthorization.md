@@ -59,7 +59,7 @@ Notes:
 * The `shared tenant-mode` leads the XSUAA service instance to trust other tenants that are different to the one that corresponds to the Cloud Foundry org such as `d012345trial`.
 * We have now defined a generic scope for starting the application. Typically, every authorization model of an application contains application/domain specific scopes ([see next exercise](Exercise_24_MakeYourApplicationSecure.md)).
 
-## Step 2: Configure start conditions for routes / endpoints
+## Step 2: Configure Start Conditions for Routes / Endpoints
 
 In order to define the **Start Condition** we need to configure our route(s) with the required scope definition: In the approuter configuration file `.src/main/approuter/xs-app.json` we add an additional line that references the **scope** previously defined in `./security/xs-security.json`:
 
@@ -79,7 +79,7 @@ In order to define the **Start Condition** we need to configure our route(s) wit
 }
 ```
 
-## Step 3: Deploy the (updated) application security descriptor to XSUAA
+## Step 3: Deploy the (Updated) Application Security Descriptor to XSUAA
 
 With the following command you can update the existing XSUAA service instance, which needs to know the authorization model of your application (`bulletinboard-d012345`).
 ```bash
@@ -88,7 +88,7 @@ $    cf update-service uaa-bulletinboard -c security/xs-security.json
 ```
 
 
-## Step 4: Push and test the service
+## Step 4: Push and Test the Service
 
 Push your application to Cloud Foundry:
 ```
