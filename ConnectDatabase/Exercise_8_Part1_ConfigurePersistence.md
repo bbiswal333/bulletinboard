@@ -98,7 +98,7 @@ In order to use the existing `Advertisement` class as a JPA entity, you need to
 
 Use the annotations in the package `javax.persistence` (corresponding to the [JPA API](https://docs.oracle.com/javaee/7/api/javax/persistence/package-summary.html)).
 
-## Step 3: Define a repository using Spring Data JPA
+## Step 3: Define a Repository Using Spring Data JPA
 - Create an **interface** `AdvertisementRepository` in the `com.sap.bulletinboard.ads.models` package that extends the `CrudRepository` interface. Use `Advertisement` as the entity type and `Long` as the id type.
 ```java
 public interface AdvertisementRepository extends CrudRepository<Advertisement, Long> {
@@ -108,7 +108,7 @@ public interface AdvertisementRepository extends CrudRepository<Advertisement, L
 - Have a look at the methods provided by the `CrudRepository` interface. By extending `CrudRepository`, `AdvertisementRepository` inherits several methods for saving, deleting, and finding entities.
 - Note: Internally Spring uses reflection to generate a proxy class, which contains the desired implementation details of the specified interface. 
 
-## Step 4: Configure repository
+## Step 4: Configure Repository
 
 - Create a class `EntityManagerFactoryProvider` in the package `com.sap.bulletinboard.ads.util` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-8-1-Configure-Persistence/src/main/java/com/sap/bulletinboard/ads/util/EntityManagerFactoryProvider.java).<sub><b>[to-do]</b></sub>
 - Create a class `CloudDatabaseConfig` in the package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-8-1-Configure-Persistence/src/main/java/com/sap/bulletinboard/ads/config/CloudDatabaseConfig.java).<sub><b>[to-do]</b></sub>
@@ -125,7 +125,7 @@ Finally the CRUD repository, which uses the `EntityManager` and `TransactionMana
 
 
 
-## Step 5: Build and run microservice locally
+## Step 5: Build and Run Microservice Locally
 - In Eclipse, in the "Servers" view, open the Tomcat server. In the opened detail view (`Overview` tab), click on "Open launch configuration". Change to the "Environment" tab, and inspect the `VCAP_SERVICES` environment variable. You should see that this allows your application to connect to a local database.
 - Build and run the microservice.
 - Ensure that the `advertisement` table is created with columns `id` and `title`. You can use the `DBeaver` Eclipse Perspective, where the table should be visible within the `Database Navigator` view under `Schemas - public - Tables`.
@@ -136,7 +136,7 @@ Finally the CRUD repository, which uses the `EntityManager` and `TransactionMana
  - If you want to run the `tomcat7:run` Maven goal in Eclipse, you need to configure the environment variables (in the corresponding run configuration) starting with this exercise. Please have a look at the `localEnvironmentSetup.sh` file for this. Alternatively, use the Tomcat server in Eclipse (without Maven), or run Maven in the console.
  - Note, that the data is still read from / written into the HashMap. We will change that in the second part of the exercise.
 
-## [Optional] Step 6: Specify the table / field names using JPA annotations
+## [Optional] Step 6: Specify the Table / Field Names Using JPA Annotations
 - Annotate the `Advertisement` class with `@Table(name = "advertisements")` to specify the name of the database table.
 - Annotate the `title` field with `@Column(name = "mytitle")` to specify the name of the column. Note that names starting with an underscore might be reserved, and actually cause problems in HSQLDB.
 - Build and run the microservice. 
