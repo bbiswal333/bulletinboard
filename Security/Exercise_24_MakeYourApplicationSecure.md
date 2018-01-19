@@ -13,7 +13,7 @@ Note: There is currently no easy way to make a subset of apps 'unreachable' via 
 
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`solution-23-Setup-Generic-Authorization`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-23-Setup-Generic-Authorization).<sub><b>[to-do]</b></sub>
 
-## Step 1: Add Maven dependencies
+## Step 1: Add Maven Dependencies
 
 Add the following dependencies to your `pom.xml` using the XML view of Eclipse:
 
@@ -86,7 +86,7 @@ In productive environments, `SAPOfflineTokenServicesCloud` reads the public key 
 - Copy the implementation of the `JwtGenerator` class from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/java/com/sap/bulletinboard/ads/testutils/JwtGenerator.java)<sub><b>[to-do]</b></sub> into a new test package named `com.sap.bulletinboard.ads.testutils`.
 
 
-## Step 4: Fix and run Component Tests
+## Step 4: Fix and Run Component Tests
 ### Generate a valid JWT Token
 - Update the setup of the `AdvertisementControllerTest` test class according to the below code snippet:
 ```java
@@ -114,7 +114,7 @@ After...  ```get(AdvertisementController.PATH + "/" + id).header(HttpHeaders.AUT
 Now you can run the JUnit tests as described [in Exercise 4](../CreateMicroservice/Exercise_4_CreateServiceTests.md). They should succeed now.
 
 
-## Step 5: Run and test the service locally
+## Step 5: Run and Test the Service Locally
 
 In this step you prepare the local run environment and test your application manually using `Postman` to discover that your application is now secure.
 
@@ -147,7 +147,7 @@ Now you can test the service manually in the browser using the `Postman` chrome 
 - Then you can check whether you are able to request the `/api/v1/ads` endpoints. In case your offlineToken verification fails, make sure that the `VCAP_SERVICES` environment variable is provided on Tomcat as described above, another restart might be required.
 
 
-## Step 6: Deploy and test
+## Step 6: Deploy and Test
 In this step you are going to deploy your application to Cloud Foundry and discover that you are not any longer authorized to call your service endpoints directly. This is due to to fact that the necessary scopes are not (yet) assigned to your user account. Unlike in the previous steps, your application is now running in a productive security environment which enforces the current existing security policy.
 
 ### Bind UAA Service to your application
@@ -161,7 +161,7 @@ Before deploying your application to Cloud Foundry you need to bind your applica
 ```
 - Now re-deploy your application to Cloud Foundry.
 
-### Call Deployed Service
+### Call Deployed service
 - Call your service endpoints e.g. `https://bulletinboard-ads-d012345.cfapps.sap.hana.ondemand.com` manually using the `Postman` Chrome plugin. You should get for any endpoint (except for `\health`) an `401` ("unauthorized") status code. 
 - On Cloud Foundry it is not possible to provide a valid JWT token which is accepted by the XSUAA. Therefore if you like to provoke a `403` ("forbidden", "insufficient_scope") status code **you need to call your application via the `approuter`** e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com/ads/api/v1/ads` in order to authenticate yourself and to create a JWT Token with no scopes. **BUT** you probably will get as response the login screen in HTML. That's why you need to
   - enable the `Interceptor` within `Postman`. You might need to install another [`Postman Interceptor` Chrome Plugin](https://chrome.google.com/webstore/detail/postman-interceptor/aicmkgpgakddgnaphhhpliifpcfhicfo), which will help you to send requests using browser cookies through the `Postman` app. 
