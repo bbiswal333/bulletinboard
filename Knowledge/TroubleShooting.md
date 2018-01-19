@@ -13,11 +13,11 @@ mvn clean verify -DskipTests
 ```
 
 ## Issues on Cloud Foundry
-If this happens in the course you should definitively get in contact with the CF SAP CP team. 
+If this happens in the course you should definitively get in contact with the SAP Cloud Platform Cloud Foundry team. 
 Find here some options on where to find current issues and how to create a support ticket:
 https://github.infra.hana.ondemand.com/cloudfoundry/cf-docs/wiki/CF-EU10-CANARY 
 
-For the `Kibana`, `HANA` and `Security` demo CF @SAP CP is mandatory! For the rest you can also get a trial account at any other cloud foundry provider.
+For the `Kibana`, `HANA` and `Security` demo the SAP Cloud Platform Cloud Foundry environment is mandatory! For the rest you can also get a trial account at any other cloud foundry provider.
 
 Examples:
 - anynines.com
