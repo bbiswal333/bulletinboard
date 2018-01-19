@@ -38,7 +38,7 @@ In this exercise the following **Spring Web** annotations (`org.springframework.
 - Open the URL `http://localhost:8080/hello`. A 404 (Not Found) response is expected as the GET is only provided under the path `/hello/{Name}`!
 - A simple GET request can be tested directly in the browser. Use the browser developer tools to analyze the response in more detail. In Chrome you can open the developer tools with `F12` and analyze the messages in the console and network views.
 
-## Step 3: Test using a REST client
+## Step 3: Test Using a REST Client
 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) is a Chrome Plugin that helps to create and test custom HTTP requests. In our case we would like to analyze a simple GET request to `http://localhost:8080/hello/Dude`.
 
 ## Used Frameworks and Tools
