@@ -23,7 +23,7 @@ node --version
 npm --version
 ```
 
-## Step 1: Setup the application router as part of your application
+## Step 1: Setup the Application Router as Part of Your Application
 - Inside your `cc-bulletinboard-ads` directory create a directory with the name `src/main/approuter` (right-click on the project, then select "New" - "Folder"). 
 - In there create a file named **`.npmrc`** with the following content specifying the registry:
 ```
@@ -45,7 +45,7 @@ npm --version
 }
 ```
 
-## [Optional] Step 2: Build approuter once (locally)
+## [Optional] Step 2: Build Approuter Once (Locally)
 Like we are doing it for our bulletinboard-ads Java application, we also recommend to build the approuter Node application once (locally or later triggered as part of the Continuous Delivery build) before deploying it to Cloud Foundry. Therefore we use the NPM Packager Manager to download the packages (`node_modules`) as specified in the `package.json`.
 
 In order to avoid Eclipse crashes / getting slow while parsing packages downloaded via NPM in the next step, ensure that there is a resource filter defined for the `node_modules` directory as visualized in the screenshot (project properties):
@@ -83,7 +83,7 @@ As the approuter is a Node.JS application, it needs to be added into the `manife
 
 > **Note**: Even though the `approuter` is not "stateless" (as it maps the `SessionID` to the `JWT token`) the amount of `approuter` instances depends on the load on the business application. This is possible as Session stickiness is implemented by Cloud Foundry with the `VCAPID` header. Using the same header value in the following requests causes the Cloud Foundry router to route those requests to the same (`approuter`) application instance. BUT: applications MUST NOT rely on being called by the same `approuter` instance during a session. The `approuter` instance could change if the old instance dies and a new instance is created during the recovery procedure.
 
-## Step 4 Configure the application router
+## Step 4 Configure the Application Router
 Now create in the `src/main/approuter` directory a file named `xs-app.json` with the following content:
 ```
 {
@@ -99,7 +99,7 @@ If you like to provide a "welcome file" then you need also to add an `index.html
 
 > **Note**: The `ads-destination` used in this file is a logical destination that is mapped to the `ads-destination` defined in the `manifest.yml`. This is because the 'real URL' is defined at deploy time (it may even be a 'random route') and the `xs-app.json` is concerned only with the endpoints relative to the app URL. 
 
-## Step 5: Deploy approuter and application to Cloud Foundry
+## Step 5: Deploy Approuter and Application to Cloud Foundry
 
 In this step we create an XSUAA service instance that is able to serve requests from multiple customers, so called tenants. 
 
@@ -134,7 +134,7 @@ The name should be unique per space, because the UAA service instance with `appl
 - The client credentials string also contains the URL of the UAA service. The approuter uses this information to redirect unauthenticated calls to the UAA service.
 - The value of `"identityzone"` (e.g. d012345trial) matches the value of `subdomain` of the subaccount and represents the name of the **tenant**.
 
-## Step 6: Access your application via the approuter
+## Step 6: Access Your Application Via the Approuter
 Observe how the authentication works:
 - Get the url of the approuter via `cf apps`. 
 - Then enter the approuter URL e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com` in the browser. This should redirect you to the XS-UAA Logon Screen. Please note that **d012345trial** is a placeholder for the **tenant id** which has a 1-1 relationship to the **Identity Zone `d012345trial`** which is configured for CF Org `D012345trial_trial` and is under our control. Note furthermore that you've configured your approuter on how to derive the tenant from the URL according to the `TENANT_HOST_PATTERN` that you've provided as part of the `manifest.yml`.
@@ -202,7 +202,7 @@ $ cf push
 
 - Each instance of application router holds it´s own mappings of JWT-Tokens to jSessionIDs. The mappings are neither shared across multiple instances of application router nor are the mappings persisted in a common persistency. Application router uses Cloud Foundry session stickiness (VCAP_ID) to ensure that requests belonging to the same session are routed via the same application router instance - this means that the user will need to re-authenticate if an application router instance of a particular session goes down and is recovered by a new application router instance.
 
-## Further reading
+## Further Reading
 - [Detail Notes](../Security/Readme.md)
  
 ***
