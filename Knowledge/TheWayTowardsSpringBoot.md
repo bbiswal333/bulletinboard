@@ -1,19 +1,19 @@
-# The Way towards Spring Boot
+# The Way Towards Spring Boot
 
 **Spring Boot** makes it easy to create stand-alone applications based on the Spring framework. 
 Today Spring Boot is much more mature, it offers a valuable amount and a conclusively set of Spring Boot starter packages, that makes absolutely sense in context of Microservice application development. 
 
 Apart from that **Spring Cloud** builds on top of Spring Boot, which empowers developers to rapidly build complex applications by leveraging common patterns in distributed systems. 
 
-## Rationale behind Spring Boot
+## Rationale Behind Spring Boot
 - Has huge open source community: a lot of tutorials / code examples, simplifies troubleshooting, keeping yourself up-to-date.
-- One recommended cloud programming model: more and more SAP development teams decides for Spring Boot.
+- One recommended cloud programming model: more and more SAP development teams decide for Spring Boot.
 - It's the basis for Spring Cloud components for implementing distributed design patterns in the cloud. 
 
 ### The idea of Spring Boot
 <img src="https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/SpringBoot/images/spring-ingredients.jpg" height="200" /> => <img src="https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/SpringBoot/images/boot-cake.jpg" height="200" />
 
-## Differences between current course and Spring Boot version
+## Differences between Current Course and Spring Boot Version
 Overall you don't need to expect too much migration efforts towards Spring Boot, when starting from the current version, which is active since 18th November.
 You already get in touch with those Spring libraries, that are promoted in context of Spring Boot. 
 
