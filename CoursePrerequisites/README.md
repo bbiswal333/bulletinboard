@@ -8,7 +8,6 @@ The VM runs an **Ubuntu Linux** system and offers basically all tools and config
 
 ## 1. Prepare your Development Environment
 * **VM Setup**: Please follow the [installations steps](../VMImage/VMImage_GettingStarted.md) to prepare your VM image that provides the whole development environment.
-* **Local Setup**: In case you prefer to use your local Windows/Mac/... system instead of the VM, you can follow [these instructions](/CoursePrerequisites/localEnvSetup/README.md). **However, for the course please make use of the VM, as it provides a tested and well-documented environment.**
 
 ## 2. Prepare your Trial Account, Organization, and Space in the Cloud Foundry Environment within SAP Cloud Platform
 * Create your own **Trial Account, Organization, and Space** in the **Cloud Foundry Environment within SAP Cloud Platform** by registering [**here**](https://account.hanatrial.ondemand.com) for a Trial Account (or logging in if you already have one) and then starting your **Cloud Foundry Trial**.
