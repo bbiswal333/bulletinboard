@@ -46,7 +46,7 @@ public MethodValidationPostProcessor methodValidationPostProcessor() {
 }
 ```
 
-## Step 2: Implement REST argument validation test-driven
+## Step 2: Implement REST Argument Validation Test-driven
 - Extend the `AdvertisementControllerTest` class and add a test which does a GET request using the ID "-1". Your expectation is that the server responds with an HTTP status code `400` (Bad Request).
 But actually the test fails either because of HTTP status code `404` (as no advertisement with ID -1 exists), or HTTP status code `204` (No Content).
 
@@ -67,7 +67,7 @@ Currently an Internal Server Error (HTTP code 5xx) is returned when requesting u
 - the user-facing `message` SHOULD be localizable and 
 - next to the `message` field also a `code` field MUST be provided that is *"a technical code of the error situation to be used for support purposes"*.
 
-## Step 4: Implement Entity validation test-driven
+## Step 4: Implement Entity Validation Test-driven
 Similar to the `@Min` annotation we can also use `@NotNull` or `@NotBlank` ([Hibernate Validator](https://docs.jboss.org/hibernate/validator/6.0/api/org/hibernate/validator/constraints/package-summary.html)).
 
 - Write a test creating a new advertisement with `title` set to `null` or even "". Your expectation is that the server responds with an HTTP status code `400` (Bad Request).
