@@ -9,24 +9,24 @@ The task of this exercise is to persist the advertisements via the corresponding
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-8-1-Configure-Persistence`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-8-1-Configure-Persistence).<sub><b>[to-do]</b></sub>
 
-## Step 1: Inject repository into controller
+## Step 1: Inject Repository Into Controller
 In the previous exercise we used the `Spring Data JPA` plugin to create an instance of the `AdvertisementRepository` interface. In this step we inject such an instance into the `AdvertisementController`.
 
 - As constructor injection is the preferred approach, we create in the `AdvertisementController` class, a constructor with an `AdvertisementRepository` typed argument, and annotate the constructor with `@Inject`.
 
-## Step 2: Use CRUD repository in controller
+## Step 2: Use CRUD Repository in Controller
 Refactor the `AdvertisementController` class so that instead of using the HashMap, the advertisements are persisted using the `AdvertisementRepository` instance (using the [`CrudRepository`](http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html) methods `findOne`, `findAll`, and `save`).
 
 **Note**: The CRUD repository automatically decides whether to create a new database entry, or update an existing one when using its `save` method. To trigger updates, you need to pass an entity object containing the ID in addition to all the (updated) fields.
 
-## Step 3: Run and test the service locally
+## Step 3: Run and Test the Service Locally
 Run the service as described here: [Exercise 1: Getting Started](../CreateMicroservice/Exercise_1_GettingStarted.md)
 
 Now you can test the service manually in the browser using the `Postman` chrome plugin. Please also test that the data is persisted. To test this you could create some advertisements, relaunch the application and see whether the advertisements created in the previous session are returned by new GET requests.
 
 **Note**: Currently the tests are failing (which will be fixed in the next steps). If you want to build using Maven, run `mvn clean package -DskipTests`.
 
-## Step 4: Run component tests
+## Step 4: Run Component Tests
 The service tests from [Exercise 4](../CreateMicroservice/Exercise_4_CreateServiceTests.md) are broken now, because the test provides no information about how to inject the `AdvertisementRepository` instance.
 
 Furthermore the tests should run independently from a concrete database, so we provide an alternative database configuration which uses an in-memory database named `H2`. 
@@ -51,7 +51,7 @@ Note: After you've changed the Maven settings, don't forget to update your Eclip
 You might have the question why you need an extra database configuration namely `EmbeddedDatabaseConfig` for your tests instead of providing different configuration settings via system environment variables?
 We decided to use a separate configuration class for the tests, as the tests do not run in a cloud-like environment. Even though the configuration classes look very similar, the main difference is, that the `CloudDatabaseConfig` extends from the `AbstractCloudConfig` class that expects a cloud environment. A cloud environment is only detected if the `VCAP_APPLICATION` and `VCAP_SERVICES` variables are set. To make that more explicit, we have annotated the `CloudDatabaseConfig` class with `@Profile("cloud")` i.e. it gets only loaded when "cloud" is set as active profile.
 
-## [Optional] Step 5: Check ID for updates
+## [Optional] Step 5: Check ID for Updates
 If you have implemented the PUT Request according to [Exercise 4-2](../CreateMicroservice/Exercise_4_Part2_CreateAdditionalAdsEndpoints.md), make sure that the ID contained in the URL is the same ID contained in the advertisement entity.
 Therefore add a test that sends a PUT request for an entity with a different ID than what is specified in the URL.
 In the test assert that the server responds with a `Bad Request` (400) status code.
@@ -60,7 +60,7 @@ You may add a `setId` method to the `Advertisement` class so that, in the tests,
 Fix the code according to the test by introducing a `throwIfInconsistent` method comparing the two IDs.
 Also make sure that the tests in `AdvertisementControllerTest` are still passing, especially `updateNotFound`.
 
-## [Optional] Step 6: Debug entity ID generation
+## [Optional] Step 6: Debug Entity ID Generation
 
 For new advertisements the code does not directly set the ID. However, the advertisement object returned by the POST
 endpoint has a non-null ID. Use the Eclipse debugger to find out when exactly the ID is set in the object instance.
@@ -73,7 +73,7 @@ endpoint has a non-null ID. Use the Eclipse debugger to find out when exactly th
  - Observe that `advertisement.id` is now set
  - Continue to run the application (F9), or stop Tomcat
 
-## [Optional] Step 7: Introduce pagination
+## [Optional] Step 7: Introduce Pagination
 Assume you have hundreds or more entries in a table. As part of a GET-all request the application needs to fetch all these entries from the database, buffer them, convert them into JSON in order to provide it as part of the response etc. This costs CPU, memory and network resources while most of the data is usually neither required nor consumable by the client / UI. To improve the performance of the mass GET query it is common practice to introduce pagination, sorting and filtering. Accordingly, you should also differentiate on REST API level which kind of pagination you like to implement:
 - **client-driven pagination** normally chosen for consumer flexibility: the consumer decides what portions of data are to be retrieved.  
 - **server-driven pagination** for optimizations (caching) and protection (e.g. against denial of service by selecting a too large page size): the server decides on page cutting and provides additional information about the locations of the previous and next page; the client still has a possibility to configure the page size. 
