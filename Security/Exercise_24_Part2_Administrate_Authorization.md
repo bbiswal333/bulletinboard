@@ -6,7 +6,7 @@ TODO
 
 
 ## Step: Administrate Authorizations for your Business Application
-As of now you've configured your xsuaa service with the application security model ([xs-security.json](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/security/xs-security.json)).<sub><b>[to-do]</b></sub> With that, the xsuaa has the knowledge about the role-templates. But you as a User have still no permission to access the advertisement endpoints, as the required scopes or roles are not yet assigned to your user. 
+As of now you've configured your xsuaa service with the application security model ([xs-security.json](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/security/xs-security.json)).<sub><b>[to-do]</b></sub> With that, the xsuaa has the knowledge about the role-templates. But you as a user have still no permission to access the advertisement endpoints, as the required scopes or roles are not yet assigned to your user. 
 
 To administrate authorizations for your business application, perform the steps of the procedure [HowTo Administrate Authorizations for CF Applications using the SAP CP Cockpit][9].
 
