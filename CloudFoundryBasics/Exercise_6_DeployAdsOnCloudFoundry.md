@@ -6,7 +6,7 @@ Get familiar with the basic commands of the Cloud Foundry CLI, learn how to depl
 ## Prerequisite
 Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-5-ValidationExceptions](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-5-ValidationExceptions) <sub><b>[to-do]</b></sub>
 
-Prepare Trial Account and Space on the SAP Cloud Platform Cloud Foundry environment
+Prepare a Trial Account and Space on the SAP Cloud Platform Cloud Foundry environment
 - Create your own **Trial Account and Space** on the **Cloud Foundry environment** using the [**self-service on SAP Cloud Platform Cockpit**](https://account.hanatrial.ondemand.com). 
 
 ## Step 1: Login
@@ -33,7 +33,7 @@ applications:
 ```
 Note: In case you make use of the Community Java Buildpack it is recommended to specify the **version of the buildpack** e.g. `buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.6`, you can get the current version using `cf buildpacks` and on Github there must be a so-called `release` for every released buildpack version.
 
-## Step 3: Push your service
+## Step 3: Push Your Service
 - Before you push your service into the cloud, make sure to build the WAR file (`mvn clean verify`). 
 
 - The name `bulletinboard-ads` specified in the manifest file is used as hostname and is already used in this CF instance. With this in mind, push your microservice using another hostname:
@@ -46,7 +46,7 @@ For this use the URL `https://bulletinboard-ads-<<your user id>>.cfapps.sap.hana
 
 Note: In order to build the WAR file without running the tests, you can use `mvn clean package -DskipTests`.
 
-## Step 4: Scale your service
+## Step 4: Scale Your Service
 Currently we only run one instance of the microservice.
 Run `cf scale bulletinboard-ads -i 2` to scale your microservice to two instances, so that the load is spread and a single crash is less harmful.
 
@@ -66,7 +66,7 @@ Open the [SAP Cloud Platform Cockpit](https://account.hanatrial.ondemand.com/coc
 
 ![](/CloudFoundryBasics/images/SAPCockpit.png) <sub><b>[image-important]</b></sub>
 
-## [Optional] Step 6: Add heartbeat URL to the Application Manifest
+## [Optional] Step 6: Add Heartbeat URL to the Application Manifest
 There are various attributes that can be used to configure the deployment of your application, which are documented [here](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html).
 
 For example you can configure the health check in such a way that it considers the application as healthy, when the `health` endpoint returns HTTP `200` status within 1 second. For this you need to specify the following attributes in your `manifest.yml`:
