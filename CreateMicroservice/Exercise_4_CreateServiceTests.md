@@ -2,9 +2,9 @@ Exercise 4: Create Automated Component Tests
 ==========================================
 
 ## Learning Goal
-After this exercise you will know how to setup an automated alternative to manually deploying/testing the service again and again. You will learn how to setup a JUnit test suite that will test the Advertisement Controller on an embedded Tomcat web server.
+After this exercise you will know how to setup an automated way to deploy and test the service again and again. You will learn how to setup a JUnit test suite that will test the `AdvertisementController` on an embedded Tomcat web server.
 
-The task of this exercise is to implement a **JUnit test suite** that tests the correct behavior of the provided HTTP methods as specified below. Technically you will leverage Spring **Mock Mvc** for mocking all the mechanics of Spring MVC and executing HTTP requests against controllers. This will enable you to test your controllers without firing up a web server like tomcat.
+The task of this exercise is to implement a **JUnit test suite** that tests the correct behavior of the provided HTTP methods as specified below. Technically you will leverage Spring **Mock Mvc** for mocking all the mechanics of Spring MVC and executing HTTP requests against controllers. This will enable you to test your controllers without firing up a web server like Tomcat.
 
 
 | HTTP Verb |  CRUD      | collection (e.g. `/api/v1/ads/`)   | specific item (e.g. `/api/v1/ads/0`)|   
