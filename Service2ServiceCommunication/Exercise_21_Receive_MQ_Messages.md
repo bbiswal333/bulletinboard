@@ -26,7 +26,7 @@ Create a `StatisticsListener` class that implements the `MessageListener` interf
 ```
 **Note:** This ensures that the `onMessage` method is invoked whenever a message is delivered to the specified queue.
 
-## Step 2: Log received messages
+## Step 2: Log Received Messages
 Implement the `onMessage(message message)` method, that the received message gets logged:
 
 ```
@@ -36,12 +36,12 @@ logger.info("got statistics: {}", new String(message.getBody(), Charset.forName(
 ## Step 3: Deploy and Test
 Deploy your microservice and check if a messages similar to `got statistics: Statistics [id=1, viewCount=<ViewCount>]` are logged. The Statistics service sends out messages every five seconds.
 
-## Used frameworks and tools
+## Used Frameworks and Tools
 - [RabbitMQ](https://www.rabbitmq.com/)
 - [AMQP - Advanced Message Queuing Protocol](https://www.amqp.org/)
 - [Spring AMQP](http://projects.spring.io/spring-amqp/)
 
-## Further reading
+## Further Reading
 - [MessageQueue.md](MessageQueue.md) <sub><b>[to-do]</b></sub>
 
 ***
