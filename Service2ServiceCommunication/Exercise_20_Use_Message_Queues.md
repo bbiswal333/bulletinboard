@@ -149,13 +149,10 @@ Have a look at our sample [branch exercise 20](https://github.wdf.sap.corp/cc-ja
 - [Spring AMQP](http://projects.spring.io/spring-amqp/)
 - [JSDoc AMQP Template](http://docs.spring.io/spring-amqp/docs/current/api/org/springframework/amqp/core/AmqpTemplate.html)
 
-## Further Reading
-- [MessageQueue.md](MessageQueue.md)
-
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
