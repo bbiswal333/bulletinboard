@@ -41,13 +41,10 @@ Deploy your microservice and check if a messages similar to `got statistics: Sta
 - [AMQP - Advanced Message Queuing Protocol](https://www.amqp.org/)
 - [Spring AMQP](http://projects.spring.io/spring-amqp/)
 
-## Further Reading
-- [MessageQueue.md](MessageQueue.md) <sub><b>[to-do]</b></sub>
-
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
