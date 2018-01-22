@@ -56,7 +56,7 @@ Using this filter you can see all related log messages, including those of other
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
