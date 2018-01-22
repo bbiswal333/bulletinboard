@@ -158,7 +158,7 @@ Finally the CRUD repository, which uses the `EntityManager` and `TransactionMana
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
