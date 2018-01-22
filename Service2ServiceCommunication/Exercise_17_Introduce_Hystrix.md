@@ -73,7 +73,7 @@ As Hystrix provides some default configuration such as timeout after 1000ms you 
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
