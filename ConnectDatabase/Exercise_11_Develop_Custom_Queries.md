@@ -81,7 +81,6 @@ The name `findByTitle`, together with the field name `title` in the `Advertiseme
 - [JPQL Tutorial](http://www.tutorialspoint.com/jpa/jpa_jpql.htm)
 - [JPQL: The Basics Video (Youtube)](https://www.youtube.com/watch?v=KdJ4W7nqhVg)
 - [JPA Criteria Builder](http://www.objectdb.com/java/jpa/query/criteria) and [javaDoc](https://docs.oracle.com/javaee/7/api/javax/persistence/criteria/CriteriaBuilder.html)
-- [Detail Notes](../ConnectDatabase/Readme.md)
 - [JPA Static Metamodel Introduction](http://www.thoughts-on-java.org/static-metamodel/)
 - [JPA Static Metamodel Tutorial](https://docs.oracle.com/javaee/6/tutorial/doc/gjiup.html)
 - [JPA Static Metamodel Generation](https://docs.jboss.org/hibernate/orm/5.0/topical/html/metamodelgen/MetamodelGenerator.html)
@@ -92,7 +91,7 @@ The name `findByTitle`, together with the field name `title` in the `Advertiseme
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
