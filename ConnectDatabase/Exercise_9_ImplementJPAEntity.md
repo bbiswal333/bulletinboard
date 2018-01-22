@@ -151,7 +151,7 @@ Furthermore it might be helpful to test your service manually in the browser usi
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
