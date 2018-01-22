@@ -121,7 +121,7 @@ Messages matching a negative filter are not shown. This can be used to remove ce
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
