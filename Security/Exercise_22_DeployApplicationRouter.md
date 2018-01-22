@@ -202,13 +202,10 @@ $ cf push
 
 - Each instance of application router holds it´s own mappings of JWT-Tokens to jSessionIDs. The mappings are neither shared across multiple instances of application router nor are the mappings persisted in a common persistency. Application router uses Cloud Foundry session stickiness (VCAP_ID) to ensure that requests belonging to the same session are routed via the same application router instance - this means that the user will need to re-authenticate if an application router instance of a particular session goes down and is recovered by a new application router instance.
 
-## Further Reading
-- [Detail Notes](../Security/Readme.md)
- 
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
