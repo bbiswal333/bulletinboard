@@ -29,7 +29,7 @@ See [exercise 4](https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
