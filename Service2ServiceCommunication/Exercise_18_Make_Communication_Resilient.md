@@ -106,7 +106,7 @@ A Lambda example can be found in the branch `solution-18-2-Make-Fallback-Configu
 ***
 <dl>
   <dd>
-  <div class="footer">&copy; 2017 SAP SE</div>
+  <div class="footer">&copy; 2018 SAP SE</div>
   </dd>
 </dl>
 <hr>
