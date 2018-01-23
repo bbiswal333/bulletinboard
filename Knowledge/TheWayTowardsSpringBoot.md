@@ -98,5 +98,3 @@ Find here [all Auto-Configuration classes](http://docs.spring.io/spring-boot/doc
 - [Spring.io: Spring (Boot) Tutorials](https://spring.io/guides)
 - [SAP internal Spring (Boot) Tutorial](https://github.wdf.sap.corp/d022051/SpringTutorial/wiki)
 
-## Todos
-- Mention other interesting Spring Boot Features such as `DevTools` or `DataJPATest`...
