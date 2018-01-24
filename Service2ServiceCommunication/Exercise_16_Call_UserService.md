@@ -117,7 +117,8 @@ When pushing the application to Cloud Foundry, the `USER_ROUTE` needs to be conf
 ```
 env:
     USER_ROUTE: 'https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com'
-```
+``` 
+<sub><b>[to-do]</b></sub>
 
 ## Used Frameworks and Tools
 - [Postman REST Client (Chrome Plugin)](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop)
