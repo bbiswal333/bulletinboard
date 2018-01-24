@@ -85,6 +85,7 @@ Now deploy your application again and make sure that it starts and does not cras
 Note also that the `health` endpoint remains accessible even after introduction of authentication and authorization checks as part of **[Exercise 24](../Security/Exercise_24_MakeYourApplicationSecure.md)**.
 
 ## Further Reading
+- [Cloud Foundry Command Line Interface (cf CLI)](https://docs.cloudfoundry.org/cf-cli/index.html)
 - [Cloud Foundry CheatSheet](https://blog.anynines.com/cloud-foundry-command-line-cheat-sheetutm_sourcecf-summitutm_mediumprintutm_campaigncf-summit-cheat-sheet/)
 
 
