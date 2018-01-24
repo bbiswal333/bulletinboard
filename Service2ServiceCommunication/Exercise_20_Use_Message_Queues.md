@@ -3,7 +3,7 @@
 
 ## Learning Goal
 
-Asynchronous communication by publish-subscribe / messaging systems is a very important element of high performance and resilient cloud applications. Instead of calling a client service and waiting for a response, you just send a message and can immediately continue. There are different levels of loose coupling. In the extreme case the send <sub><b>[to-do]</b></sub> (or is "sender" meant here?) of an event does not know or care how many other services (if any) subscribed to their event. You can read a little more about messaging [here](../Service2ServiceCommunication/MessageQueue.md).  
+Asynchronous communication by publish-subscribe / messaging systems is a very important element of high performance and resilient cloud applications. Instead of calling a client service and waiting for a response, you just send a message and can immediately continue. There are different levels of loose coupling. In the extreme case the sender of an event does not know or care how many other services (if any) subscribed to their event. You can read a little more about messaging [here](../Service2ServiceCommunication/MessageQueue.md).  
 
 The goal of this exercise is that you learn how to send a message to inform other services about a specific event. Specifically, the task is to send an AMQP message to the RabbitMQ Message Queue Service (part of the standard CF backing services) whenever your Advertisement Service receives a request for a specific advertisement. This event (AMQP message) will then be picked up by a statistics service that counts how many times an advertisement was viewed. 
 
