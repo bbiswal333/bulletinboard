@@ -170,7 +170,7 @@ Before deploying your application to Cloud Foundry you need to bind your applica
   - make sure that you now get a `403` status code.
 
 > **Note:**  
-> By default the application router enables **CSRF protection** for any state-changing HTTP method. That means that you need to provide a `x-csrf-token: <token>` header for state-changing requests. You can obtain the <token> via a `GET` request with a `x-csrf-token: fetch` header to the application router.
+> By default the application router enables **CSRF protection** for any state-changing HTTP method. That means that you need to provide a `x-csrf-token: <token>` header for state-changing requests. You can obtain the `<token>` via a `GET` request with a `x-csrf-token: fetch` header to the application router.
 
 
 ## Further Reading
