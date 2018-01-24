@@ -14,8 +14,8 @@ Continue with your solution of the last exercise. If this does not work, you can
 Before we start with the implementation we want to get familiar with the User service. 
 
 You can test the following REST service endpoints manually in the browser using the `Postman` Chrome plugin:
-- `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users` - returns all available users with their IDs.
-- `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users/{ID}` - returns the information for a user where {ID} is a placeholder for a user id, e.g. "42".
+- `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users`<sub><b>[to-do]</b></sub> - returns all available users with their IDs.
+- `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users/{ID}`<sub><b>[to-do]</b></sub> - returns the information for a user where {ID} is a placeholder for a user id, e.g. "42".
 
 ## Step 2: Add Maven Dependency
 Add the dependency to the Apache http client to your `pom.xml` using the XML view of Eclipse:
