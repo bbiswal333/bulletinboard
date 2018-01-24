@@ -43,8 +43,8 @@ public class AdvertisementController {
     }
 
     /**
-     * @RequestBody is bound to the method argument. HttpMessageConverter resolves method argument depending on the
-     *              content type.
+     * @RequestBody is bound to the method argument. HttpMessageConverter resolves method argument 
+     * depending on the content type.
      */
     @PostMapping
     public ResponseEntity<Advertisement> add(@RequestBody Advertisement advertisement,
