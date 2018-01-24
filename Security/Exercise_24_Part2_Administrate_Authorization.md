@@ -1,16 +1,18 @@
 # Exercise 24 Part 2: Administrate Authorizations
 
-
 ## Learning Goal
-TODO
+As of now you've configured your xsuaa service with the application security model ([xs-security.json](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/security/xs-security.json)).<sub><b>[to-do]</b></sub> With that, the xsuaa has the knowledge about the role-templates. But you as a User have still no permission to access the advertisement endpoints, as the required scopes or roles are not yet assigned to your user.
 
+In this exercise you will use the SAP CP Cockpit to maintain authorizations for your application and assign them to you or to other members of your Subaccount (cloud foundry organization). 
 
 ## Step: Administrate Authorizations for your Business Application
-As of now you've configured your xsuaa service with the application security model ([xs-security.json](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/security/xs-security.json)).<sub><b>[to-do]</b></sub> With that, the xsuaa has the knowledge about the role-templates. But you as a user have still no permission to access the advertisement endpoints, as the required scopes or roles are not yet assigned to your user. 
+To administrate authorizations for your business application, perform the following steps:
 
-To administrate authorizations for your business application, perform the steps of the procedure [HowTo Administrate Authorizations for CF Applications using the SAP CP Cockpit][9].
-
-Afterwards you need to logon again to your application so that the authorities are assigned to the user. You can provoke a logon screen when clearing your cache. Now you should have full access to all of your application endpoints.
+- Navigate to your Subaccount
+- Select menu item **Roles** from the **Security** menu on the left side of the screen and perform the procedure visualized in the screenshots:
+- Navigate back to your Subaccount
+- Select menu item **Trust Configuration** from the **Security** menu on the left side of the screen and select the standard IdP SAP ID Service. Now perform the procedure visualized in the screenshot:
+- Afterwards you need to logon again to your application so that the authorities are assigned to the user. You can provoke a logon screen when clearing your cache. Now you should have full access to all of your application endpoints.
 
 > **Troubleshoot**
 > You can analyze the authorities that are assigned to the current user via `https://d012345trial.authentication.sap.hana.ondemand.com/config?action=who`
