@@ -113,7 +113,7 @@ Messages matching a negative filter are not shown. This can be used to remove ce
 - [Logging Library](https://github.com/SAP/cf-java-logging-support)
 
 ## Further Reading
-[Howto change the log-level for a single thread by providing a token in the request header](https://github.com/SAP/cf-java-logging-support/wiki/Dynamic-Log-Levels)
+[How to change the log-level for a single thread by providing a token in the request header](https://github.com/SAP/cf-java-logging-support/wiki/Dynamic-Log-Levels)
 
 
 
