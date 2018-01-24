@@ -10,23 +10,17 @@ To administrate authorizations for your business application, perform the follow
 
 - Navigate to your Subaccount
 - Select menu item **Roles** from the **Security** menu on the left side of the screen and perform the procedure visualized in the screenshots:  
-<img src="/Security/images/CockpitRoleCollectionCreate.jpg" width="400">  
-<img src="/Security/images/CockpitRoleCollectionAddRole.jpg" width="400">  
+<img src="/Security/images/CockpitRoleCollectionCreate.jpg" width="700">  
+<img src="/Security/images/CockpitRoleCollectionAddRole.jpg" width="700">  
 
 - Navigate back to your Subaccount  
 - Select menu item **Trust Configuration** from the **Security** menu on the left side of the screen and select the standard IdP SAP ID Service. Now perform the procedure visualized in the screenshot:    
-<img src="/Security/images/CockpitRoleCollectionAssignToUser.jpg" width="400">  
+<img src="/Security/images/CockpitRoleCollectionAssignToUser.jpg" width="700">  
 
 - Afterwards you need to logon again to your application so that the authorities are assigned to the user. You can provoke a logon screen when clearing your cache. Now you should have full access to all of your application endpoints.
 
 > **Troubleshoot**
 > You can analyze the authorities that are assigned to the current user via `https://d012345trial.authentication.sap.hana.ondemand.com/config?action=who`
-
-## Further Reading
-- [Spring Security Reference](http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#abstractsecuritywebapplicationinitializer)
-- [Method Security Example](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-boot/commit/c3150c398ba7e18f703dd06e8c5943a261445293)<sub><b>[to-do]</b></sub>
-- [Expression-Based Access Control](https://docs.spring.io/spring-security/site/docs/3.0.x/reference/el-access.html)
-
 
 
 ***
