@@ -16,6 +16,8 @@ The following commands will setup your environment to use the provided Cloud Fou
  - `cf login -u <<your user id>>`
  - In case you are assigned to multiple orgs, select the `trial` organisation.
 
+To find the API end point, please refer the [documentation]( https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html)
+
 ## Step 2: Create `manifest.yml`
 In the root directory of your project, create a new file named `manifest.yml` and fill it with the following data:
 
