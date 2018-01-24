@@ -145,9 +145,6 @@ In order to analyze JSON responses best you can install a Chrome extension like 
   </dd>
 </dl>
 <hr>
-<a href="">
-  <img align="left" alt="Previous Exercise">
-</a>
 <a href="Exercise_2_HelloWorldResource.md">
   <img align="right" alt="Next Exercise">
 </a>
