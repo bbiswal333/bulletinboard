@@ -11,12 +11,12 @@ Get familiar with the provided code base and understand how to test your microse
 - Import the `master` branch of this [Git Project](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/master) <sub><b>[to-do]</b></sub> as described below:
 
 #### Initial Import
-If you did not import the `cc-bulletinboard-ads` project previously, follow these steps:
 - Select `File - Import - Git - Projects from Git`. 
-- In the next dialog, select `Clone URI` and enter the URI `git@github.wdf.sap.corp:cc-java/cc-bulletinboard-ads-spring-webmvc.git`.
+- In the next dialog, select `Clone URI` and enter the URI `git@github.wdf.sap.corp:cc-java/cc-bulletinboard-ads-spring-webmvc.git`<sub><b>[to-do]</b></sub>.
 - **Important**: Choose **`master`** as `Initial branch`
     - Use `Next` and `Finish` to go through the following dialogs (the default settings should be OK).
 - **Then update the Maven Settings: `ALT+F5`, `OK`**
+- Make sure that you have checked out the **`master`** branch.
 
 ## Step 1: Get to Know the Code
 Take some time to familiarize yourself with the given `bulletinboard-ads` microservice. Concentrate on the `src/main/java` source folder and there in particular the following classes are now of interest: `AppInitializer`, the `WebAppContextConfig` and `DefaultController`.
