@@ -191,7 +191,7 @@ In order to resolve the import issues, you need to add the `java-container-secur
 $ cf push 
 ```
 
-- Now enter the approuter URL e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com/ads` in the browser. Decode the JWT using the linked decoder. Make sure that the **`zid`** has the value of the **`d012345trial`** Identity Zone, which corresponds to the **`tenant id`**.
+- Now enter the approuter URL e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com/ads` in the browser. Decode the JWT using the linked decoder. Make sure that the **`zid`** has the same unique Id like the **`d012345trial`** subdomain, which corresponds to the **`tenant id`**.
 > Note:   
 > An alternative option to analyze the authorities that are assigned to the current user is via `https://d012345trial.authentication.sap.hana.ondemand.com/config?action=who`
 
