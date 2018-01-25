@@ -4,7 +4,7 @@ Exercise 6: Deploy Ads on the Cloud Foundry Environment
 Get familiar with the basic commands of the Cloud Foundry CLI, learn how to deploy your advertisement service into the cloud, and understand how microservices are managed.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-5-ValidationExceptions](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-5-ValidationExceptions) <sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-5-ValidationExceptions](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-5-ValidationExceptions).
 
 Prepare a Trial Account and Space on the SAP Cloud Platform Cloud Foundry environment
 - Create your own **Trial Account and Space** on the **Cloud Foundry environment** using the [**self-service on SAP Cloud Platform Cockpit**](https://account.hanatrial.ondemand.com). 
