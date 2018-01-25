@@ -5,7 +5,7 @@
 
 Asynchronous communication by publish-subscribe / messaging systems is a very important element of high performance and resilient cloud applications. Instead of calling a client service and waiting for a response, you just send a message and can immediately continue. There are different levels of loose coupling. In the extreme case the sender of an event does not know or care how many other services (if any) subscribed to their event. You can read a little more about messaging [here](../Service2ServiceCommunication/MessageQueue.md).  
 
-The goal of this exercise is that you learn how to send a message to inform other services about a specific event. Specifically, the task is to send an AMQP message to the RabbitMQ Message Queue Service (part of the standard CF backing services) whenever your Advertisement Service receives a request for a specific advertisement. This event (AMQP message) will then be picked up by a statistics service that counts how many times an advertisement was viewed. 
+The goal of this exercise is that you learn how to send a message to inform other services about a specific event. Specifically, the task is to send an AMQP message to the RabbitMQ Message Queue Service (part of the standard CF backing services) whenever your Advertisement Service receives a request for a specific advertisement. This event (AMQP message) will then be picked up by a **Statistics Service** that counts how many times an advertisement was viewed. 
 
 **Note:** In this exercise we will only send messages. Receiving and processing is handled in the next excercise.
 
@@ -131,7 +131,7 @@ In order to test whether the messages in the queue can be processed by a consume
 $ mvn clean verify
 $ cf push -n bulletinboard-statistics-d012345
 ```
-- Whenever you request an advertisment the statistics service should increase the counter for the same. To test this interaction you can call in the browser for example [bulletinboard-statistics-d012345.cfapps.sap.hana.ondemand.com/api/v1.0/statistics/1](https://bulletinboard-statistics-d012345.cfapps.sap.hana.ondemand.com/api/v1.0/statistics/1) - where "1" is the advertisment ID.
+- Whenever you request an advertisment the Statistics Service should increase the counter for the same. To test this interaction you can call in the browser for example [bulletinboard-statistics-d012345.cfapps.sap.hana.ondemand.com/api/v1.0/statistics/1](https://bulletinboard-statistics-d012345.cfapps.sap.hana.ondemand.com/api/v1.0/statistics/1) - where "1" is the advertisment ID.
 
 ## [Optional] Step 9: Use Hystrix
 
