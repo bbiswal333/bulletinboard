@@ -12,7 +12,7 @@ The task of this exercise is to implement the REST-services with responses as de
 | DELETE      | Delete     | 204 (No Content)                              | 204 (No Content); 404 (Not Found), if no advertisement with this ID exists |
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-4-Create-ServiceTests](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-4-Create-ServiceTests).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-4-Create-ServiceTests](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-4-Create-ServiceTests).
 
 ## Step 1: Single Update
 Start with your test: develop another component test case in your `AdvertisementControllerTest` class that sends a PUT request and implements the expectations that are specified in the table above.
