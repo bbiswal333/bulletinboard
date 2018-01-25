@@ -15,7 +15,7 @@ The approuter has these main functions:
 
 ## Prerequisite
 
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-19-Transfer-CorrelationID](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-19-Transfer-CorrelationID).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-19-Transfer-CorrelationID](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-19-Transfer-CorrelationID).
 
 Ensure that [Node.JS including its NPM Packager Manager](https://nodejs.org/en/) is installed: 
 ```
@@ -216,4 +216,4 @@ $ cf push
   <img align="right" alt="Next Exercise">
 </a>
 
-[1]: https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/Security/images/UAAOwnIDZone.png "UAA with own IDZone"
+
