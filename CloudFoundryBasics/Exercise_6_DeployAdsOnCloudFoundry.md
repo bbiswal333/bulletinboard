@@ -44,7 +44,7 @@ Note: In case you make use of the Community Java Buildpack it is recommended to 
   ```
   Make sure the execution is successful.
 - Use a browser and the `Postman` REST client to test whether your microservice runs in the cloud.
-For this use the URL `https://bulletinboard-ads-<<your user id>>.cfapps.sap.hana.ondemand.com/api/v1/ads/`.
+For this use the URL `https://bulletinboard-ads-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/api/v1/ads/`. The `<<region>>` needs to be replaced with eu10 or us10 depending on the trial environment where you have registered. For more details, please refer the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html)
 
 Note: In order to build the WAR file without running the tests, you can use `mvn clean package -DskipTests`.
 
