@@ -66,7 +66,7 @@ Open the [SAP Cloud Platform Cockpit](https://account.hanatrial.ondemand.com/coc
 - Now navigate into your `dev` Cloud Foundry **Space** and make sure that only one single application instance is running. 
 - Finally assign a colleague in the role of an `Auditor` to your space and let them check, whether they see the space as well in its Cockpit.
 
-![](/CloudFoundryBasics/images/SAPCockpit.png) <sub><b>[image-important]</b></sub>
+![](/CloudFoundryBasics/images/SAPCockpit.jpg) 
 
 ## [Optional] Step 6: Add Heartbeat URL to the Application Manifest
 There are various attributes that can be used to configure the deployment of your application, which are documented [here](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html).
