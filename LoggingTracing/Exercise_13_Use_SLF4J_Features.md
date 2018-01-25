@@ -7,8 +7,7 @@ After this exercise you know how to use the mapped diagnostic context (MDC) and 
 The task here is to enrich the logs written in the `AdvertisementController` class by making use of SLF4J features.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-12-Setup-Logger`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-12-Setup-Logger).<sub><b>[to-do]</b></sub>
-
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-12-Setup-Logger`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-12-Setup-Logger).
 ## Step 1: Add Endpoint Information to the Thread Context
 To demonstrate how the MDC can be used, we now add information about the called endpoint to each log message. Instead of adding this information to all three log statements, we store it into the MDC once.
 
