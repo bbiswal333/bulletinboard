@@ -6,8 +6,7 @@ Get familiar with the service related commands of the Cloud Foundry CLI, learn h
 The task is to get the Advertisement service including the persistency running on SAP Cloud Platform, Cloud Foundry environment. Therefore the deployed application must be bound to a PostgreSQL service, offered by the Cloud Foundry environment.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-9-Implement-JPA-Entity`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-9-Implement-JPA-Entity).<sub><b>[to-do]</b></sub>
-
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-9-Implement-JPA-Entity`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-9-Implement-JPA-Entity).
 ## Step 1: Create CF PostgreSQL Service
 Create a service instance with name `postgres-bulletinboard-ads` on the Cloud Foundry environment. 
 
@@ -15,7 +14,7 @@ Create a service instance with name `postgres-bulletinboard-ads` on the Cloud Fo
 cf create-service postgresql v9.4-dev postgres-bulletinboard-ads
 ```
 
-Note: You can get the exact names of the available services and its plans in the service marketplace (`cf marketplace`). Here we have selected the service plan `v9.4-dev` for the `postgresql` service as this is a *less expensive* offering as you can also analyze in the [**SAP Cloud Platform Cockpit**](https://account.int.sap.hana.ondemand.com/cockpit#/home/overview) <sub><b>[to-do]</b>I guess this needs to be account.hanatrial.ondemand.com</sub>
+Note: You can get the exact names of the available services and its plans in the service marketplace (`cf marketplace`). Here we have selected the service plan `v9.4-dev` for the `postgresql` service as this is a *less expensive* offering as you can also analyze in the [**SAP Cloud Platform Cockpit**](https://account.hanatrial.ondemand.com/cockpit#/home/overview).
 
 Furthermore note, the created backing service is only *available* within the current targeted space and can be bound only to the applications within the same space.
 
