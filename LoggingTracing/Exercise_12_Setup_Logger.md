@@ -13,8 +13,7 @@ The Java logging library we are using
 - enriches each log message with additional information, e.g. the timestamp or the class emitting the log message
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-11-Develop-Custom-Queries`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-11-Develop-Custom-Queries).<sub><b>[to-do]</b></sub>
-
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-11-Develop-Custom-Queries`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-11-Develop-Custom-Queries).
 ## Step 1: Initialize the Logger
 In order to initialize features provided by the SAP library [Logging Support for Cloud Foundry](https://github.com/SAP/cf-java-logging-support) you need to add a servlet filter within the `onStartup` method of the `AppInitializer` class (import from `com.sap.hcp.cf.logging.servlet.filter`):
 
