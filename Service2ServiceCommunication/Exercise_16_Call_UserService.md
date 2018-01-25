@@ -8,14 +8,14 @@ The task of this exercise is to call the User service to find out whether the cu
 Technically we are going to use [`RestTemplate`](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html). The `RestTemplate` is the central Spring class for client-side HTTP access. Conceptually, it is very similar to the `JdbcTemplate`, `JmsTemplate`, and the various other templates found in the Spring Framework. This means, for instance, that the `RestTemplate` is thread-safe once constructed, and that you can use callbacks to customize its operations.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-13-Use-SLF4J-Features`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-13-Use-SLF4J-Features).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-13-Use-SLF4J-Features`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-13-Use-SLF4J-Features).<sub><b>[to-do]</b></sub>
 
 ## Step 1: Test User Service Using a REST Client<sub><b>[to-do]</b></sub>
 Before we start with the implementation we want to get familiar with the User service. 
 
 You can test the following REST service endpoints manually in the browser using the `Postman` Chrome plugin:
-- `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users`<sub><b>[to-do]</b></sub> - returns all available users with their IDs.
-- `https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com/api/v1.0/users/{ID}`<sub><b>[to-do]</b></sub> - returns the information for a user where {ID} is a placeholder for a user id, e.g. "42".
+- `https://opensapcp5userservice.cfapps.eu10.hana.ondemand.com/api/v1.0/users` - returns all available users with their IDs.
+- `https://opensapcp5userservice.cfapps.eu10.hana.ondemand.com/api/v1.0/users/{ID}` - returns the information for a user where {ID} is a placeholder for a user id, e.g. "42".
 
 ## Step 2: Add Maven Dependency
 Add the dependency to the Apache http client to your `pom.xml` using the XML view of Eclipse:
@@ -38,9 +38,9 @@ Add the dependency to the Apache http client to your `pom.xml` using the XML vie
 ## Step 3: Create a User Service Client
 The User service client hides the call to the RESTful User Webservice, provides JSON parsing and error handling.
 
-Create a new class `UserServiceClient` in package `com.sap.bulletinboard.ads.services` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-16-Call-User-Service/src/main/java/com/sap/bulletinboard/ads/services/UserServiceClient.java).<sub><b>[to-do]</b></sub> Explanation: This class should offer the information whether a given user (`String id`) is a premium User or not. It makes use of the `RestTemplate` that gets injected via the constructor and needs to be defined as well. The route/URI to the User service is retrieved from an environment variable using the `@Value("${USER_ROUTE}")` annotation. The path is set to the endpoint `api/v1.0/users/{id}`. 
+Create a new class `UserServiceClient` in package `com.sap.bulletinboard.ads.services` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-16-Call-User-Service/src/main/java/com/sap/bulletinboard/ads/services/UserServiceClient.java). Explanation: This class should offer the information whether a given user (`String id`) is a premium User or not. It makes use of the `RestTemplate` that gets injected via the constructor and needs to be defined as well. The route/URI to the User service is retrieved from an environment variable using the `@Value("${USER_ROUTE}")` annotation. The path is set to the endpoint `api/v1.0/users/{id}`. 
 
-Create a new class `RestTemplateConfig` in package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-16-Call-User-Service/src/main/java/com/sap/bulletinboard/ads/config/RestTemplateConfig.java).<sub><b>[to-do]</b></sub>
+Create a new class `RestTemplateConfig` in package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-16-Call-User-Service/src/main/java/com/sap/bulletinboard/ads/config/RestTemplateConfig.java).
 
 **Explanation**
 - This class makes use of the Apache `HttpClientBuilder` to build a `CloseableHttpClient` instance with a proxy, in case the environment variables `http.proxyHost` and `http.proxyPort` are set (for local execution). 
