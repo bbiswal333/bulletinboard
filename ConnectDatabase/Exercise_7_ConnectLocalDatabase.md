@@ -6,7 +6,7 @@ In this exercise you will learn how to setup a connection to the database runnin
 Furthermore, you will get to know the `VCAP_SERVICES` environment variable and understand how it can be used for local databases.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-6-Deploy-Ads-On-CF`]https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-6-Deploy-Ads-On-CF).
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-6-Deploy-Ads-On-CF`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-6-Deploy-Ads-On-CF).
 
 ## Step 1: Connect to Local Database in Eclipse
 We want to manage the connection to the PostgreSQL database within Eclipse using the [`DBeaver` eclipse plugin](https://marketplace.eclipse.org/content/dbeaver).
