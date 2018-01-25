@@ -42,7 +42,7 @@ It suffices to add the direct dependency on the SAP Java Container Security libr
 
 
 #### Explanation
-The responsibility of the `WebSecurityConfig` class is to **__configure__** the Spring Security framework. The class represents a java based configuration, which has been derived from the XML based configuration of the [XSA java-hello-word sample application](https://github.wdf.sap.corp/xs2-samples/java-hello-world/blob/master/java/src/main/webapp/WEB-INF/).<sub><b>[to-do]</b></sub> You can use this class as a template for your own applications. Change the `antMatchers` method with the respective HTTP method and URL pattern of the service endpoint(s) to be secured. Change the `access` method with the authorization a user requires for that URL pattern. You can add as many `antMatchers(...).access(...)` method chains as you wish.
+The responsibility of the `WebSecurityConfig` class is to **__configure__** the Spring Security framework. The class represents a java based configuration. You can use this class as a template for your own applications. Change the `antMatchers` method with the respective HTTP method and URL pattern of the service endpoint(s) to be secured. Change the `access` method with the authorization a user requires for that URL pattern. You can add as many `antMatchers(...).access(...)` method chains as you wish.
 
 Technically - under the hood - the default [`AffirmativeBased`](https://docs.spring.io/spring-security/site/docs/4.2.1.RELEASE/apidocs/org/springframework/security/access/vote/AffirmativeBased.html) `AccessDecisionManager` is used. This holds the `WebExpressionVoter`, which in turn makes use of the `OAuth2WebSecurityExpressionHandler` that handles Spring EL expressions like `hasRole` or `isAuthenticated` ([read more](https://docs.spring.io/spring-security/site/docs/3.0.x/reference/el-access.html)). If you require more than one Voter you can specify a "custom" `AccessDecisionManager` such as [`UnanimousBased`](https://docs.spring.io/spring-security/site/docs/4.2.1.RELEASE/apidocs/org/springframework/security/access/vote/UnanimousBased.html).
 
@@ -58,7 +58,7 @@ servletContext.addFilter(AbstractSecurityWebApplicationInitializer.DEFAULT_FILTE
 The `DelegatingFilterProxy` intercepts the requests and adds a `ServletFilter` chain between the web container and your web application, so that the Spring Security framework can filter out unauthenticated and unauthorized requests.
 
 ### Note on how to enable security checks on method level
-You have enabled security centrally on the web level as defined in `WebSecurityConfig`. Besides that you have the option to do the authorization checks on method level using [Method Security](http://docs.spring.io/autorepo/docs/spring-security/current/reference/htmlsingle/#jc-method). In this [(spring boot) example](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-boot/commit/c3150c398ba7e18f703dd06e8c5943a261445293)<sub><b>[to-do]</b></sub> we implement our own expressions by making use of the new [expression-based access control](http://docs.spring.io/spring-security/site/docs/current/reference/html/el-access.html).
+You have enabled security centrally on the web level as defined in `WebSecurityConfig`. Besides that you have the option to do the authorization checks on method level using [Method Security](http://docs.spring.io/autorepo/docs/spring-security/current/reference/htmlsingle/#jc-method).
 
 ## Step 3: Setup Security for Component Tests
 
