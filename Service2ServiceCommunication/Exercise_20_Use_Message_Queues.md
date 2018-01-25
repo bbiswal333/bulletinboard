@@ -10,7 +10,7 @@ The goal of this exercise is that you learn how to send a message to inform othe
 **Note:** In this exercise we will only send messages. Receiving and processing is handled in the next excercise.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-19-Transfer-CorrelationID`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-19-Transfer-CorrelationID).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-19-Transfer-CorrelationID`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-19-Transfer-CorrelationID).
 
 ## Step 1: Add Maven Dependency
 Add the `spring-rabbit` dependency to your `pom.xml`:
@@ -33,7 +33,7 @@ Add the `spring-rabbit` dependency to your `pom.xml`:
 
 ## Step 2: Add `CloudRabbitConfig`
 
-Create a new class `CloudRabbitConfig` in package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-20-Use-Message-Queues/src/main/java/com/sap/bulletinboard/ads/config/CloudRabbitConfig.java).<sub><b>[to-do]</b></sub>
+Create a new class `CloudRabbitConfig` in package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-20-Use-Message-Queues/src/main/java/com/sap/bulletinboard/ads/config/CloudRabbitConfig.java).
 
 ## Step 3: Implement `StatisticsServiceClient`
 
@@ -78,7 +78,7 @@ Based on the `VCAP_SERVICES` environment variable  the `spring-cloud` connector 
 ```
 
 - If you want to view / edit `VCAP_SERVICES`or JSON structures in general, you can e.g. use the Chrome [JSON Editor](https://chrome.google.com/webstore/detail/json-editor/lhkmoheomjbkfloacpgllgjcamhihfaj?utm_source=chrome-ntp-icon) plugin.
-- If you run the application from the command line, update your `localEnvironmentSetup` script: [`localEnvironmentSetup.sh`](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-20-Use-Message-Queues/localEnvironmentSetup.sh)<sub><b>[to-do]</b></sub> ([`localEnvironmentSetup.bat`](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-20-Use-Message-Queues/localEnvironmentSetup.bat))<sub><b>[to-do]</b></sub> with the new value of `VCAP_SERVICES`.
+- If you run the application from the command line, update your `localEnvironmentSetup` script: [`localEnvironmentSetup.sh`](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-20-Use-Message-Queues/localEnvironmentSetup.sh)([`localEnvironmentSetup.bat`](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-20-Use-Message-Queues/localEnvironmentSetup.bat)) with the new value of `VCAP_SERVICES`.
 
 #### Run and test the application
 
@@ -98,7 +98,7 @@ In the case of RabbitMQ a similar approach is not easily possible.
 Instead, we just provide mock instances of every queue-related bean that is defined in the `CloudRabbitConfig` class.
 
 #### Create `MockRabbitConfig`
-As part of the `src/test/java` source folder create a new class `MockRabbitConfig` in the package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-20-Use-Message-Queues/src/test/java/com/sap/bulletinboard/ads/config/MockRabbitConfig.java).<sub><b>[to-do]</b></sub> With that there is no need to mock the `StatisticsServiceClient`. 
+As part of the `src/test/java` source folder create a new class `MockRabbitConfig` in the package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-20-Use-Message-Queues/src/test/java/com/sap/bulletinboard/ads/config/MockRabbitConfig.java). With that there is no need to mock the `StatisticsServiceClient`. 
 
 After that the tests should run again.
 
@@ -141,7 +141,7 @@ However, the queue itself might fail for various reasons: e.g. the queue accepts
 
 Adapt your configuration so that the `amqpTemplate.send` method is wrapped in a `HystrixCommand`, similar as you've done in [Exercise 17](../Service2ServiceCommunication/Exercise_17_Introduce_Hystrix.md). Make sure to store the Correlation ID in a field, as the `run` method will be called in a different thread, and use this field to initialize the log context using `LogContext.initializeContext`.
 
-Have a look at our sample [branch exercise 20](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-20-Use-Message-Queues)<sub><b>[to-do]</b></sub>
+Have a look at our sample [branch exercise 20](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-20-Use-Message-Queues).
 
 ## Used Frameworks and Tools
 - [RabbitMQ](https://www.rabbitmq.com/)
