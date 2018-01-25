@@ -13,7 +13,7 @@ The task of this exercise is to implement a **JUnit test suite** that tests the 
 | GET         | Read       | 200 (OK), list of advertisements | 200 (OK), single ad; 404 (Not Found), if no advertisement with this ID exists |
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`solution-3-Create-Ads-Endpoints`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-3-Create-Ads-Endpoints).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`solution-3-Create-Ads-Endpoints`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-3-Create-Ads-Endpoints).
 
 ## Step 1: Create JUnit Test Suite
 In Java the test classes are typically separated from the source code so that Maven can package the microservice as application without the test code. That means that the test classes are stored in another root directory, while the package structure is identical to the structure in `src/main`:
@@ -25,7 +25,7 @@ As the above example shows, the test class is named like the class under test wi
 - Note: While JUnit itself does not care about file names, the maven `surefire plugin` will only look for files whose names begin or end with `Test` (and [some other patterns](http://maven.apache.org/surefire/maven-surefire-plugin/examples/inclusion-exclusion.html)). Therefore you have to name the test classes according to those conventions. You run these tests with `mvn clean verify`.
 
 
-In Eclipse within the (source) folder named **`src/test/java`** create an `AdvertisementControllerTest` class in the package `com.sap.bulletinboard.ads.controllers` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/exercise-4-Create-ServiceTests/src/test/java/com/sap/bulletinboard/ads/controllers/AdvertisementControllerTest.java).<sub><b>[to-do]</b></sub>
+In Eclipse within the (source) folder named **`src/test/java`** create an `AdvertisementControllerTest` class in the package `com.sap.bulletinboard.ads.controllers` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-4-Create-ServiceTests/src/test/java/com/sap/bulletinboard/ads/controllers/AdvertisementControllerTest.java).
 
 
 **Some JUnit Explanations**
