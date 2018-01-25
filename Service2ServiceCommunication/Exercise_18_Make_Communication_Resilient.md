@@ -11,13 +11,12 @@ In this exercise we will test the `GetUserCommand` class, which is used internal
 As the `UserServiceClient` in the test is provided just as a mocked implementation (see [Exercise 16](Exercise_16_Call_UserService.md)), we will test directly against `GetUserCommand`.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-17-Integrate-Hystrix`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-17-Integrate-Hystrix).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-17-Integrate-Hystrix`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-17-Integrate-Hystrix).
 
 ## Step 1: Implement Tests
 - In order to make outgoing request call substitutable by the test, we first need to prepare the `GetUserCommand` class: Use **Eclipse refactoring tools** to extract the code that does the request (`ResponseEntity<User> responseEntity = restTemplate.getForEntity(url, User.class);`) from the `run` method, into a **protected method `sendRequest`**. With that we can easily provoke long running and failing requests within the test.
 
-- As part of the `src/test/java` source folder create a new class `GetUserCommandTest` in the package `com.sap.bulletinboard.ads.services` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/exercise-18-Make-Communication-Resilient/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java).
-<sub><b>[to-do]</b></sub>
+- As part of the `src/test/java` source folder create a new class `GetUserCommandTest` in the package `com.sap.bulletinboard.ads.services` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-18-Make-Communication-Resilient/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java).
 
 ## Step 2: Provide Fallback Implementation
 In this step we provide the required fallback implementation. This is necessary because our code relies on the response of the wrapped Hystrix command. Use the tests implemented in the `GetUserCommandTest` class to drive the implementation.
@@ -29,8 +28,7 @@ In this step we provide the required fallback implementation. This is necessary 
 
 **Note:** Here we concentrate on the technical issue of providing a fallback. In practice a lot of thought has to go into the decision what exactly to return when a fallback is used. One good idea might be to return a default (unauthorized) user. Another idea is to clearly communicate errors to the end user (without provoking a long timeout).
 
-Have also a look into the last commit of the branch [solution 18](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-18-Make-Communication-Resilient)
-<sub><b>[to-do]</b></sub> to see our sample solution.
+Have also a look into the last commit of the branch [solution 18](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-18-Make-Communication-Resilient) to see our sample solution.
 
 ## Step 3: Increase Timeout
 Beside of providing a fallback implementation you also might want to overrule the default timeout setting of Hystrix (1000ms) for this command (group). We can do that programmatically and / or we can provide a configuration that is evaluated dynamically at runtime.
@@ -75,9 +73,9 @@ There are mainly two exceptions exposed by a `HystrixCommand`:
 
 2. `HystrixBadRequestException` that is the Hystrix’s equivalent of `IllegalArgumentException`. Unlike all other exceptions thrown by a `HystrixCommand` this **does not trigger the `getFallback` method** and does not count for circuit breaking. Note that `HystrixBadRequestException` does not extend `HystrixRuntimeException`.
 
-You can make use of the `HystrixBadRequestException` for all outgoing requests that return a `4xx` http status code as also implemented [here](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-Make-Communication-Resilient/src/main/java/com/sap/bulletinboard/ads/services/GetUserCommand.java) 
-<sub><b>[to-do]</b></sub> ([test case `responseHystrixBadRequest`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-Make-Communication-Resilient/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java)). 
-<sub><b>[to-do]</b></sub>
+You can make use of the `HystrixBadRequestException` for all outgoing requests that return a `4xx` http status code as also implemented [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-18-Make-Communication-Resilient/src/main/java/com/sap/bulletinboard/ads/services/GetUserCommand.java) 
+([test case `responseHystrixBadRequest`](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-18-Make-Communication-Resilient/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java)). 
+
 
 ## [Optional] Step 5: Make Fallback Configurable by its Caller
 When the same Hystrix command has different callers or is called in different contexts, the caller might wish to define a fallback that fits into its context. For providing a Java callback function we make use of lambda expressions (Java 8), which can be easily overwritten by the caller (in our case the `AdvertisementController`).
@@ -89,9 +87,8 @@ The easiest way to make the Hystrix fallback configurable is to add a function p
   - `this::dummyUser` - to reference a function of name `dummyUser`
   - `User::new` or `() -> { return new User(); }` - to return a new `User` object when called.
 
-A Lambda example can be found in the branch `solution-18-2-Make-Fallback-Configurable-using-Lambda` [GetUserCommand](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-2-Make-Fallback-Configurable-using-Lambda/src/main/java/com/sap/bulletinboard/ads/services/GetUserCommand.java) 
-<sub><b>[to-do]</b></sub> ([GetUserCommandTest](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-18-2-Make-Fallback-Configurable-using-Lambda/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java)). 
-<sub><b>[to-do]</b></sub>
+A Lambda example can be found in the branch `solution-18-2-Make-Fallback-Configurable-using-Lambda` [GetUserCommand](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-18-2-Make-Fallback-Configurable-using-Lambda/src/main/java/com/sap/bulletinboard/ads/services/GetUserCommand.java) 
+ ([GetUserCommandTest](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-18-2-Make-Fallback-Configurable-using-Lambda/src/test/java/com/sap/bulletinboard/ads/services/GetUserCommandTest.java)). 
 
   
 ## Used Frameworks and Tools
