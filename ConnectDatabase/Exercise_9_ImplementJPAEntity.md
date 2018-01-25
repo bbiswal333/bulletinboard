@@ -7,7 +7,7 @@ After this exercise you know how to implement a JPA entity leveraging the JPA an
 The task of this exercise is to get familiar with the most common JPA annotations using JUnit tests to motivate their usage.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-8-2-Use-Repository-To-Access-Database`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-8-2-Use-Repository-To-Access-Database).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-8-2-Use-Repository-To-Access-Database`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-8-2-Use-Repository-To-Access-Database).
 
 ## Step 1: Create JUnit Test Class 
 Create JUnit test case `AdvertisementRepositoryTest` in test-package `com.sap.bulletinboard.ads.models`. In Eclipse select `File - New - Other`. In the next dialog, enter `JUnit Test Case`. The default settings should be OK.
@@ -35,7 +35,7 @@ private AdvertisementRepository repo;
 That means, you will always start with the test case. Run the test case and watch the test fail. Then you would implement the production code necessary to pass the tests.
 
 **Explanation:** Basically you will introduce some technical fields documenting for example when entries are created / updated. Those are helpful to analyze or even avoid database inconsistencies. 
-Later you might want to extract those *technical attributes* in a base class as we did it [here](https://github.wdf.sap.corp/cc-java-dev/cc-bulletinboard-ads-spring-cxf-tomcat/blob/master/src/main/java/com/sap/bulletinboard/ads/models/BaseEntity.java).<sub><b>[to-do]</b></sub>
+Later you might want to extract those *technical attributes* in a base class as we did it [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/master/src/main/java/com/sap/bulletinboard/ads/models/BaseEntity.java).
 
 ### Test 1: Id should be generated for new advertisement
 Test Case:
