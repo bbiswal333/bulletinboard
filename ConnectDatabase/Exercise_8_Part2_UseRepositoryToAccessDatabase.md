@@ -7,7 +7,7 @@ After this exercise you know how to access our database using the convenience CR
 The task of this exercise is to persist the advertisements via the corresponding repository instead of storing the data temporarily into a `Map` <sub><b>[to-do]</b>[Why not use HashMap here, as in the previous excercise and later in this excercise?]</sub> and ensure that the JUnit tests are still running successfully. That's why you also need to configure the in-memory database (H2) in context of the JUnit tests. 
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-8-1-Configure-Persistence`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-8-1-Configure-Persistence).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-8-1-Configure-Persistence`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-8-1-Configure-Persistence).
 
 ## Step 1: Inject Repository Into Controller
 In the previous exercise we used the `Spring Data JPA` plugin to create an instance of the `AdvertisementRepository` interface. In this step we inject such an instance into the `AdvertisementController`.
@@ -43,7 +43,7 @@ Furthermore the tests should run independently from a concrete database, so we p
 ```
 Note: After you've changed the Maven settings, don't forget to update your Eclipse project! To do so right click on your Eclipse project and select `Maven` - `Update Project ...` (`ALT-F5`)
 
-- Create a new class `EmbeddedDatabaseConfig` in the **test package** `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/raw/solution-8-2-Use-Repository-To-Access-Database/src/test/java/com/sap/bulletinboard/ads/config/EmbeddedDatabaseConfig.java).<sub><b>[to-do]</b></sub>
+- Create a new class `EmbeddedDatabaseConfig` in the **test package** `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/raw/solution-8-2-Use-Repository-To-Access-Database/src/test/java/com/sap/bulletinboard/ads/config/EmbeddedDatabaseConfig.java).
 - Now you can run the JUnit tests as described [in Exercise 4](../CreateMicroservice/Exercise_4_CreateServiceTests.md).
 
 **Explanation:** When the tests are started, the application is not initialized using the `AppInitializer`. The application context is initialized with all classes that are added as part of the `@ContextConfiguration` annotation (@see `AdvertisementControllerTest` class). As consequence the "cloud" profile isn't set in context of the test context. 
@@ -80,7 +80,7 @@ Assume you have hundreds or more entries in a table. As part of a GET-all reques
 
 For paging / pagination, you can simply make use of the [`PagingAndSortingRepository`](http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/PagingAndSortingRepository.html), which is an extension of `CrudRepository`. As part of your `readAll` request handler method you just need to introduce additional [`RequestParam`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestParam.html)s `pageId` and `pageSize` with some meaningful defaults.
 
-Have a look into the last commit of the [`solution-8-3-IntroducePaging`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-8-3-IntroducePaging) <sub><b>[to-do]</b></sub> branch to see how an implementation could look like.
+Have a look into the last commit of the [`solution-8-3-IntroducePaging`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-8-3-IntroducePaging) branch to see how an implementation could look like.
 
 ## Used Frameworks and Tools
 - [H2 in-memory Database](http://www.h2database.com/html/tutorial.html)
