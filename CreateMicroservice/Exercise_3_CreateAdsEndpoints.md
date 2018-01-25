@@ -62,7 +62,7 @@ HttpHeaders headers = new HttpHeaders();
 headers.setLocation(new URI(uriComponents.getPath()));
 ```
 - Choose a trivial method of generating an ID, e.g. via static counter or by examining the size of the hash map. We will replace the map with database persistence in [Exercise 8](../ConnectDatabase/Exercise_8_Part1_ConfigurePersistence.md).
-- Find a sample solution [here](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-3-Create-Ads-Endpoints/src/main/java/com/sap/bulletinboard/ads/controllers/AdvertisementController.java) <sub><b>[to-do]</b></sub>
+- Find a sample solution [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-3-Create-Ads-Endpoints/src/main/java/com/sap/bulletinboard/ads/controllers/AdvertisementController.java)
   - Note: The sample solution represents the final solution after step 5.
 - Note that we offer a relative [URI-reference](https://tools.ietf.org/html/rfc3986#section-4.2) as location
 - Consider the `Troubleshooting` section below.
@@ -87,7 +87,7 @@ Ensure that the advertisement you created before is returned.
 - If you experience any problems while solving the following exercise steps, make sure to check the `Console` output in Eclipse. For most common errors Tomcat/Spring show a helpful error message, even if the output shown in the browser (or Postman) does not help.
 - **The POST-request returns a "bad request"(status code: 400) and I'm unable to debug it.** One possible reason could be that your `Advertisement` class does not specify a constructor without parameters (either implicitly or explicitly). Explanation: The [Jackson JSON provider](../Knowledge/JSONConversion.md) requires such a default constructor. In that case you are also not able to debug, as the Jackson JSON provider intercepts the request and tries to convert the entity even before your REST method is executed. 
 Before you deploy your application again to the Tomcat server, a `clean...` of your Tomcat server might be required.
-- Also, feel free to have a look at our [solution](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-3-Create-Ads-Endpoints).<sub><b>[to-do]</b></sub>
+- Also, feel free to have a look at our [solution](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-3-Create-Ads-Endpoints).
 
 ## [Optional] Step 4: Return Not Found Status
 - In case the advertisement for a specific ID is requested (`/ads/{id}`) but no advertisement for this ID is found, the service method should return the HTTP status code 404 (Not Found). To do this, simply raise a `com.sap.bulletinboard.ads.controllers.NotFoundException`.
