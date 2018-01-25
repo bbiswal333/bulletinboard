@@ -7,8 +7,7 @@ After this exercise you will know how to define an authorization model for your 
 The task of this exercise is to declare a "start authorization" for the security descriptor of your application and reference it from the configuration file of the approuter, so that the approuter is able to perform a generic authorization check on the declared start authorization.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-22-Deploy-AppRouter`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-22-Deploy-AppRouter).<sub><b>[to-do]</b></sub>
-
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-22-Deploy-AppRouter`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-22-Deploy-AppRouter).
 ## Step 1: Define Scopes and Role Templates
 
 Before we can enable generic authorization checks we need to define so-called **"application scopes"** in order to define functional authorizations such as "Display", "Update" and "Delete".
