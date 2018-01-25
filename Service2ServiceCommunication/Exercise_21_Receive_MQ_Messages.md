@@ -16,7 +16,7 @@ The Statistics service periodically sends out messages containing its statistics
 In this step you want to implement and register a listener for the corresponding queue to receive messages from the Statistics service.
 
 Create a `StatisticsListener` class that implements the `MessageListener` interface and annotate the class with `@Component` and `@Profile("cloud")`.
-- In the constructor, declare a queue with name "statistics.periodicalStatistics" similar like in the [`StatisticsServiceClient` constructor](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-20-Use-Message-Queues/src/main/java/com/sap/bulletinboard/ads/services/StatisticsServiceClient.java).<sub><b>[to-do]</b></sub> In addition to an instance of `AmqpAdmin` also inject an instance of `org.springframework.amqp.rabbit.connection.ConnectionFactory`. Then create an instance of `SimpleMessageListenerContainer` and register the `StatisticsListener`:
+- In the constructor, declare a queue with name "statistics.periodicalStatistics" similar like in the [`StatisticsServiceClient` constructor](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-20-Use-Message-Queues/src/main/java/com/sap/bulletinboard/ads/services/StatisticsServiceClient.java). In addition to an instance of `AmqpAdmin` also inject an instance of `org.springframework.amqp.rabbit.connection.ConnectionFactory`. Then create an instance of `SimpleMessageListenerContainer` and register the `StatisticsListener`:
 ```
   SimpleMessageListenerContainer listenerContainer = new SimpleMessageListenerContainer();
   listenerContainer.setConnectionFactory(connectionFactory);
