@@ -6,7 +6,7 @@
 The task of this exercise is to consume Advanced Message Queueing Protocol (AMQP) messages from the RabbitMQ message queue that are sent out by the Statistics service periodically.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-20-Use-Message-Queues`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-20-Use-Message-Queues).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-20-Use-Message-Queues`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-20-Use-Message-Queues).
 
 Ensure that the `bulletinboard-statistics` application is deployed in your CF space and that you have created a `rabbitmq` service with name `mq-bulletinboard`.
 
