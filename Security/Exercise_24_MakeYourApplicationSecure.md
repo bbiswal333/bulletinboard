@@ -11,7 +11,7 @@ Note: There is currently no easy way to make a subset of apps 'unreachable' via 
 
 ## Prerequisite
 
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`solution-23-Setup-Generic-Authorization`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-23-Setup-Generic-Authorization).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`solution-23-Setup-Generic-Authorization`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-23-Setup-Generic-Authorization).
 
 ## Step 1: Add Maven Dependencies
 
@@ -36,7 +36,7 @@ It suffices to add the direct dependency on the SAP Java Container Security libr
 ## Step 2: Configure Spring Security
 
 ### Add and modify `WebSecurityConfig` class
-- Create a `WebSecurityConfig` class in the package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/main/java/com/sap/bulletinboard/ads/config/WebSecurityConfig.java).<sub><b>[to-do]</b></sub>
+- Create a `WebSecurityConfig` class in the package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-24-Make-App-Secure/src/main/java/com/sap/bulletinboard/ads/config/WebSecurityConfig.java).
 - Change the value of field `XSAPPNAME` from `"bulletinboard-d012345"` to `"bulletinboard-<Your d/c/i-User>"`.  
 **Note:** The value of `private static final String XSAPPNAME` must be equal to the value of `xsappname`, that is defined in your `xs-security.json` file. 
 
@@ -78,12 +78,12 @@ public void setUp() throws Exception {
 - Now run your JUnit tests and see them failing because of unexpected `401` ("unauthenticated") status code.
 
 ### Fake Test Security Infrastructure
-- Create folder `cc-bulletinboard-ads/src/test/resources` and copy the files [privateKey.txt](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/resources/privateKey.txt)<sub><b>[to-do]</b></sub>, [publicKey.txt](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/resources/publicKey.txt)<sub><b>[to-do]</b></sub> into the new folder.
+- Create folder `cc-bulletinboard-ads/src/test/resources` and copy the files [privateKey.txt](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-24-Make-App-Secure/src/test/resources/privateKey.txt), [publicKey.txt](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-24-Make-App-Secure/src/test/resources/publicKey.txt) into the new folder.
 
-- Copy the implementation of the `TestSecurityConfig` class from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/java/com/sap/bulletinboard/ads/config/TestSecurityConfig.java)<sub><b>[to-do]</b></sub> into the **test package** named `com.sap.bulletinboard.ads.config`.  
+- Copy the implementation of the `TestSecurityConfig` class from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-24-Make-App-Secure/src/test/java/com/sap/bulletinboard/ads/config/TestSecurityConfig.java) into the **test package** named `com.sap.bulletinboard.ads.config`.  
 In productive environments, `SAPOfflineTokenServicesCloud` reads the public key value from the environment variable `VCAP_SERVICES`. For unit tests, you explicitly set the public key of your test key pair with the `JwtGenerator`. The `JwtGenerator` takes the public key from the `publicKey.txt` file.
 
-- Copy the implementation of the `JwtGenerator` class from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/src/test/java/com/sap/bulletinboard/ads/testutils/JwtGenerator.java)<sub><b>[to-do]</b></sub> into a new test package named `com.sap.bulletinboard.ads.testutils`.
+- Copy the implementation of the `JwtGenerator` class from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-24-Make-App-Secure/src/test/java/com/sap/bulletinboard/ads/testutils/JwtGenerator.java) into a new test package named `com.sap.bulletinboard.ads.testutils`.
 
 
 ## Step 4: Fix and Run Component Tests
@@ -125,7 +125,7 @@ Based on the `VCAP_SERVICES` environment variable the `spring-security` module i
 ```javascript
 {"rabbitmq-lite":[{"credentials":{"hostname":"127.0.0.1","password":"guest","uri":"amqp://guest:guest@127.0.0.1:5672","username":"guest"},"name":"rabbitmq-lite","label":"rabbitmq-lite","tags":["rabbitmq33","rabbitmq","amqp"]}],"postgresql-9.3":[{"name":"postgresql-lite","label":"postgresql-9.3","credentials":{"dbname":"test","hostname":"127.0.0.1","password":"test123!","port":"5432","uri":"postgres://testuser:test123!@localhost:5432/test","username":"testuser"},"tags":["relational","postgresql"],"plan":"free"}],"xsuaa":[{"credentials":{"clientid":"testClient!t27","clientsecret":"dummy-clientsecret","identityzone":"uaa","url":"dummy-url","verificationkey":"-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn5dYHyD/nn/Pl+/W8jNGWHDaNItXqPuEk/hiozcPF+9l3qEgpRZrMx5ya7UjGdvihidGFQ9+efgaaqCLbk+bBsbU5L4WoJK+/t1mgWCiKI0koaAGDsztZsd3Anz4LEi2+NVNdupRq0ScHzweEKzqaa/LgtBi5WwyA5DaD33gbytG9hdFJvggzIN9+DSverHSAtqGUHhwHSU4/mL36xSReyqiKDiVyhf/y6V6eiE0USubTEGaWVUANIteiC+8Ags5UF22QoqMo3ttKnEyFTHpGCXSn+AEO0WMLK1pPavAjPaOyf4cVX8b/PzHsfBPDMK/kNKNEaU5lAXo8dLUbRYquQIDAQAB-----END PUBLIC KEY-----","xsappname":"bulletinboard-d012345"},"tags":["xsuaa"]}]}
 ```
-- If you run the application from the command line, update your `localEnvironmentSetup` script accordingly to  [`localEnvironmentSetup.sh`](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/localEnvironmentSetup.sh)<sub><b>[to-do]</b></sub> ([`localEnvironmentSetup.bat`](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-24-Make-App-Secure/localEnvironmentSetup.bat))<sub><b>[to-do]</b></sub>
+- If you run the application from the command line, update your `localEnvironmentSetup` script accordingly to  [`localEnvironmentSetup.sh`](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-24-Make-App-Secure/localEnvironmentSetup.sh) ([`localEnvironmentSetup.bat`](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-24-Make-App-Secure/localEnvironmentSetup.bat))
 - In both cases make sure that you've changed the value of field `xsappname` from "bulletinboard-d012345" to "bulletinboard-<Your d/c/i-User>".
 
 Note: With this configuration we can mock the XSUAA backing service as we make use of so-called "offlineToken verification". Having that we can simulate a valid JWT Token to test our service as described below.
