@@ -6,7 +6,7 @@ In this exercise you will learn how to setup a connection to the database runnin
 Furthermore, you will get to know the `VCAP_SERVICES` environment variable and understand how it can be used for local databases.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-6-Deploy-Ads-On-CF`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-6-Deploy-Ads-On-CF).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-6-Deploy-Ads-On-CF`]https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-6-Deploy-Ads-On-CF).
 
 ## Step 1: Connect to Local Database in Eclipse
 We want to manage the connection to the PostgreSQL database within Eclipse using the [`DBeaver` eclipse plugin](https://marketplace.eclipse.org/content/dbeaver).
@@ -37,7 +37,7 @@ Make sure, that the `test` database appears in **bold**, which means that this i
 You can view the contents of a database table by double-clicking the name of the table under `public` -> `Tables` and then choose `Data` from the main view.
 
 ## Step 2: Understand VCAP_SERVICES
-Open the file [`localEnvironmentSetup.bat`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/master/localEnvironmentSetup.bat)<sub><b>[to-do]</b></sub> (or `localEnvironmentSetup.sh`) in an editor.
+Open the file [`localEnvironmentSetup.bat`](https://github.com/SAP/cloud-bulletinboard-ads/blob/master/localEnvironmentSetup.bat) (or `localEnvironmentSetup.sh`) in an editor.
 Find the definition of the `VCAP_SERVICES` local variable and understand how it is used to define the database connection information.
 
 
