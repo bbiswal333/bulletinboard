@@ -8,7 +8,7 @@ The task of this exercise is to wrap our User service call with the **Hystrix co
 
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-16-Call-User-Service`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-16-Call-User-Service).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-16-Call-User-Service`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-16-Call-User-Service).
 
 ## Step 1: Add Maven Dependency
 Add the following dependencies to your `pom.xml` using the XML view of Eclipse:
