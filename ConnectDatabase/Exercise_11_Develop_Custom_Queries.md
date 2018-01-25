@@ -7,7 +7,7 @@ After this exercise you know how to implement a custom query for a given JPA Ent
 The task of this exercise is to understand how to enhance the advertisement repository by custom functionality and how to implement a query using the Java Persistence Query Language (JPQL) and the JPA Criteria Builder.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-10-Deploy-Ads-With-DB-Service-On-CF`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-10-Deploy-Ads-With-DB-Service-On-CF).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-10-Deploy-Ads-With-DB-Service-On-CF`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-10-Deploy-Ads-With-DB-Service-On-CF).
 
 ## Step 1: Create Custom Query Test-driven
 
