@@ -8,7 +8,7 @@ The task of this exercise is to add validation for one possible error case, and 
 
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-4-2-DeleteUpdate](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-4-2-DeleteUpdate).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [origin/solution-4-2-DeleteUpdate](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-4-2-DeleteUpdate).
 
 ## Step 1: Add Maven Dependencies
 
@@ -60,7 +60,7 @@ Currently an Internal Server Error (HTTP code 5xx) is returned when requesting u
 
 - To fix the failing test, we want to implement an exception handler which automatically transforms exceptions of type `ConstraintViolationException` to respond with an HTTP code 400 (Bad Request). This response should also include a meaningful error message.
 
-- Create a class `CustomExceptionMapper` in the package `com.sap.bulletinboard.ads.controllers` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-5-ValidationExceptions/src/main/java/com/sap/bulletinboard/ads/controllers/CustomExceptionMapper.java).<sub><b>[to-do]</b></sub>
+- Create a class `CustomExceptionMapper` in the package `com.sap.bulletinboard.ads.controllers` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-5-ValidationExceptions/src/main/java/com/sap/bulletinboard/ads/controllers/CustomExceptionMapper.java).
 
 - Then, make sure the test succeeds. Furthermore when triggering a request in Postman, check that the error message contains a helpful description and **indicates the erroneous value**. 
 
