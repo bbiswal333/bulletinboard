@@ -151,49 +151,6 @@ So, what have you achieved right now? You have made your application accessible 
 - Any user can access any service endpoint with an invalid or even without security token, without any permissions. That needs to be prevented and we will do this in the next exercise.
 
 
-## [Optional] Step 7: Decode the JWT Token
-
-After a successfull authentication the application router enriches the advertisement request header by the JWT token, but you're unable to intercept the call to analyze the request in the browser. 
-
-- For educational purposes we want to expose the decoded JWT token temporarily within the GET-request of the `DefaultController` class:
-```
-@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-public String get(@RequestHeader("Authorization") String authorization) {
-    // TODO DO NEVER EXPOSE THIS DATA IN PRODUCTION!!!
-    String BEARER = "Bearer";
-
-    if (!authorization.isEmpty() && authorization.startsWith(BEARER)) {
-
-        String tokenContent = authorization.replaceFirst(BEARER, "").trim();
-
-        // Decode JWT token
-        Jwt decodedJwt = JwtHelper.decode(tokenContent);
-
-        return decodedJwt.getClaims();
-    }
-    return "";
-}
-```
-
-In order to resolve the import issues, you need to add the `java-container-security` dependency into `pom.xml`:
-```
-<!-- Security -->
-<dependency>
-    <groupId>com.sap.xs2.security</groupId>
-    <artifactId>java-container-security</artifactId>
-    <version>0.26.4</version> 
-</dependency>
-```
-> Note: You can get the current version of the sap container security library from [nexus](http://nexusrel.wdf.sap.corp:8081/nexus/#nexus-search;quick~java-container-security) (group: com.sap.xs2.security).<sub><b>[to-do]</b></sub>
-
-- As you've now modified the source code, rebuild your web archive using `mvn clean verify` and trigger another deployment:
-```
-$ cf push 
-```
-
-- Now enter the approuter URL e.g. `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com/ads` in the browser. Decode the JWT using the linked decoder. Make sure that the **`zid`** has the same unique Id like the **`d012345trial`** subdomain, which corresponds to the **`tenant id`**.
-> Note:   
-> An alternative option to analyze the authorities that are assigned to the current user is via `https://d012345trial.authentication.sap.hana.ondemand.com/config?action=who`
 
 ## Further Remarks
 - Application router also implements Cross-Site Request Forgery (CSRF) protection. A modification request (PUT, POST, DELETE, etc.) is rejected unless the request contains a valid x-csrf-token header. Clients can fetch this token after successful authentication/authorization. It is enough to fetch this token only once per session. The x-csrf-token can be obtained with HTTP header `x-csrf-token: fetch`.
