@@ -8,11 +8,11 @@ Get familiar with the provided code base and understand how to test your microse
 
 - Run `VirtualBox` and start your Virtual Machine (VM).
 - Run Eclipse inside the VM **Important: If you are asked for a workspace, make sure to use the default workspace at `/home/vagrant/workspace`**
-- Import the `master` branch of this [Git Project](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/master) <sub><b>[to-do]</b></sub> as described below:
+- Import the `master` branch of this [Git Project](https://github.com/SAP/cloud-bulletinboard-ads/tree/master) as described below:
 
 #### Initial Import
 - Select `File - Import - Git - Projects from Git`. 
-- In the next dialog, select `Clone URI` and enter the URI `git@github.wdf.sap.corp:cc-java/cc-bulletinboard-ads-spring-webmvc.git`<sub><b>[to-do]</b></sub>.
+- In the next dialog, select `Clone URI` and enter the URI `https://github.com/SAP/cloud-bulletinboard-ads.git`.
 - **Important**: Choose **`master`** as `Initial branch`
     - Use `Next` and `Finish` to go through the following dialogs (the default settings should be OK).
 - **Then update the Maven Settings: `ALT+F5`, `OK`**
