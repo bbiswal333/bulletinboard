@@ -12,7 +12,7 @@ The task of this exercise is to implement the REST-services with responses as de
 | GET         | Read       | 200 (OK), list of advertisements | 200 (OK), single ad; 404 (Not Found), if no advertisement with this ID exists |
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can check out the branch [`origin/solution-1-Activate-Actuator`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-1-Activate-Actuator).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can check out the branch [`origin/solution-1-Activate-Actuator`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-1-Activate-Actuator).
 
 ## Step 1: Create Advertisement Service
 The goal is to implement the service endpoints as specified in the table above.
