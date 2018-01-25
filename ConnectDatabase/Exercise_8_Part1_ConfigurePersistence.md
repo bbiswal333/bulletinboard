@@ -15,7 +15,7 @@ In this exercise we provide the `CloudDatabaseConfig` class which sets up a CRUD
 
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-6-Deploy-Ads-On-CF`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/tree/solution-6-Deploy-Ads-On-CF).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-6-Deploy-Ads-On-CF`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-6-Deploy-Ads-On-CF).
 
 ## Step 1: Add Maven dependencies
 Add the following dependencies to your `pom.xml` using the XML view of Eclipse **at the end of the <dependencies> list**:
@@ -110,8 +110,8 @@ public interface AdvertisementRepository extends CrudRepository<Advertisement, L
 
 ## Step 4: Configure Repository
 
-- Create a class `EntityManagerFactoryProvider` in the package `com.sap.bulletinboard.ads.util` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-8-1-Configure-Persistence/src/main/java/com/sap/bulletinboard/ads/util/EntityManagerFactoryProvider.java).<sub><b>[to-do]</b></sub>
-- Create a class `CloudDatabaseConfig` in the package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-8-1-Configure-Persistence/src/main/java/com/sap/bulletinboard/ads/config/CloudDatabaseConfig.java).<sub><b>[to-do]</b></sub>
+- Create a class `EntityManagerFactoryProvider` in the package `com.sap.bulletinboard.ads.util` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-8-1-Configure-Persistence/src/main/java/com/sap/bulletinboard/ads/util/EntityManagerFactoryProvider.java).
+- Create a class `CloudDatabaseConfig` in the package `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-8-1-Configure-Persistence/src/main/java/com/sap/bulletinboard/ads/config/CloudDatabaseConfig.java).
 
 Some explanations to the code:  
 
