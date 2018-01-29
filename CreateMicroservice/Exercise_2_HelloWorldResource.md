@@ -12,7 +12,7 @@ In this controller, you should use the [Spring Web MVC framework](http://docs.sp
 This controller should provide a single `@GetMapping` annotated method which is able to handle a parameterized HTTP GET request:
 
 ```java
-@RequestMapping("hello")
+@RequestMapping("/hello")
 @RestController
 public class HelloWorldController {
 
