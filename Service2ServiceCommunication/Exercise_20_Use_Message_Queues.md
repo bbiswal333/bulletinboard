@@ -129,9 +129,9 @@ In order to test whether the messages in the queue can be processed by a consume
 ```
 # Ensure that you are in the project root e.g. ~/git/cc-bulletinboard-statistics
 $ mvn clean verify
-$ cf push -n bulletinboard-statistics-d012345
+$ cf push -n bulletinboard-statistics-<<your user id>>
 ```
-- Whenever you request an advertisment the Statistics Service should increase the counter for the same. To test this interaction you can call in the browser for example [bulletinboard-statistics-d012345.cfapps.sap.hana.ondemand.com/api/v1/statistics/1](https://bulletinboard-statistics-d012345.cfapps.sap.hana.ondemand.com/api/v1/statistics/1) - where "1" is the advertisment ID.
+- Whenever you request an advertisment the Statistics Service should increase the counter for the same. To test this interaction you can call in the browser for example `[bulletinboard-statistics-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/api/v1/statistics/1]`(`https://bulletinboard-statistics-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/api/v1/statistics/1`) - where "1" is the advertisment ID. The `<<region>>` needs to be replaced with eu10 or us10 depending on the trial environment where you have registered. For more details, please refer the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html)
 
 ## [Optional] Step 9: Use Hystrix
 
