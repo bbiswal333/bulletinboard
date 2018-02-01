@@ -6,10 +6,14 @@ We offer a VM image that contains all needed tools for the Cloud Development cou
 Follow these steps to setup your Virtual Box [Click Here](VMImage_GettingStarted_VirtualBox.md)
 
 <div id="inside-the-vm"></div>
-
+ 
 ## Customize the VM
 - After the setup of VirtualBox and importing the provided VM Image, start the Virtual Machine and customize the VM according the following guidance/steps.
 - Note: In case you run into trouble, you might need to change some BIOS settings as described in the **[troubleshooting section](#troubleshooting)** below
+
+#### Download and install API Development and Testing Tool
+
+- Download and install an API Development and Testing Tool such as [Postman](https://www.getpostman.com/)
 
 #### General
 - The user for the image is `vagrant` with password `vagrant`.
