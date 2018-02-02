@@ -20,7 +20,7 @@ To administrate authorizations for your business application, perform the follow
 - Afterwards you need to logon again to your application so that the authorities are assigned to the user. You can provoke a logon screen when clearing your cache. Now you should have full access to all of your application endpoints.
 
 > **Troubleshoot**
-> You can analyze the authorities that are assigned to the current user via `https://d012345trial.authentication.sap.hana.ondemand.com/config?action=who`
+> You can analyze the authorities that are assigned to the current user via `https://<<your user id>>trial.authentication.<<region>>.hana.ondemand.com/config?action=who`. The `<<region>>` needs to be replaced with eu10 or us10 depending on the trial environment where you have registered. For more details, please refer the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html)
 
 
 ***
