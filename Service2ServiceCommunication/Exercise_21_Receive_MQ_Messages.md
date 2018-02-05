@@ -48,7 +48,7 @@ public SimpleMessageListenerContainer pushMessageContainer(
 ```
 
 ## Step 3: Deploy and Test
-Deploy your microservice and check if a messages similar to `got statistics: Statistics [id=1, viewCount=<ViewCount>]` are logged. The Statistics service sends out messages every five seconds.
+Deploy your microservice and check if messages similar to `got statistics: Statistics [id=1, viewCount=<ViewCount>]` are logged. The Statistics service sends out messages every five seconds.
 
 ## Used Frameworks and Tools
 - [RabbitMQ](https://www.rabbitmq.com/)
