@@ -25,7 +25,7 @@ logger.info("got statistics: {}", new String(message.getBody(), Charset.forName(
 
 ## Step 2: Register the Message Listener for the Queue
 
-First of all let's make sure that the queue, we would like to listen to, does exist. Therefore as part of the [`amqpAdmin` Bean definition of the `CloudRabbitConfig` class](https://github.com/SAP/cloud-bulletinboard-ads/blob/solution-20-Use-Message-Queues/src/main/java/com/sap/bulletinboard/ads/config/CloudRabbitConfig.java) we declare another Queue with  `statistics.periodicalStatistics` as routing key.
+First of all let's make sure that the queue, we would like to listen to, does exist. Therefore in the `CloudRabbitConfig` class as part of the `amqpAdmin` Bean definition we declare another Queue with `statistics.periodicalStatistics` as routing key.
 
 In order to register the `StatisticsListener` as listener for the queue you can enhance the `CloudRabbitConfig` with the following Bean definition:
 
