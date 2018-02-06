@@ -5,6 +5,9 @@ As of now you've configured your xsuaa service with the application security mod
 
 In this exercise you will use the SAP CP Cockpit to maintain authorizations for your application and assign them to you or to other members of your Subaccount (cloud foundry organization). 
 
+## Prerequisite
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [solution-24-Make-App-Secure](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-24-Make-App-Secure).
+
 ## Step: Administrate Authorizations for your Business Application
 To administrate authorizations for your business application, perform the following steps:
 
