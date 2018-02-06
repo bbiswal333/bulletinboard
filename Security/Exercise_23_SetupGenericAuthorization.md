@@ -94,7 +94,8 @@ Push your application to Cloud Foundry:
 $    cf push
 ```
 
-Then enter the approuter URL e.g. `https://<<your tenant>>-approuter-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/ads/api/v1/ads` in the browser. Make sure that it responds with message "Forbidden" (HTTP Status code `403`). The `<<region>>` needs to be replaced with eu10 or us10 depending on the trial environment where you have registered. For more details, please refer the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html)
+Then enter the approuter URL  
+e.g. `https://<<your tenant>>-approuter-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/ads/api/v1/ads` in the browser. Make sure that it responds with message "Forbidden" (HTTP Status code `403`). The `<<region>>` needs to be replaced with eu10 or us10 depending on the trial environment where you have registered. For more details, please refer the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html).
 
 
  
