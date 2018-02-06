@@ -30,7 +30,7 @@ It suffices to add the direct dependency on the SAP Java Container Security libr
 ```
 - Note: After you've changed the Maven settings, don't forget to update your Eclipse project (`Alt+F5`)!
 
-- Note: You can get the current version of the SAP Java Container Security library from [SAP Service Marketplae](https://launchpad.support.sap.com/#/softwarecenter/template/products/%20_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=73555000100200004333&V=MAINT&TA=ACTUAL&PAGE=SEARCH/XS%20JAVA%201) (the filename currently is XS_JAVA_8-70001362.ZIP althrough version/filename may change in the future).
+- Note: You can get the current version of the SAP Java Container Security library from [SAP Service Marketplace](https://launchpad.support.sap.com/#/softwarecenter/template/products/%20_APP=00200682500000001943&_EVENT=DISPHIER&HEADER=Y&FUNCTIONBAR=N&EVENT=TREE&NE=NAVIGATE&ENR=73555000100200004333&V=MAINT&TA=ACTUAL&PAGE=SEARCH/XS%20JAVA%201) (the filename currently is XS_JAVA_8-70001362.ZIP althrough version/filename may change in the future).
 
 
 ## Step 2: Configure Spring Security
@@ -163,10 +163,12 @@ Before deploying your application to Cloud Foundry you need to bind your applica
 
 ### Call Deployed service
 - Call your service endpoints e.g. `https://bulletinboard-ads-<<your user id>>.cfapps.<<region>>.hana.ondemand.com` manually using the `Postman` Chrome plugin. You should get for any endpoint (except for `\health`) an `401` ("unauthorized") status code. The `<<region>>` needs to be replaced with eu10 or us10 depending on the trial environment where you have registered. For more details, please refer the [documentation](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/350356d1dc314d3199dca15bd2ab9b0e.html)
-- On Cloud Foundry it is not possible to provide a valid JWT token which is accepted by the XSUAA. Therefore if you like to provoke a `403` ("forbidden", "insufficient_scope") status code **you need to call your application via the `approuter`** e.g. `https://<<your user id>>trial-approuter-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/ads/api/v1/ads` in order to authenticate yourself and to create a JWT Token with no scopes. **BUT** you probably will get as response the login screen in HTML. That's why you need to
+- On Cloud Foundry it is not possible to provide a valid JWT token which is accepted by the XSUAA. Therefore if you like to provoke a `403` ("forbidden", "insufficient_scope") status code **you need to call your application via the `approuter`** e.g.   
+`https://<<your tenant>>-approuter-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/ads/api/v1/ads` in order to authenticate yourself and to create a JWT Token with no scopes. **BUT** you probably will get as response the login screen in HTML. That's why you need to
   - enable the `Interceptor` within `Postman`. You might need to install another [`Postman Interceptor` Chrome Plugin](https://chrome.google.com/webstore/detail/postman-interceptor/aicmkgpgakddgnaphhhpliifpcfhicfo), which will help you to send requests using browser cookies through the `Postman` app. 
   - logon via `Chrome` Browser first and then
-  - back in `Postman` resend the request e.g. `https://<<your user id>>trial-approuter-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/ads/api/v1/ads` and
+  - back in `Postman` resend the request 
+    e.g. `https://<<your tenant>>-approuter-<<your user id>>.cfapps.<<region>>.hana.ondemand.com/ads/api/v1/ads` and
   - make sure that you now get a `403` status code.
 
 > **Note:**  
