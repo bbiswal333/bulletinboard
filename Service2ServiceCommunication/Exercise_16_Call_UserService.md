@@ -8,9 +8,9 @@ The task of this exercise is to call the User service to find out whether the cu
 Technically we are going to use [`RestTemplate`](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html). The `RestTemplate` is the central Spring class for client-side HTTP access. Conceptually, it is very similar to the `JdbcTemplate`, `JmsTemplate`, and the various other templates found in the Spring Framework. This means, for instance, that the `RestTemplate` is thread-safe once constructed, and that you can use callbacks to customize its operations.
 
 ## Prerequisite
-Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-13-Use-SLF4J-Features`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-13-Use-SLF4J-Features).<sub><b>[to-do]</b></sub>
+Continue with your solution of the last exercise. If this does not work, you can checkout the branch [`origin/solution-13-Use-SLF4J-Features`](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-13-Use-SLF4J-Features).
 
-## Step 1: Test User Service Using a REST Client<sub><b>[to-do]</b></sub>
+## Step 1: Test User Service Using a REST Client
 Before we start with the implementation we want to get familiar with the User service. 
 
 You can test the following REST service endpoints manually in the browser using the `Postman` Chrome plugin:
@@ -79,7 +79,7 @@ As described in [Exercise 1](../CreateMicroservice/Exercise_1_GettingStarted.md)
 ## Step 6: Fix Tests
 As we do not want our JUnit tests (`AdvertisementControllerTest`) to call third-party services, we need to introduce mocks for the `UserServiceClient` and as well for the `PropertySourcesPlaceholderConfigurer` to specify the `USER_ROUTE` variable. Similar to stub objects, mocks are object instances that just mock the original behavior and can be configured to behave in a certain way. 
 
-Create a new @Configuration annotated class `TestAppContextConfig` in **test package** `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.wdf.sap.corp/raw/cc-java/cc-bulletinboard-ads-spring-webmvc/solution-16-Call-User-Service/src/test/java/com/sap/bulletinboard/ads/config/TestAppContextConfig.java).<sub><b>[to-do]</b></sub>
+Create a new @Configuration annotated class `TestAppContextConfig` in **test package** `com.sap.bulletinboard.ads.config` and copy the code from [here](https://github.com/SAP/cloud-bulletinboard-ads/tree/solution-16-Call-User-Service/src/test/java/com/sap/bulletinboard/ads/config/TestAppContextConfig.java).
 
 ```java
 @Configuration
