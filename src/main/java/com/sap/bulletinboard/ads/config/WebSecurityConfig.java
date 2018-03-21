@@ -22,7 +22,7 @@ public class WebSecurityConfig extends ResourceServerConfigurerAdapter {
     private static final String DISPLAY_SCOPE_LOCAL = "Display";
     private static final String UPDATE_SCOPE_LOCAL = "Update";
     public static final String REGEX_TENANT_INDEX = "(!t\\d+)?.";
-    private static final String XSAPPNAME = "bulletinboard-d012345";
+    private static final String XSAPPNAME = "bulletinboard-<<your-user-id>>";
     public static final String DISPLAY_SCOPE = XSAPPNAME + "." + DISPLAY_SCOPE_LOCAL;
     public static final String UPDATE_SCOPE = XSAPPNAME + "." + UPDATE_SCOPE_LOCAL;
 
