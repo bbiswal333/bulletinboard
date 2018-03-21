@@ -1,5 +1,5 @@
 {
-    "xsappname"     : "bulletinboard-d012345",
+    "xsappname"     : "bulletinboard-<<your-user-id>>",
     "description"   : "Enabled bulletinboard for multi tenants",
     "tenant-mode"   : "shared",
     "scopes"        : [
