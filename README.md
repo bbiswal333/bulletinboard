@@ -1,23 +1,23 @@
 openSAP course: [Cloud-Native Development with SAP Cloud Platform](https://open.sap.com/courses/cp5) - Advertisement Service
 =============================================
 
-This repo contains the source code for the **bulletinboard-ads** service that is developed during the course of the training course. There are multiple branches with the solution state (source code) after each exercise. 
+This repo contains the source code for the **bulletinboard-ads** service that is developed during the course. There are multiple branches with the solution state (source code) after each exercise. 
  
 # Characteristics
-- Java 8, [Spring](https://github.com/spring-projects/spring-framework) with additional components like `Spring Web MVC` and `JPA` as documented [here](https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/_Internals/Tools.md).
+- Java 8, [Spring](https://github.com/spring-projects/spring-framework) with additional components like `Spring Web MVC` and `JPA` as documented [here](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/Knowledge/Tools.md).
 - Offers RESTful CRUD-Services on a [Tomcat](http://tomcat.apache.org/) web server
 - Persists data on PostgreSQL database
 - Provides Service and Unit tests
 - Sends notification to a MessageQueue whenever an advertisement is requested. This is consumed by a `cc-bulletinboard-statistics` app.
 - Does a direct REST call to the app [`cc-bulletinboard-users`](https://bulletinboard-users.cfapps.sap.hana.ondemand.com) to get user information, only premium users are allowed to create advertisements.
 
-<img src="https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/Z_ReuseImages/images/Domain.png" width="600" />
+<img src="https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/Z_ReuseImages/images/Domain.png" width="600" />
 
 # How to run
 
 ## Prerequisites
 - Have a trial account on [SAP CP Cloud Foundry](https://help.cf.sap.hana.ondemand.com/).
-- Setup your development environment with java, maven, node.js, npm, postgresql ... Therefore please follow the [installations steps](https://github.wdf.sap.corp/agile-se/vagrant-development-box/blob/master/VMImage_GettingStarted.md) to prepare your VM image that provides the whole development environment.
+- Setup your development environment with java, maven, node.js, npm, postgresql ... Therefore please follow the [installations steps](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/VMImage/VMImage_GettingStarted.md) to prepare your VM image that provides the whole development environment.
 - Run `VirtualBox` and start your Virtual Machine (VM).
 
 ## Import project from GitHub
@@ -25,13 +25,13 @@ Open the terminal and execute the following commands to download the source code
 ```
 mkdir git
 cd git 
-git clone git@github.wdf.sap.corp:cc-java/cc-bulletinboard-ads-spring-webmvc.git
+git clone git@github.wdf.sap.corp:refapps/cc-bulletinboard-ads-spring-webmvc.git
 cd cc-bulletinboard-ads-spring-webmvc
 ```
 Ensure that you are in the **project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc**.
 
 ## Personalize the application
-Especially when you like to you deploy the application you need to ensure that you have adjusted the `xsappname` in all relevant files, i.e. you have changed the D-Number `d012345` to your D/C/I-Number:
+Especially when you like to you deploy the application you need to ensure that you have adjusted the `xsappname` in all relevant files, i.e. you have changed the D-Number `userid` to your userid(your p user):
   - localEnvironmentSetup.bat
   - localEnvironmentSetup.sh
   - manifest.yml
@@ -40,7 +40,7 @@ Especially when you like to you deploy the application you need to ensure that y
   - JwtGenerator.java
 
 ## Run the application in your local environment
-To run the service locally you have two options: start it directly from Eclipse as described [here](https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/CreateMicroservice/Exercise_1_GettingStarted.md) or via Maven on the command line.
+To run the service locally you have two options: start it directly from Eclipse as described [here](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/CreateMicroservice/Exercise_1_GettingStarted.md) or via Maven on the command line.
 
 ### Using the command line
 Execute in terminal (within project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc, which contains the`pom.xml`):
@@ -55,9 +55,9 @@ In both cases, your application will be deployed to an embedded Tomcat web serve
 
 The service endpoints are secured, that means no unauthorized user can access the endpoint. The application expects a so called `JWT token` as part of the `Authorization` header of the service that also contains the scope, the user is assigned to.
 
-Test the REST Service `http://localhost:8080/api/v1/ads` manually using the `Postman` chrome extension.
+Test the REST Service `http://localhost:8080/api/v1/ads` manually using a REST client
 
-**Note**: For all requests make sure, that you provide a header namely `Authorization` with a JWT token as value e.g. `Bearer eyJhbGciOiJSUzI1NiIs...`. You can generate a valid JWT token as described [in Exercise 24](https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/Security/Exercise_24_MakeYourApplicationSecure.md).
+**Note**: For all requests make sure, that you provide a header namely `Authorization` with a JWT token as value e.g. `Bearer eyJhbGciOiJSUzI1NiIs...`. You can generate a valid JWT token as described [in Exercise 24](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/Security/Exercise_24_MakeYourApplicationSecure.md).
 
 - **POST two advertisements**
 - As shown in the screen shot above, provide the body type as **raw JSON (application/json)**. This results in the content-type to be set in the header as `Content-Type=application/json` 
@@ -71,7 +71,7 @@ Ensure that the advertisement you created before is returned.
 ## Steps to deploy to Cloud Foundry
 
 ### [Optionally] Build Approuter (a Node.JS application)
-Build the Approuter that connects your service to the centrally provided "user account and authentication (UAA) service" which is a JavaScipt application running on NodeJS. With `npm install` the NPM package manager downloads all packages (node modules) it depends on (as defined in [package.json](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/src/main/approuter/package.json)). With this the node modules are downloaded from the SAP internal Nexus registry and are copied into the directory `src/main/approuter/node_modules/approuter`. 
+Build the Approuter that connects your service to the centrally provided "user account and authentication (UAA) service" which is a JavaScipt application running on NodeJS. With `npm install` the NPM package manager downloads all packages (node modules) it depends on (as defined in [package.json](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/src/main/approuter/package.json). With this the node modules are downloaded from the npm registry and are copied into the directory `src/main/approuter/node_modules/approuter`. 
 
 Execute in terminal (within `src/main/approuter` directory, which contains the`package.json`):
 ```
@@ -91,11 +91,11 @@ Make sure your are logged in to Cloud Foundry and you target your trial space. R
 ```
 cf api https://api.cf.sap.hana.ondemand.com
 cf login
-cf target -o  D048418trial_trial -s dev   ## replace by your space name
+cf target -o  userid_trial -s dev   ## replace by your space name
 ```
 
 ### Create Services
-Create the (backing) services that are specified in the [`manifest.yml`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/manifest.yml).
+Create the (backing) services that are specified in the [`manifest.yml`](hhttps://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/manifest.yml).
 
 Execute in terminal (within root directory, which contains the `security` folder):
 ```
@@ -116,20 +116,15 @@ cf push -f manifest.yml
 The application will be pushed using the settings in the provided in `manifest.yml`. You can get the exact urls/routes that have been assigned to the application with `cf apps`.
 
 ### Create approuter routes per tenant
-We make use of the trial subaccount such as `d012345trial` that has a 1-1 relationship to the **Identity Zone `d012345trial`** and which is configured for the **trial CF Org** and is under your control. Note furthermore that the `TENANT_HOST_PATTERN` environment variable ( see `manifest.yml` file) specifies how the approuter should derive the tenant from the URL.
+We make use of the trial subaccount such as `d012345trial` that has a 1-1 relationship to the **Identity Zone `useridtrial`** and which is configured for the **trial CF Org** and is under your control. Note furthermore that the `TENANT_HOST_PATTERN` environment variable ( see `manifest.yml` file) specifies how the approuter should derive the tenant from the URL.
 ```
-cf map-route approuter cfapps.sap.hana.ondemand.com -n d012345trial-approuter-d012345
+cf map-route approuter cfapps.sap.hana.ondemand.com -n useridtrial-approuter-userid
 ```
 
 ### Test the deployed application 
-Open a browser to test whether your microservice runs in the cloud. For this use the approuter URL `https://d012345trial-approuter-d012345.cfapps.sap.hana.ondemand.com/ads/health`. This will bring you the **login page**. Note: You have to enter here not your Cloud Foundry credentials. You need to sign up to the XSUAA identity provider first. After successful login you get redirected to the advertisement service that return you an empty list of advertisements `[]`.
+Open a browser to test whether your microservice runs in the cloud. For this use the approuter URL `https://useridtrial-approuter-userid.cfapps.sap.hana.ondemand.com/ads/health`. This will bring you the **login page**. Note: You have to enter here not your Cloud Foundry credentials. You need to sign up to the XSUAA identity provider first. After successful login you get redirected to the advertisement service that return you an empty list of advertisements `[]`.
 
-This [`xs-app.json`](https://github.wdf.sap.corp/cc-java/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/src/main/approuter/xs-app.json) file specifies how the approuter routes are mapped to the advertisement routes.
+This [`xs-app.json`](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/src/main/approuter/xs-app.json) file specifies how the approuter routes are mapped to the advertisement routes.
 
-Find a step-by-step description on how to test within `Postman` [here](https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/TestStrategy/Exercise_25_Create_SystemTest).
-
-# References
-- [Microservice Development in Java - Full Course Outline](https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/wiki)
-- Overview about the tools used in this [application](https://github.wdf.sap.corp/cc-java-dev/cc-coursematerial/blob/master/_Internals/Tools.md)
-- [SAP CP Cockpit](https://account.int.sap.hana.ondemand.com/cockpit#/home/overview)
+Find a step-by-step description on how to test within `Postman` [here](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/tree/Documentation/Security/Exercise_25_Create_SystemTest).
 
