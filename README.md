@@ -31,7 +31,7 @@ cd cc-bulletinboard-ads-spring-webmvc
 Ensure that you are in the **project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc**.
 
 ## Personalize the application
-Especially when you like to you deploy the application you need to ensure that you have adjusted the `xsappname` in all relevant files, i.e. you have changed the D-Number `userid` to your userid(your p user):
+Especially when you like to you deploy the application you need to ensure that you have adjusted the `xsappname` in all relevant files, i.e. you have changed the `userid` to your `<<your-user-id>>`:
   - localEnvironmentSetup.bat
   - localEnvironmentSetup.sh
   - manifest.yml
@@ -71,7 +71,7 @@ Ensure that the advertisement you created before is returned.
 ## Steps to deploy to Cloud Foundry
 
 ### [Optionally] Build Approuter (a Node.JS application)
-Build the Approuter that connects your service to the centrally provided "user account and authentication (UAA) service" which is a JavaScipt application running on NodeJS. With `npm install` the NPM package manager downloads all packages (node modules) it depends on (as defined in [package.json](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/src/main/approuter/package.json). With this the node modules are downloaded from the npm registry and are copied into the directory `src/main/approuter/node_modules/approuter`. 
+Build the Approuter that connects your service to the centrally provided "user account and authentication (UAA) service" which is a JavaScipt application running on NodeJS. With `npm install` the NPM package manager downloads all packages (node modules) it depends on (as defined in [package.json](/src/main/approuter/package.json). With this the node modules are downloaded from the npm registry and are copied into the directory `src/main/approuter/node_modules/approuter`. 
 
 Execute in terminal (within `src/main/approuter` directory, which contains the`package.json`):
 ```
@@ -91,11 +91,11 @@ Make sure your are logged in to Cloud Foundry and you target your trial space. R
 ```
 cf api https://api.cf.sap.hana.ondemand.com
 cf login
-cf target -o  userid_trial -s dev   ## replace by your space name
+cf target -o  <<your-user-id>>trial_trial -s dev   ## replace by your space name
 ```
 
 ### Create Services
-Create the (backing) services that are specified in the [`manifest.yml`](hhttps://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/manifest.yml).
+Create the (backing) services that are specified in the [`manifest.yml`](/manifest.yml).
 
 Execute in terminal (within root directory, which contains the `security` folder):
 ```
@@ -116,15 +116,15 @@ cf push -f manifest.yml
 The application will be pushed using the settings in the provided in `manifest.yml`. You can get the exact urls/routes that have been assigned to the application with `cf apps`.
 
 ### Create approuter routes per tenant
-We make use of the trial subaccount such as `d012345trial` that has a 1-1 relationship to the **Identity Zone `useridtrial`** and which is configured for the **trial CF Org** and is under your control. Note furthermore that the `TENANT_HOST_PATTERN` environment variable ( see `manifest.yml` file) specifies how the approuter should derive the tenant from the URL.
+We make use of the trial subaccount such as `<<your-user-id>>trial` that has a 1-1 relationship to the **Identity Zone `useridtrial`** and which is configured for the **trial CF Org** and is under your control. Note furthermore that the `TENANT_HOST_PATTERN` environment variable ( see `manifest.yml` file) specifies how the approuter should derive the tenant from the URL.
 ```
-cf map-route approuter cfapps.sap.hana.ondemand.com -n useridtrial-approuter-userid
+cf map-route approuter cfapps.sap.hana.ondemand.com -n <<your-user-id>>trial-approuter-<<your-user-id>>
 ```
 
 ### Test the deployed application 
-Open a browser to test whether your microservice runs in the cloud. For this use the approuter URL `https://useridtrial-approuter-userid.cfapps.sap.hana.ondemand.com/ads/health`. This will bring you the **login page**. Note: You have to enter here not your Cloud Foundry credentials. You need to sign up to the XSUAA identity provider first. After successful login you get redirected to the advertisement service that return you an empty list of advertisements `[]`.
+Open a browser to test whether your microservice runs in the cloud. For this use the approuter URL `https://<<your-user-id>>trial-approuter-<<your-user-id>>.cfapps.sap.hana.ondemand.com/ads/health`. This will bring you the **login page**. Note: You have to enter here not your Cloud Foundry credentials. You need to sign up to the XSUAA identity provider first. After successful login you get redirected to the advertisement service that return you an empty list of advertisements `[]`.
 
-This [`xs-app.json`](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/solution-24-Make-App-Secure/src/main/approuter/xs-app.json) file specifies how the approuter routes are mapped to the advertisement routes.
+This [`xs-app.json`](/src/main/approuter/xs-app.json) file specifies how the approuter routes are mapped to the advertisement routes.
 
-Find a step-by-step description on how to test within `Postman` [here](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/tree/Documentation/Security/Exercise_25_Create_SystemTest).
+Find a step-by-step description on how to test within `REST client` [here](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/tree/Documentation/Security/Exercise_25_Create_SystemTest).
 
