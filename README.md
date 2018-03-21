@@ -25,7 +25,7 @@ Open the terminal and execute the following commands to download the source code
 ```
 mkdir git
 cd git 
-git clone git@github.wdf.sap.corp:refapps/cc-bulletinboard-ads-spring-webmvc.git
+git clone -b solution-25-Make-App-TenantAware git@github.wdf.sap.corp:refapps/cc-bulletinboard-ads-spring-webmvc.git
 cd cc-bulletinboard-ads-spring-webmvc
 ```
 Ensure that you are in the **project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc**.
