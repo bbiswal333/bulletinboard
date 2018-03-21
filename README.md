@@ -31,7 +31,7 @@ cd cc-bulletinboard-ads-spring-webmvc
 Ensure that you are in the **project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc**.
 
 ## Personalize the application
-Especially when you like to you deploy the application you need to ensure that you have adjusted the `xsappname` in all relevant files, i.e. you have changed the `userid` to your `<<your-user-id>>`:
+Especially when you like to you deploy the application you need to ensure that you have adjusted the `xsappname` in all relevant files, i.e. you have changed the `<<your-user-id>>` to your actual user id:
   - localEnvironmentSetup.bat
   - localEnvironmentSetup.sh
   - manifest.yml
