@@ -9,7 +9,7 @@ This repo contains the source code for the **bulletinboard-ads** service that is
 - Persists data on PostgreSQL database
 - Provides Service and Unit tests
 - Sends notification to a MessageQueue whenever an advertisement is requested. This is consumed by a `cc-bulletinboard-statistics` app.
-- Does a direct REST call to the app [`cc-bulletinboard-users`](https://bulletinboard-users.cfapps.sap.hana.ondemand.com) to get user information, only premium users are allowed to create advertisements.
+- Does a direct REST call to the app [`cc-bulletinboard-users`](https://opensapcp5userservice.cfapps.eu10.hana.ondemand.com) to get user information, only premium users are allowed to create advertisements.
 
 <img src="https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/Z_ReuseImages/images/Domain.png" width="600" />
 

@@ -28,11 +28,11 @@ applications:
   memory: 128M
   env:
     XSAPPNAME: bulletinboard-<<your-user-id>>
-    TENANT_HOST_PATTERN: "^(.*)-approuter-<<your-user-id>>.cfapps.sap.hana.ondemand.com"
+    TENANT_HOST_PATTERN: "^(.*)-approuter-<<your-user-id>>.cfapps.eu10.hana.ondemand.com"
     destinations: >
       [{
          "name":"ads-destination",
-         "url" :"https://bulletinboard-ads-<<your-user-id>>.cfapps.sap.hana.ondemand.com",
+         "url" :"https://bulletinboard-ads-<<your-user-id>>.cfapps.eu10.hana.ondemand.com",
          "forwardAuthToken": true}
       ]
   services:
