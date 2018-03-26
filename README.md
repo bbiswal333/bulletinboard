@@ -16,11 +16,14 @@ This repo contains the source code for the **bulletinboard-ads** service that is
 # How to run
 
 ## Prerequisites
-- Have a trial account on [SAP CP Cloud Foundry](https://help.cf.sap.hana.ondemand.com/).
+- Have a trial account on [SAP CP Cloud Foundry](https://account.hanatrial.ondemand.com/cockpit/).
 - Setup your development environment with java, maven, node.js, npm, postgresql ... Therefore please follow the [installations steps](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/VMImage/VMImage_GettingStarted.md) to prepare your VM image that provides the whole development environment.
 - Run `VirtualBox` and start your Virtual Machine (VM).
 
 ## Import project from GitHub
+
+**Note: If you have not setup your github keys, please follow [link](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
+
 Open the terminal and execute the following commands to download the source code from this GitHub repository:
 ```
 mkdir git
@@ -29,6 +32,7 @@ git clone -b solution-25-Make-App-TenantAware git@github.wdf.sap.corp:refapps/cc
 cd cc-bulletinboard-ads-spring-webmvc
 ```
 Ensure that you are in the **project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc**.
+
 
 ## Personalize the application
 Especially when you like to you deploy the application you need to ensure that you have adjusted the `xsappname` in all relevant files, i.e. you have changed the `<<your-user-id>>` to your actual user id:
@@ -43,9 +47,23 @@ Especially when you like to you deploy the application you need to ensure that y
 To run the service locally you have two options: start it directly from Eclipse as described [here](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/blob/Documentation/CreateMicroservice/Exercise_1_GettingStarted.md) or via Maven on the command line.
 
 ### Using the command line
+
+Download the XS Security libraries from [Service market place](https://launchpad.support.sap.com/#/softwarecenter/support/index)
+
+Download file XS_JAVA_1-70001362.zip which can be found in HANA Platform Edition 2.0
+
+Unzip the archive and copy the java-container-security-0.27.2.jar , java-container-security-api-0.27.2.jar , security-commons-0.27.2.jar to your .m2 folder
+
 Execute in terminal (within project root e.g. ~/git/cc-bulletinboard-ads-spring-webmvc, which contains the`pom.xml`):
 ```
 source localEnvironmentSetup.sh
+
+mvn install:install-file -Dfile=/home/vagrant/.m2/java-container-security-0.27.2.jar -DgroupId=com.sap.xs2.security -DartifactId=java-container-security -Dversion=0.27.2 -Dpackaging=jar
+
+mvn install:install-file -Dfile=/home/vagrant/.m2/java-container-security-api-0.27.2.jar -DgroupId=com.sap.xs2.security -DartifactId=java-container-security-api -Dversion=0.27.2 -Dpackaging=jar
+
+mvn install:install-file -Dfile=/home/vagrant/.m2/security-commons-0.27.2.jar -DgroupId=com.sap.xs2.security -DartifactId=security-commons -Dversion=0.27.2 -Dpackaging=jar
+
 mvn tomcat7:run
 ```
 
@@ -89,7 +107,7 @@ mvn package
 ### Login to Cloud Foundry
 Make sure your are logged in to Cloud Foundry and you target your trial space. Run the following commands in the terminal:
 ```
-cf api https://api.cf.sap.hana.ondemand.com
+cf api https://api.cf.eu10.hana.ondemand.com
 cf login
 cf target -o  <<your-user-id>>trial_trial -s dev   ## replace by your space name
 ```
@@ -116,15 +134,17 @@ cf push -f manifest.yml
 The application will be pushed using the settings in the provided in `manifest.yml`. You can get the exact urls/routes that have been assigned to the application with `cf apps`.
 
 ### Create approuter routes per tenant
-We make use of the trial subaccount such as `<<your-user-id>>trial` that has a 1-1 relationship to the **Identity Zone `useridtrial`** and which is configured for the **trial CF Org** and is under your control. Note furthermore that the `TENANT_HOST_PATTERN` environment variable ( see `manifest.yml` file) specifies how the approuter should derive the tenant from the URL.
+We make use of the trial subaccount such as `<<your-user-id>>trial_trial` that has a 1-1 relationship to the **Identity Zone `useridtrial`** and which is configured for the **trial CF Org** and is under your control. Note furthermore that the `TENANT_HOST_PATTERN` environment variable ( see `manifest.yml` file) specifies how the approuter should derive the tenant from the URL.
 ```
-cf map-route approuter cfapps.sap.hana.ondemand.com -n <<your-user-id>>trial-approuter-<<your-user-id>>
+cf map-route approuter cfapps.eu10.hana.ondemand.com -n <<your-user-id>>trial-approuter-<<your-user-id>>
 ```
 
 ### Test the deployed application 
 Open a browser to test whether your microservice runs in the cloud. For this use the approuter URL `https://<<your-user-id>>trial-approuter-<<your-user-id>>.cfapps.sap.hana.ondemand.com/ads/health`. This will bring you the **login page**. Note: You have to enter here not your Cloud Foundry credentials. You need to sign up to the XSUAA identity provider first. After successful login you get redirected to the advertisement service that return you an empty list of advertisements `[]`.
 
 This [`xs-app.json`](/src/main/approuter/xs-app.json) file specifies how the approuter routes are mapped to the advertisement routes.
+
+**Below needs to be checked after the application is working**
 
 Find a step-by-step description on how to test within `REST client` [here](https://github.wdf.sap.corp/refapps/cc-bulletinboard-ads-spring-webmvc/tree/Documentation/Security/Exercise_25_Create_SystemTest).
 
